@@ -1,0 +1,35 @@
+.logo__img {
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.hover__btn {
+  transition: all 0.5s ease-in-out;
+  font-size: 12px !important;
+  border: 1px solid #fff !important;
+  padding: 1px 4px !important;
+  border-radius: 4px !important;
+  cursor: pointer;
+  &:hover {
+    background: #fff;
+    color: #203445;
+  }
+}
+
+.header__left-wrapper {
+  display: flex;
+  align-items: center;
+  width: 500px;
+  justify-content: space-between;
+}
+.header__right-wrapper {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  justify-content: space-between;
+}
+
+.header__search-icon {
+  cursor: pointer;
+}

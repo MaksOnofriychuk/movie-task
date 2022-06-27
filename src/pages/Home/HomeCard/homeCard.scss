@@ -1,0 +1,21 @@
+.card__wrapper {
+  position: relative;
+  z-index: 10;
+}
+.card__image {
+  cursor: pointer;
+}
+
+.btn {
+  position: absolute !important;
+  top: 10px !important;
+  right: 5px !important;
+  z-index: 999 !important;
+  color: #fff !important;
+  background: grey !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  width: 0px !important;
+  height: 0px !important;
+  font-size: 22px !important;
+}

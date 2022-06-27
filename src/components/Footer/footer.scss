@@ -1,0 +1,45 @@
+.footer__app-bar {
+  background-color: #203445 !important;
+  margin-top: 200px !important;
+  position: relative !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  height: 360px !important;
+}
+
+.footer__container {
+  display: flex !important;
+  margin-top: 50px !important;
+  align-items: center !important;
+  width: 1000px !important;
+}
+
+.footer__right-wrapper {
+  display: flex !important;
+  padding-top: 40px !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+.footer__left-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 30px;
+}
+
+.footer__tool-bar {
+  height: 300px;
+}
+.footer__button {
+  background-color: #fff !important;
+  height: 100px !important;
+  padding: 0px 0px !important;
+  height: 40px !important;
+  width: 220px !important;
+}
+
+.footer__logo {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 20px;
+}

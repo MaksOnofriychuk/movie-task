@@ -1,0 +1,21 @@
+.firstScreen__bottom {
+  display: flex !important;
+  justify-content: center !important;
+  padding-top: 8px !important;
+}
+
+.bottom__image {
+  width: 35px !important;
+  height: 34px !important;
+  border-radius: 4px !important;
+}
+.bottom__text {
+  margin-left: 10px !important;
+}
+.first__screen-card {
+  .card__image {
+    &:hover {
+      filter: blur(5px) !important;
+    }
+  }
+}
