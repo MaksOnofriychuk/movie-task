@@ -10,11 +10,16 @@ function CircularProgressWithLabel(
 ) {
   return (
     <Box
-      className="CircularProgress"
-      sx={{ position: "relative", display: "inline-flex" }}
+      sx={{
+        position: "relative",
+        display: "inline-flex",
+        cursor: "pointer",
+        transition: "all 0.5s ease-in-out",
+        "&:hover": { transform: "scale(1.2)" },
+      }}
     >
       <CircularProgress
-        style={{
+        sx={{
           color: "yellow",
           zIndex: "10",
         }}
@@ -38,7 +43,7 @@ function CircularProgressWithLabel(
         }}
       >
         <Typography
-          style={{ color: "#fff" }}
+          sx={{ color: "#fff" }}
           variant="caption"
           component="div"
           color="text.secondary"
@@ -53,7 +58,5 @@ interface ICircularStatic {
 }
 
 export const CircularStatic: React.FC<ICircularStatic> = ({ valuePercent }) => {
-  const [progress] = React.useState(valuePercent);
-
-  return <CircularProgressWithLabel value={progress} />;
+  return <CircularProgressWithLabel value={valuePercent} />;
 };

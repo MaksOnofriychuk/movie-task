@@ -18,10 +18,9 @@ const Film = () => {
 
   return (
     <>
-      <Box className="film__wrapper">{film && <FirstScreen />}</Box>
+      <Box>{film && <FirstScreen />}</Box>
     </>
   );
 };
 
 export default Film;
-//redirect <Navigate replace to="/" />

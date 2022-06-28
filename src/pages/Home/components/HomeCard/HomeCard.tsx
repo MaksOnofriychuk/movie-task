@@ -4,7 +4,6 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
-import "./homeCard.scss";
 
 interface IHomeCardProps {
   poster_path: string;
@@ -27,16 +26,18 @@ export const HomeCard: React.FC<IHomeCardProps> = ({
 
   return (
     <Card
-      className="card__wrapper"
       sx={{
         maxWidth: 200,
         maxHeight: "600px",
         marginRight: "50px",
         marginBottom: "40px",
+        position: "relative",
+        zIndex: "10",
       }}
     >
       <CardMedia
         onClick={toFilmPage}
+        sx={{ cursor: "pointer" }}
         className="card__image"
         component="img"
         alt="green iguana"

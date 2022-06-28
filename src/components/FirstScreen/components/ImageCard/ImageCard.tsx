@@ -1,18 +1,24 @@
 import * as React from "react";
 import { Card, CardActionArea, CardMedia, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { useAppSelector } from "../../../hooks/redux";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import BasicModal from "../ModalWindow/ModalWindow";
-import "./imageCard.scss";
+import { TProductionCompanies } from "../../../../store/reducers/fIlmSlice/types";
 
-const ImageCard = () => {
+interface IImageCardProps {
+  poster_path: string;
+  production_companies: TProductionCompanies[];
+}
+
+const ImageCard: React.FC<IImageCardProps> = ({
+  poster_path,
+  production_companies,
+}) => {
   const [isHovering, setIsHovering] = React.useState<boolean>(false);
   const [statusModal, setStatusModal] = React.useState<boolean>(false);
-  const { film } = useAppSelector((state) => state.filmReducer);
 
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -30,25 +36,31 @@ const ImageCard = () => {
     <>
       <Card
         className="first__screen-card"
-        sx={{ width: 300 }}
-        style={{ minHeight: "540px", borderRadius: "6px" }}
+        sx={{
+          width: 300,
+          borderRadius: "6px",
+          minHeight: "540px",
+        }}
       >
         <CardActionArea>
           <CardMedia
-            className="card__image"
-            sx={{ position: "relative", height: "500px" }}
+            sx={{
+              position: "relative",
+              height: "500px",
+              "&:hover": { filter: "blur(5px)" },
+            }}
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
             onClick={openModal}
             component="img"
-            image={`${process.env.React_App_Image_Base_Path}/${film?.poster_path}`}
+            image={`${process.env.React_App_Image_Base_Path}/${poster_path}`}
             alt="green iguana"
           />
           {isHovering ? (
-            <Box style={{ position: "absolute", top: "220px", right: "100px" }}>
-              <Box style={{ position: "relative", width: "100%" }}>
+            <Box sx={{ position: "absolute", top: "220px", right: "100px" }}>
+              <Box sx={{ position: "relative", width: "100%" }}>
                 <ArrowDropUpIcon
-                  style={{
+                  sx={{
                     position: "absolute",
                     color: "#fff",
                     top: "-10px",
@@ -56,7 +68,7 @@ const ImageCard = () => {
                   }}
                 />
                 <ArrowRightIcon
-                  style={{
+                  sx={{
                     position: "absolute",
                     color: "#fff",
                     top: "0",
@@ -64,7 +76,7 @@ const ImageCard = () => {
                   }}
                 />
                 <ArrowDropDownIcon
-                  style={{
+                  sx={{
                     position: "absolute",
                     color: "#fff",
                     top: "10px",
@@ -72,7 +84,7 @@ const ImageCard = () => {
                   }}
                 />
                 <ArrowLeftIcon
-                  style={{
+                  sx={{
                     position: "absolute",
                     color: "#fff",
                     top: "0",
@@ -81,33 +93,33 @@ const ImageCard = () => {
                 />
               </Box>
 
-              <Typography style={{ color: "#fff" }}>Expands</Typography>
+              <Typography sx={{ color: "#fff" }}>Expands</Typography>
             </Box>
           ) : null}
 
           <Box
-            style={{
+            sx={{
               width: "100%",
               height: "50px",
               background: "#203445",
             }}
           >
             <Box>
-              <Box className="firstScreen__bottom">
+              <Box sx={{ display: "flex", justifyContent: "center", pt: 1 }}>
                 <img
-                  className="bottom__image"
-                  src={`${process.env.React_App_Image_Base_Path}/${film?.production_companies[0].logo_path}`}
+                  style={{ width: "35px", height: "34px", borderRadius: "4px" }}
+                  src={`${process.env.React_App_Image_Base_Path}/${production_companies[0].logo_path}`}
                   alt="card-img"
                 />
-                <Box className="bottom__text">
+                <Box sx={{ ml: "10px" }}>
                   <Typography
-                    style={{ lineHeight: "0", color: "#fff" }}
+                    sx={{ lineHeight: "0", color: "#fff" }}
                     variant="caption"
                     component="span"
                   >
                     Now Streaming
                   </Typography>
-                  <Typography style={{ color: "#fff" }}>Watch Now</Typography>
+                  <Typography sx={{ color: "#fff" }}>Watch Now</Typography>
                 </Box>
               </Box>
             </Box>
@@ -116,7 +128,7 @@ const ImageCard = () => {
       </Card>
       {statusModal && (
         <BasicModal
-          modalImage={film?.poster_path}
+          modalImage={poster_path}
           statusModal={statusModal}
           setStatusModal={setStatusModal}
         />

@@ -9,7 +9,6 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { FormControl, OutlinedInput } from "@mui/material";
-import "./ModalWindow.scss";
 
 const style = {
   position: "absolute" as "absolute",
@@ -47,7 +46,14 @@ const ModalWindow: React.FC<IModal> = ({
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Box id="modal-modal" className="modal__slider">
+          <Box
+            sx={{
+              width: "50%",
+              height: "100%",
+              backgroundColor: "rgb(187, 177, 177)",
+            }}
+            id="modal-modal"
+          >
             <Box sx={{ width: "100%", height: "100%" }}>
               <img
                 style={{ width: "100%", height: "100%", borderRadius: "6px" }}
@@ -56,7 +62,7 @@ const ModalWindow: React.FC<IModal> = ({
               />
             </Box>
           </Box>
-          <Box id="modal-modal" className="modal__info">
+          <Box sx={{ width: "50%", height: "100%" }} id="modal-modal">
             <Box sx={{ p: "20px" }}>
               <Box
                 sx={{

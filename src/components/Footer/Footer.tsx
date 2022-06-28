@@ -1,7 +1,7 @@
 import * as React from "react";
 import { AppBar, Box, Button, Container, Toolbar } from "@mui/material";
 import LogoFooter from "../../assets/img/footer-logo.svg";
-import FooterInfo from "./FooterInfo";
+import FooterInfo from "./components/FooterInfo";
 import "./footer.scss";
 
 const Footer = () => {

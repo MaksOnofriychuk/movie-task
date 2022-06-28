@@ -1,10 +1,9 @@
 import * as React from "react";
 import { Box } from "@mui/material";
-import HomeCard from "./HomeCard/HomeCard";
+import HomeCard from "./components/HomeCard/HomeCard";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { getFilms } from "../../store/actions/Film";
 import { TFilmList } from "../../store/reducers/fIlmSlice/types";
-import "./home.scss";
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +19,17 @@ const Home = () => {
     <>
       {loading && "Loading"}
       {error && "Error"}
-      <Box className="home__wrapper">
+      <Box
+        maxWidth="1000px"
+        sx={{
+          height: "100vh",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
+          p: "100px 40px",
+          m: "0px auto",
+        }}
+      >
         {filmList &&
           filmList.map((film: TFilmList) => {
             return <HomeCard key={film.id} {...film} />;
