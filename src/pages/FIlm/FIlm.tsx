@@ -4,6 +4,9 @@ import FirstScreen from "../../components/FirstScreen/FirstScreen";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { useParams } from "react-router-dom";
 import { getFilmById } from "../../store/actions/Film";
+import { Container } from "@mui/system";
+import FilmStatistic from "../../components/FilmStatistic/FIlmStatistic";
+import FilmCrew from "../../components/FilmCrew/filmCrew";
 
 const Film = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +21,15 @@ const Film = () => {
 
   return (
     <>
-      <Box>{film && <FirstScreen />}</Box>
+      <Box className="film__wrapper">{film && <FirstScreen />}</Box>
+      <Box sx={{ mt: 3 }}>
+        <Container maxWidth="xl">
+          <Box sx={{ display: "flex", width: "100%" }}>
+            <FilmCrew />
+            <FilmStatistic />
+          </Box>
+        </Container>
+      </Box>
     </>
   );
 };

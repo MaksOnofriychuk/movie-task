@@ -7,6 +7,9 @@ import Info from "./components/Info/Info";
 
 const FirstScreen = () => {
   const { film } = useAppSelector((state) => state.filmReducer);
+  if (!film) {
+    return <div>...Loading</div>;
+  }
 
   if (!film) {
     return (
