@@ -6,13 +6,30 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import HomeIcon from "@mui/icons-material/Home";
 import SocialLink from "./components/SocialLink/SocialLink";
+import { useAppSelector } from "../../hooks/redux";
+import { transformNumberFromString } from "../../utils/helpersMovie";
 
 const FilmStatistic = () => {
+  const { film, keywords } = useAppSelector((state) => state.filmReducer);
+
+  if (!film) {
+    return (
+      <Box>
+        <Typography variant="h3">...Loading</Typography>
+      </Box>
+    );
+  }
+
+  const filmLanguage = film.spokenLanguages.find(
+    (language) => language.iso_639_1 === film.originalLanguage
+  );
+
+  const budgetFilm = transformNumberFromString(film.budget);
+
+  const revenueFilm = transformNumberFromString(film.revenue);
+
   return (
-    <Box
-      className="right"
-      sx={{ width: "25%", height: "600px", borderBottom: 1 }}
-    >
+    <>
       <Box
         sx={{
           display: "flex",
@@ -40,19 +57,19 @@ const FilmStatistic = () => {
 
       <Box sx={{ mb: 2 }}>
         <Typography>Status</Typography>
-        <Typography>Released</Typography>
+        <Typography>{film.status}</Typography>
       </Box>
       <Box sx={{ mb: 2 }}>
         <Typography>Original Language</Typography>
-        <Typography>English</Typography>
+        <Typography>{filmLanguage?.name}</Typography>
       </Box>
       <Box sx={{ mb: 2 }}>
         <Typography>Budget</Typography>
-        <Typography>$200,000,000,000</Typography>
+        <Typography>${budgetFilm}</Typography>
       </Box>
       <Box sx={{ mb: 3 }}>
         <Typography>Revenue</Typography>
-        <Typography>$944,913,572.00</Typography>
+        <Typography>${revenueFilm}</Typography>
       </Box>
 
       <Box>
@@ -61,37 +78,38 @@ const FilmStatistic = () => {
         </Box>
         <Box
           sx={{
-            maxWidth: "200px",
+            maxWidth: "240px",
             maxHeight: "400px",
             display: "flex",
             flexWrap: "wrap",
           }}
         >
-          {[{ id: 1, text: "magic" }].map((item) => (
-            <Typography
-              key={item.id}
-              sx={{
-                border: 1,
-                padding: "10px 10px",
-                borderColor: "transparent",
-                background: "grey",
-                borderRadius: "4px",
-                mr: 1,
-                mb: 1,
-                lineHeight: "0",
-                color: "#fff",
-                letterSpacing: "0",
-                cursor: "pointer",
-              }}
-              variant="caption"
-              component="span"
-            >
-              {item.text}
-            </Typography>
-          ))}
+          {keywords &&
+            keywords.map((word) => (
+              <Typography
+                key={word.id}
+                sx={{
+                  border: 1,
+                  padding: "10px 10px",
+                  borderColor: "transparent",
+                  background: "grey",
+                  borderRadius: "4px",
+                  mr: 1,
+                  mb: 1,
+                  lineHeight: "0",
+                  color: "#fff",
+                  letterSpacing: "0",
+                  cursor: "pointer",
+                }}
+                variant="caption"
+                component="span"
+              >
+                {word.name}
+              </Typography>
+            ))}
         </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 

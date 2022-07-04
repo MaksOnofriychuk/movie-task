@@ -32,7 +32,15 @@ const Home = () => {
       >
         {filmList &&
           filmList.map((film: TFilmList) => {
-            return <HomeCard key={film.id} {...film} />;
+            return (
+              <HomeCard
+                key={film.id}
+                posterPath={film.posterPath}
+                originalTitle={film.originalTitle}
+                releaseDate={film.releaseDate}
+                id={film.id}
+              />
+            );
           })}
       </Box>
     </>

@@ -9,13 +9,13 @@ import BasicModal from "../ModalWindow/ModalWindow";
 import { TProductionCompanies } from "../../../../store/reducers/fIlmSlice/types";
 
 interface IImageCardProps {
-  poster_path: string;
-  production_companies: TProductionCompanies[];
+  posterPath: string;
+  productionCompanies: TProductionCompanies[];
 }
 
 const ImageCard: React.FC<IImageCardProps> = ({
-  poster_path,
-  production_companies,
+  posterPath,
+  productionCompanies,
 }) => {
   const [isHovering, setIsHovering] = React.useState<boolean>(false);
   const [statusModal, setStatusModal] = React.useState<boolean>(false);
@@ -53,7 +53,7 @@ const ImageCard: React.FC<IImageCardProps> = ({
             onMouseOut={handleMouseOut}
             onClick={openModal}
             component="img"
-            image={`${process.env.React_App_Image_Base_Path}/${poster_path}`}
+            image={`${posterPath}`}
             alt="green iguana"
           />
           {isHovering ? (
@@ -108,7 +108,7 @@ const ImageCard: React.FC<IImageCardProps> = ({
               <Box sx={{ display: "flex", justifyContent: "center", pt: 1 }}>
                 <img
                   style={{ width: "35px", height: "34px", borderRadius: "4px" }}
-                  src={`${process.env.React_App_Image_Base_Path}/${production_companies[0].logo_path}`}
+                  src={`${process.env.React_App_Image_Base_Path}${productionCompanies[0].logo_path}`}
                   alt="card-img"
                 />
                 <Box sx={{ ml: "10px" }}>
@@ -128,7 +128,7 @@ const ImageCard: React.FC<IImageCardProps> = ({
       </Card>
       {statusModal && (
         <BasicModal
-          modalImage={poster_path}
+          modalImage={posterPath}
           statusModal={statusModal}
           setStatusModal={setStatusModal}
         />

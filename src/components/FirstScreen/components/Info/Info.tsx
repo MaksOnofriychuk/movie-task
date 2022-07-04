@@ -19,31 +19,31 @@ import {
 } from "../../../../store/reducers/fIlmSlice/types";
 
 interface IInfoProps {
-  vote_average: number;
-  release_date: string;
+  voteAverage: number;
+  releaseDate: string;
   runtime: number;
   title: string;
-  production_countries: TProductionCountries[];
+  productionCountries: TProductionCountries[];
   genres: TGenres[];
   tagline: string;
   overview: string;
 }
 
 const Info: React.FC<IInfoProps> = ({
-  vote_average,
-  release_date,
+  voteAverage,
+  releaseDate,
   runtime,
   title,
-  production_countries,
+  productionCountries,
   genres,
   tagline,
   overview,
 }) => {
-  const percentageOfPopularity = transformForPercent(vote_average);
+  const percentageOfPopularity = transformForPercent(voteAverage);
 
-  const releaseYear = getYear(release_date);
+  const releaseYear = getYear(releaseDate);
 
-  const releaseFullTime = getFullTime(release_date);
+  const releaseFullTime = getFullTime(releaseDate);
 
   const movieDuration = getTimeFromMins(runtime);
 
@@ -85,9 +85,9 @@ const Info: React.FC<IInfoProps> = ({
           component="span"
         >
           {releaseFullTime} (
-          {production_countries.length === 1
-            ? production_countries[0]?.iso_3166_1
-            : production_countries[1]?.iso_3166_1}
+          {productionCountries.length === 1
+            ? productionCountries[0]?.iso_3166_1
+            : productionCountries[1]?.iso_3166_1}
           )
           <Box
             sx={{
