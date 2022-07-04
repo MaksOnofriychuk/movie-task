@@ -22,7 +22,7 @@ const FirstScreen = () => {
         height: "600px",
         marginTop: "50px",
         width: "100%",
-        backgroundImage: `url(${process.env.React_App_Image_Base_Path}/${film.backdrop_path})`,
+        backgroundImage: `url(${film.backdropPath})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "118% 140%",
         backgroundPosition: "0px 0px",
@@ -42,7 +42,10 @@ const FirstScreen = () => {
       <Box sx={{ position: "relative", zIndex: "999" }}>
         <Container sx={{ maxWidth: "1400px", display: "flex" }}>
           <Box sx={{ pt: "30px", mr: "30px" }}>
-            <ImageCard {...film} />
+            <ImageCard
+              posterPath={film.posterPath}
+              productionCompanies={film.productionCompanies}
+            />
           </Box>
           <Info {...film} />
         </Container>

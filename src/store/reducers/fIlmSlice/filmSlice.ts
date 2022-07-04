@@ -1,10 +1,45 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getFilmById, getFilms } from "../../actions/Film";
-import { TFilm, TFilmList, TInitialState } from "./types";
+import {
+  transformCastsData,
+  transformCollectionData,
+  transformFilmData,
+  transformFilmsData,
+  transformMediaData,
+  transformRecommendationsData,
+  transformReviewsData,
+} from "../../../utils/transformData";
+import {
+  getCasts,
+  getCollection,
+  getFilmById,
+  getFilms,
+  getImagesAndVideos,
+  getKeywords,
+  getRecommendations,
+  getReviews,
+} from "../../actions/Film";
+import {
+  TInitialState,
+  TKeywords,
+  TServerCasts,
+  TServerCollection,
+  TServerFilm,
+  TServerFilmsList,
+  TServerPhotos,
+  TServerRecommendations,
+  TServerReviews,
+  TServerVideos,
+} from "./types";
 
 const initialState: TInitialState = {
   filmList: [],
   film: null,
+  casts: [],
+  reviews: [],
+  keywords: [],
+  recommendations: [],
+  media: null,
+  collection: null,
   loading: false,
   error: "",
 };
@@ -21,17 +56,73 @@ export const filmSlice = createSlice({
       })
       .addCase(
         getFilms.fulfilled,
-        (state, action: PayloadAction<TFilmList[]>) => {
-          const homeList = action.payload.slice(0, 8);
+        (state, action: PayloadAction<TServerFilmsList[]>) => {
+          const transformFilms = transformFilmsData(action.payload);
+          const homeList = transformFilms.slice(0, 8);
           state.filmList = homeList;
           state.loading = false;
           state.error = "";
         }
       )
-      .addCase(getFilmById.fulfilled, (state, action: PayloadAction<TFilm>) => {
-        state.film = action.payload;
-      });
+      .addCase(
+        getFilmById.fulfilled,
+        (state, action: PayloadAction<TServerFilm>) => {
+          const transformedFilm = transformFilmData(action.payload);
+          state.film = transformedFilm;
+        }
+      )
+      .addCase(
+        getCasts.fulfilled,
+        (state, action: PayloadAction<TServerCasts[]>) => {
+          const transformCasts = transformCastsData(action.payload);
+          state.casts = transformCasts;
+        }
+      )
+      .addCase(
+        getKeywords.fulfilled,
+        (state, action: PayloadAction<TKeywords[]>) => {
+          state.keywords = action.payload;
+        }
+      )
+      .addCase(
+        getReviews.fulfilled,
+        (state, action: PayloadAction<TServerReviews[]>) => {
+          const transformReviews = transformReviewsData(action.payload);
+          state.reviews = transformReviews;
+        }
+      )
+
+      .addCase(
+        getImagesAndVideos.fulfilled,
+        (state, action: PayloadAction<[TServerVideos[], TServerPhotos]>) => {
+          const newMedia = {
+            videos: action.payload[0],
+            backdrops: action.payload[1].backdrops,
+            logos: action.payload[1].logos,
+            posters: action.payload[1].posters,
+            id: action.payload[1].id,
+          };
+          const transformNewMediaData = transformMediaData(newMedia);
+          state.media = transformNewMediaData;
+        }
+      )
+      .addCase(
+        getCollection.fulfilled,
+        (state, action: PayloadAction<TServerCollection>) => {
+          const transformCollection = transformCollectionData(action.payload);
+          state.collection = transformCollection;
+        }
+      )
+      .addCase(
+        getRecommendations.fulfilled,
+        (state, action: PayloadAction<TServerRecommendations[]>) => {
+          const transformRecommendations = transformRecommendationsData(
+            action.payload
+          );
+          state.recommendations = transformRecommendations;
+        }
+      );
   },
 });
-// export const {  } = filmSlice.actions;
+
 export default filmSlice.reducer;

@@ -6,16 +6,16 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 
 interface IHomeCardProps {
-  poster_path: string;
-  original_title: string;
-  release_date: string;
+  posterPath: string;
+  originalTitle: string;
+  releaseDate: string;
   id: number;
 }
 
 export const HomeCard: React.FC<IHomeCardProps> = ({
-  poster_path,
-  original_title,
-  release_date,
+  posterPath,
+  originalTitle,
+  releaseDate,
   id,
 }) => {
   const navigate = useNavigate();
@@ -42,15 +42,15 @@ export const HomeCard: React.FC<IHomeCardProps> = ({
         component="img"
         alt="green iguana"
         height="300"
-        image={`${process.env.React_App_Image_Base_Path}${poster_path}`}
+        image={`${posterPath}`}
       />
 
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {original_title}
+          {originalTitle}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {new Date(release_date).toDateString()}
+          {new Date(releaseDate).toDateString()}
         </Typography>
       </CardContent>
     </Card>
