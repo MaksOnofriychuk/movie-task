@@ -4,7 +4,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import GradeIcon from "@mui/icons-material/Grade";
-import { getFullTime } from "../../utils/helpersMovie";
+import { getFullTime } from "../../../utils/helpersMovie";
 
 interface IHoverBlockProps {
   releaseDate: string;

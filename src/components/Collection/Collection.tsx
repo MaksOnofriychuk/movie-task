@@ -51,14 +51,12 @@ const Collection = () => {
         >
           <Typography
             variant="caption"
-            component="div"
             sx={{ color: "#fff", fontWeight: "700", fontSize: "1.75rem" }}
           >
             Part of the {film.belongsToCollection.name}
           </Typography>
           <Typography
             variant="caption"
-            component="div"
             sx={{ color: "#fff", fontSize: "18px", mb: 2 }}
           >
             Includes {film.title}

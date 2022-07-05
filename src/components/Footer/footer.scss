@@ -1,16 +1,16 @@
 .footer__app-bar {
   background-color: #203445 !important;
-  margin-top: 50px !important;
-  position: relative !important;
-  bottom: 0 !important;
-  left: 0 !important;
-  height: 360px !important;
+  margin-top: 100px !important;
+  height: 300px !important;
+
+  color: #fff;
 }
 
 .footer__container {
   display: flex !important;
   margin-top: 50px !important;
   align-items: center !important;
+  justify-content: center;
   width: 1000px !important;
 }
 
@@ -27,9 +27,9 @@
   margin-right: 30px;
 }
 
-.footer__tool-bar {
-  height: 300px;
-}
+// .footer__tool-bar {
+//   height: 300px;
+// }
 .footer__button {
   background-color: #fff !important;
   height: 100px !important;

@@ -11,17 +11,15 @@ const Social = () => {
         sx={{
           p: 2,
           display: "flex",
-          borderBottom: "1px solid #000",
         }}
       >
         <Typography sx={{ mr: 5, pt: 1 }} variant="h6">
           Social
         </Typography>
 
-        <Box sx={{ width: "100%" }}>
-          <SocialTabs />
-        </Box>
+        <SocialTabs />
       </Box>
+      <Box sx={{ height: "1px", width: "98%", background: "#000" }}></Box>
     </Box>
   );
 };
