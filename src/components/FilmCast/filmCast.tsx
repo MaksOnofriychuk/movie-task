@@ -10,7 +10,7 @@ const FilmCast = () => {
 
   const cutCasts = casts.slice(0, 7);
 
-  const isLengthCheck = cutCasts.length > 7;
+  const isLengthCheck = cutCasts.length > 6;
 
   const memoizedCastsCard = React.useMemo(() => {
     return cutCasts.map((actor: TCasts) => {
