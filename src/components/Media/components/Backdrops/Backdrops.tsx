@@ -1,14 +1,10 @@
-import { Box } from "@mui/system";
 import * as React from "react";
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
-import { TBackdrops } from "../../../../store/reducers/fIlmSlice/types";
+import { TBackdropsProps } from "../../../../ComponentTypes/types";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
-interface IBackdropsProps {
-  backdrops: TBackdrops[];
-}
-
-const Backdrops: React.FC<IBackdropsProps> = ({ backdrops }) => {
+const Backdrops: React.FC<TBackdropsProps> = ({ backdrops }) => {
   const slicedBackdrops = backdrops.slice(0, 7);
 
   return (

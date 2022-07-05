@@ -58,8 +58,7 @@ export const filmSlice = createSlice({
         getFilms.fulfilled,
         (state, action: PayloadAction<TServerFilmsList[]>) => {
           const transformFilms = transformFilmsData(action.payload);
-          const homeList = transformFilms.slice(0, 8);
-          state.filmList = homeList;
+          state.filmList = transformFilms;
           state.loading = false;
           state.error = "";
         }

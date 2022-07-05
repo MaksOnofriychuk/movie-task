@@ -1,13 +1,9 @@
 import * as React from "react";
 import { Box } from "@mui/system";
+import { TPopularProps } from "../../../../ComponentTypes/types";
 import VideoProvider from "../VideoProvider";
-import { TNewMedia } from "../../../../store/reducers/fIlmSlice/types";
 
-interface IPopularProps {
-  media: TNewMedia;
-}
-
-const Popular: React.FC<IPopularProps> = ({ media }) => {
+const Popular: React.FC<TPopularProps> = ({ media }) => {
   return (
     <Box
       sx={{

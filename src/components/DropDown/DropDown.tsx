@@ -1,14 +1,14 @@
 import * as React from "react";
+import { Button } from "@mui/material";
+import { COLOR } from "../../ColorTheme/Theme";
+import { TPropsDropDown } from "../../ComponentTypes/types";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import { Button } from "@mui/material";
 
-type TProps = {
-  children?: React.ReactNode;
-  selectValue: string[];
-};
-
-export const DropDown: React.FC<TProps> = ({ children, selectValue }) => {
+export const DropDown: React.FC<TPropsDropDown> = ({
+  children,
+  selectValue,
+}) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const open = Boolean(anchorEl);
@@ -35,7 +35,7 @@ export const DropDown: React.FC<TProps> = ({ children, selectValue }) => {
         aria-controls="lock-menu"
         aria-label="when device is locked"
         aria-expanded={open ? "true" : undefined}
-        sx={{ color: "#fff", fontSize: "12px" }}
+        sx={{ color: COLOR.white, fontSize: "12px" }}
         onClick={handleClickListItem}
       >
         {children}

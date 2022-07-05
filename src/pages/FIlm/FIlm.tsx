@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import FirstScreen from "../../components/FirstScreen/FirstScreen";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { useParams } from "react-router-dom";
+import { Container } from "@mui/system";
 import {
   getCasts,
   getFilmById,
@@ -11,7 +12,6 @@ import {
   getRecommendations,
   getReviews,
 } from "../../store/actions/Film";
-import { Container } from "@mui/system";
 import FilmStatistic from "../../components/FilmStatistic/FIlmStatistic";
 import FilmCast from "../../components/FilmCast/filmCast";
 import Social from "../../components/Social/Social";

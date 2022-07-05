@@ -1,4 +1,6 @@
 import * as React from "react";
+import { COLOR } from "../../../../ColorTheme/Theme";
+import { TCircularStatic } from "../../../../ComponentTypes/types";
 import CircularProgress, {
   CircularProgressProps,
 } from "@mui/material/CircularProgress";
@@ -38,12 +40,12 @@ function CircularProgressWithLabel(
           alignItems: "center",
           justifyContent: "center",
           zIndex: "1",
-          background: "#203445",
+          background: COLOR.main,
           borderRadius: "50%",
         }}
       >
         <Typography
-          sx={{ color: "#fff" }}
+          sx={{ color: COLOR.white }}
           variant="caption"
           component="div"
           color="text.secondary"
@@ -53,10 +55,6 @@ function CircularProgressWithLabel(
   );
 }
 
-interface ICircularStatic {
-  valuePercent: number;
-}
-
-export const CircularStatic: React.FC<ICircularStatic> = ({ valuePercent }) => {
+export const CircularStatic: React.FC<TCircularStatic> = ({ valuePercent }) => {
   return <CircularProgressWithLabel value={valuePercent} />;
 };
