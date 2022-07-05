@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { getFilms } from "../../store/actions/Film";
 import { TFilmList } from "../../store/reducers/fIlmSlice/types";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
@@ -33,6 +33,7 @@ const Home = () => {
           m: "0px auto",
         }}
       >
+        <Typography>Hi!</Typography>
         {filmList &&
           slicedFilms.map((film: TFilmList) => {
             return (
