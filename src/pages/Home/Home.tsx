@@ -34,6 +34,7 @@ const Home = () => {
         }}
       >
         <Typography>Hi!</Typography>
+        <Typography>Mazafaka</Typography>
         {filmList &&
           slicedFilms.map((film: TFilmList) => {
             return (
