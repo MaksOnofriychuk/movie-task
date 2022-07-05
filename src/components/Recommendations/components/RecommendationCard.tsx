@@ -1,14 +1,9 @@
 import * as React from "react";
 import { Box } from "@mui/system";
-import HoverBlock from "./HoverBlock";
 import { Typography } from "@mui/material";
-import { TRecommendations } from "../../../store/reducers/fIlmSlice/types";
 import { transformRating } from "../../../utils/helpersMovie";
-
-type TRecommendationCardProps = {
-  recommendation: TRecommendations;
-  index: number;
-};
+import { TRecommendationCardProps } from "../../../ComponentTypes/types";
+import HoverBlock from "./HoverBlock";
 
 const RecommendationCard: React.FC<TRecommendationCardProps> = ({
   recommendation,

@@ -1,14 +1,10 @@
 import * as React from "react";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { TPostersProps } from "../../../../ComponentTypes/types";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import { TPosters } from "../../../../store/reducers/fIlmSlice/types";
 
-interface IPostersProps {
-  posters: TPosters[];
-}
-
-const Posters: React.FC<IPostersProps> = ({ posters }) => {
+const Posters: React.FC<TPostersProps> = ({ posters }) => {
   const slicedPosters = posters.slice(0, 7);
   return (
     <Box

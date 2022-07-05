@@ -1,13 +1,8 @@
-import { Card, CardActionArea, CardMedia, Typography } from "@mui/material";
 import * as React from "react";
+import { Card, CardActionArea, CardMedia, Typography } from "@mui/material";
+import { TCastCardProps } from "../../../ComponentTypes/types";
 
-interface ICastCardProps {
-  profilePath: string;
-  name: string;
-  character: string;
-}
-
-const CastCard: React.FC<ICastCardProps> = ({
+const CastCard: React.FC<TCastCardProps> = ({
   profilePath,
   name,
   character,
@@ -31,10 +26,18 @@ const CastCard: React.FC<ICastCardProps> = ({
           image={`${profilePath}`}
           alt="green iguana"
         />
-        <Typography sx={{ fontWeight: "bold", mb: 1, ml: 1 }} variant="caption" component="div">
+        <Typography
+          sx={{ fontWeight: "bold", mb: 1, ml: 1 }}
+          variant="caption"
+          component="div"
+        >
           {name}
         </Typography>
-        <Typography sx={{ ml: 1, maxWidth: "110px" }} variant="caption" component="div">
+        <Typography
+          sx={{ ml: 1, maxWidth: "110px" }}
+          variant="caption"
+          component="div"
+        >
           {character}
         </Typography>
       </CardActionArea>

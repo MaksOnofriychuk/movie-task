@@ -1,16 +1,16 @@
 import * as React from "react";
-import ArrowRightAlt from "@mui/icons-material/ArrowRightAlt";
 import { Box, Typography } from "@mui/material";
 import { useAppSelector } from "../../hooks/redux";
-import CastCard from "./components/CastCard";
 import { TCasts } from "../../store/reducers/fIlmSlice/types";
+import ArrowRightAlt from "@mui/icons-material/ArrowRightAlt";
+import CastCard from "./components/CastCard";
 
 const FilmCast = () => {
   const { casts } = useAppSelector((state) => state.filmReducer);
 
   const cutCasts = casts.slice(0, 7);
 
-  const isLengthCheck = cutCasts.length >= 7;
+  const isLengthCheck = cutCasts.length > 7;
 
   const memoizedCastsCard = React.useMemo(() => {
     return cutCasts.map((actor: TCasts) => {
@@ -34,7 +34,7 @@ const FilmCast = () => {
         sx={{
           p: 2,
           display: "flex",
-          width: "1000px",
+          width: "95%",
           overflow: "scroll",
           position: "relative",
         }}

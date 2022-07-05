@@ -1,11 +1,8 @@
 import * as React from "react";
 import { Box } from "@mui/system";
+import { TVideoProviderProps } from "../../../ComponentTypes/types";
 
-interface IVideoProviderProps {
-  key?: string;
-}
-
-const VideoProvider: React.FC<IVideoProviderProps> = (key) => {
+const VideoProvider: React.FC<TVideoProviderProps> = (key) => {
   return (
     <Box
       sx={{

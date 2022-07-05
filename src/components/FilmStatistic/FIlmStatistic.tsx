@@ -1,13 +1,14 @@
 import * as React from "react";
 import { Box, Typography } from "@mui/material";
+import { useAppSelector } from "../../hooks/redux";
+import { transformNumberFromString } from "../../utils/helpersMovie";
+import { COLOR } from "../../ColorTheme/Theme";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import HomeIcon from "@mui/icons-material/Home";
 import SocialLink from "./components/SocialLink/SocialLink";
-import { useAppSelector } from "../../hooks/redux";
-import { transformNumberFromString } from "../../utils/helpersMovie";
 
 const FilmStatistic = () => {
   const { film, keywords } = useAppSelector((state) => state.filmReducer);
@@ -92,12 +93,12 @@ const FilmStatistic = () => {
                   border: 1,
                   padding: "10px 10px",
                   borderColor: "transparent",
-                  background: "grey",
+                  background: COLOR.grey,
                   borderRadius: "4px",
                   mr: 1,
                   mb: 1,
                   lineHeight: "0",
-                  color: "#fff",
+                  color: COLOR.white,
                   letterSpacing: "0",
                   cursor: "pointer",
                 }}

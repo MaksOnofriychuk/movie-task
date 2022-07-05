@@ -2,6 +2,7 @@ import * as React from "react";
 import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useAppSelector } from "../../hooks/redux";
+import { COLOR } from "../../ColorTheme/Theme";
 
 const Collection = () => {
   const { film } = useAppSelector((state) => state.filmReducer);
@@ -51,13 +52,13 @@ const Collection = () => {
         >
           <Typography
             variant="caption"
-            sx={{ color: "#fff", fontWeight: "700", fontSize: "1.75rem" }}
+            sx={{ color: COLOR.white, fontWeight: "700", fontSize: "1.75rem" }}
           >
             Part of the {film.belongsToCollection.name}
           </Typography>
           <Typography
             variant="caption"
-            sx={{ color: "#fff", fontSize: "18px", mb: 2 }}
+            sx={{ color: COLOR.white, fontSize: "18px", mb: 2 }}
           >
             Includes {film.title}
           </Typography>
@@ -65,7 +66,7 @@ const Collection = () => {
             sx={{
               lineHeight: "0px",
               background: "#2E2234",
-              color: "#fff",
+              color: COLOR.white,
               borderRadius: "14px",
               padding: "8px 20px",
             }}

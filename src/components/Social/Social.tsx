@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-
+import { COLOR } from "../../ColorTheme/Theme";
 import SocialTabs from "./components/Tabs/Tabs";
 
 const Social = () => {
@@ -19,7 +19,7 @@ const Social = () => {
 
         <SocialTabs />
       </Box>
-      <Box sx={{ height: "1px", width: "98%", background: "#000" }}></Box>
+      <Box sx={{ height: "1px", width: "98%", background: COLOR.black }}></Box>
     </Box>
   );
 };

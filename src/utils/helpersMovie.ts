@@ -7,6 +7,10 @@ export const getFullTime = (date: string): string => {
   return time.toLocaleString().slice(0, 10).split(".").join("/");
 };
 
+export const getDateHomeCard = (str: string) => {
+  return new Date(str).toDateString();
+};
+
 export const getTimeFromMins = (mins: number): string => {
   const hours = Math.trunc(mins / 60);
   const minutes = mins % 60;
@@ -48,4 +52,8 @@ export const croppingContent = (text: string): string => {
 
 export const transformRating = (rating: number) => {
   return Math.round(rating * 10);
+};
+
+export const dataClipping = (data: any[], cuttingLength: number) => {
+  return data.slice(0, cuttingLength);
 };
