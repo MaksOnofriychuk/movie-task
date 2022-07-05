@@ -46,7 +46,7 @@ export const HomeCard: React.FC<IHomeCardProps> = ({
       />
 
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5">
           {originalTitle}
         </Typography>
         <Typography variant="body2" color="text.secondary">

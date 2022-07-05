@@ -32,7 +32,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 2 }}>
-          <Typography>{children}</Typography>
+          <div>{children}</div>
         </Box>
       )}
     </div>
@@ -109,6 +109,7 @@ export default function SocialTabs() {
           />
         </Tabs>
       </Box>
+
       <TabPanel value={value} index={0}>
         <Box
           sx={{
@@ -201,9 +202,9 @@ export default function SocialTabs() {
                     textDecoration: "underline",
                     fontWeight: "700",
                     fontSize: "14px",
+                    display: "inline-block",
                   }}
                   variant="caption"
-                  component="span"
                 >
                   read the rest.
                 </Typography>

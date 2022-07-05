@@ -7,7 +7,7 @@ type TButtonProps = {
   children?: React.ReactNode;
 };
 
-export const ButtonPopup: React.FC<TButtonProps> = ({ children }) => {
+export const Popup: React.FC<TButtonProps> = ({ children }) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
   );
@@ -52,4 +52,4 @@ export const ButtonPopup: React.FC<TButtonProps> = ({ children }) => {
     </div>
   );
 };
-export default ButtonPopup;
+export default Popup;

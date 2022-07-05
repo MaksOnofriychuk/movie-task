@@ -94,7 +94,6 @@ export const collectionApi = {
     const response: AxiosResponse = await instance.get(
       `${process.env.React_App_Collection_Url}collection/${id}${process.env.React_App_Key_Api_Film}&language=en-US`
     );
-    console.log(response);
 
     return response.data;
   },
