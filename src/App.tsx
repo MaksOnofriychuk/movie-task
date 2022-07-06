@@ -10,6 +10,7 @@ import { Box } from "@mui/system";
 const App: FC = () => {
   return (
     <div>
+      <Header />
       <Box
         sx={{
           display: "flex",
