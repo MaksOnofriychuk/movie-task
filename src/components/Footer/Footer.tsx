@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AppBar, Box, Button, Container, Toolbar } from "@mui/material";
+import { Box, Button, Container, Toolbar } from "@mui/material";
 import LogoFooter from "../../assets/img/footer-logo.svg";
 import FooterInfo from "./components/FooterInfo";
 import "./footer.scss";
@@ -7,7 +7,7 @@ import "./footer.scss";
 const Footer = () => {
   return (
     <React.Fragment>
-      <AppBar className="footer__app-bar">
+      <Box className="footer__app-bar">
         <Container className="footer__container">
           <Box className="footer__left-wrapper">
             <img className="footer__logo" src={LogoFooter} alt="footer-log" />
@@ -25,7 +25,7 @@ const Footer = () => {
           </Box>
         </Container>
         <Toolbar className="footer__tool-bar"></Toolbar>
-      </AppBar>
+      </Box>
     </React.Fragment>
   );
 };

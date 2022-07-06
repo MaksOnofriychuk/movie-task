@@ -1,35 +1,21 @@
 import * as React from "react";
 import { Box, Typography } from "@mui/material";
-import ViewListIcon from "@mui/icons-material/ViewList";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
-import GradeIcon from "@mui/icons-material/Grade";
-import Tooltip from "@mui/material/Tooltip";
-
+import { CircularStatic } from "../CirclePercent/CirclePercent";
+import { COLOR } from "../../../../ColorTheme/Theme";
+import { TInfoProps } from "../../../../ComponentTypes/types";
 import {
   getFullTime,
   getTimeFromMins,
   getYear,
   transformForPercent,
 } from "../../../../utils/helpersMovie";
-import { CircularStatic } from "../CirclePercent/CirclePercent";
-import {
-  TGenres,
-  TProductionCountries,
-} from "../../../../store/reducers/fIlmSlice/types";
+import ViewListIcon from "@mui/icons-material/ViewList";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import GradeIcon from "@mui/icons-material/Grade";
+import Tooltip from "@mui/material/Tooltip";
 
-interface IInfoProps {
-  voteAverage: number;
-  releaseDate: string;
-  runtime: number;
-  title: string;
-  productionCountries: TProductionCountries[];
-  genres: TGenres[];
-  tagline: string;
-  overview: string;
-}
-
-const Info: React.FC<IInfoProps> = ({
+const Info: React.FC<TInfoProps> = ({
   voteAverage,
   releaseDate,
   runtime,
@@ -51,7 +37,7 @@ const Info: React.FC<IInfoProps> = ({
     <Box sx={{ mt: "100px" }}>
       <Typography
         sx={{
-          color: "#fff",
+          color: COLOR.white,
           cursor: "pointer",
           transition: "all 0.3s ease-in-out",
           "&:hover": { color: "rgb(187, 177, 177)" },
@@ -78,7 +64,7 @@ const Info: React.FC<IInfoProps> = ({
         <Typography
           sx={{
             position: "relative",
-            color: "#fff",
+            color: COLOR.white,
             fontFamily: "14px",
           }}
           variant="overline"
@@ -96,7 +82,7 @@ const Info: React.FC<IInfoProps> = ({
               right: "-10px",
               width: "4px",
               height: "4px",
-              backgroundColor: "#fff",
+              backgroundColor: COLOR.white,
               borderRadius: "50%",
             }}
           ></Box>
@@ -106,7 +92,7 @@ const Info: React.FC<IInfoProps> = ({
           return (
             <Typography
               sx={{
-                color: "#fff",
+                color: COLOR.white,
                 pl: "15px",
                 position: "relative",
                 cursor: "pointer",
@@ -124,7 +110,7 @@ const Info: React.FC<IInfoProps> = ({
 
         <Typography
           sx={{
-            color: "#fff",
+            color: COLOR.white,
             pl: "15px",
             fontSize: "14px",
             position: "relative",
@@ -140,7 +126,7 @@ const Info: React.FC<IInfoProps> = ({
               left: "5px",
               width: "4px",
               height: "4px",
-              backgroundColor: "#fff",
+              backgroundColor: COLOR.white,
               borderRadius: "50%",
             }}
           ></Box>
@@ -156,11 +142,13 @@ const Info: React.FC<IInfoProps> = ({
       >
         <CircularStatic valuePercent={percentageOfPopularity} />
         <Box sx={{ display: "inline-block", ml: "20px", mr: "20px" }}>
-          <Typography sx={{ color: "#fff", fontWeight: "bold", mb: "10px" }}>
+          <Typography
+            sx={{ color: COLOR.white, fontWeight: "bold", mb: "10px" }}
+          >
             User
           </Typography>
           <Typography
-            sx={{ color: "#fff", fontWeight: "bold", lineHeight: "0" }}
+            sx={{ color: COLOR.white, fontWeight: "bold", lineHeight: "0" }}
           >
             Score
           </Typography>
@@ -185,7 +173,7 @@ const Info: React.FC<IInfoProps> = ({
                 borderRadius: "50%",
               }}
             >
-              <ViewListIcon sx={{ fontSize: "16px", color: "#fff" }} />
+              <ViewListIcon sx={{ fontSize: "16px", color: COLOR.white }} />
             </Typography>
           </Tooltip>
           <Tooltip title="Mark as favorite" arrow>
@@ -194,13 +182,13 @@ const Info: React.FC<IInfoProps> = ({
                 display: "flex",
                 width: "40px",
                 justifyContent: "center",
-                backgroundColor: "#203445",
+                backgroundColor: COLOR.main,
                 alignItems: "center",
                 height: "40px",
                 borderRadius: "50%",
               }}
             >
-              <FavoriteIcon sx={{ fontSize: "16px", color: "#fff" }} />
+              <FavoriteIcon sx={{ fontSize: "16px", color: COLOR.white }} />
             </Typography>
           </Tooltip>
           <Tooltip title="Add to your watchlist" arrow>
@@ -209,13 +197,13 @@ const Info: React.FC<IInfoProps> = ({
                 display: "flex",
                 width: "40px",
                 justifyContent: "center",
-                backgroundColor: "#203445",
+                backgroundColor: COLOR.main,
                 alignItems: "center",
                 height: "40px",
                 borderRadius: "50%",
               }}
             >
-              <BookmarkIcon sx={{ fontSize: "16px", color: "#fff" }} />
+              <BookmarkIcon sx={{ fontSize: "16px", color: COLOR.white }} />
             </Typography>
           </Tooltip>
           <Tooltip title="Rate it!" arrow>
@@ -224,13 +212,13 @@ const Info: React.FC<IInfoProps> = ({
                 display: "flex",
                 width: "40px",
                 justifyContent: "center",
-                backgroundColor: "#203445",
+                backgroundColor: COLOR.main,
                 alignItems: "center",
                 height: "40px",
                 borderRadius: "50%",
               }}
             >
-              <GradeIcon sx={{ fontSize: "16px", color: "#fff" }} />
+              <GradeIcon sx={{ fontSize: "16px", color: COLOR.white }} />
             </Typography>
           </Tooltip>
         </Box>
@@ -258,7 +246,7 @@ const Info: React.FC<IInfoProps> = ({
           className="backstory-text"
           variant="body2"
           component="div"
-          sx={{ maxWidth: "80%", color: "#fff" }}
+          sx={{ maxWidth: "80%", color: COLOR.white }}
         >
           {overview}
         </Typography>

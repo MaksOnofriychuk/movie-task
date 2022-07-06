@@ -1,13 +1,11 @@
 import * as React from "react";
+import { COLOR } from "../../ColorTheme/Theme";
+import { TPopupProps } from "../../ComponentTypes/types";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-type TButtonProps = {
-  children?: React.ReactNode;
-};
-
-export const ButtonPopup: React.FC<TButtonProps> = ({ children }) => {
+export const Popup: React.FC<TPopupProps> = ({ children }) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
   );
@@ -27,7 +25,7 @@ export const ButtonPopup: React.FC<TButtonProps> = ({ children }) => {
     <div>
       <Button
         size="small"
-        sx={{ color: "#fff", borderColor: "#fff" }}
+        sx={{ color: COLOR.white, borderColor: COLOR.white }}
         aria-describedby={id}
         variant="text"
         onClick={handleClick}
@@ -52,4 +50,4 @@ export const ButtonPopup: React.FC<TButtonProps> = ({ children }) => {
     </div>
   );
 };
-export default ButtonPopup;
+export default Popup;

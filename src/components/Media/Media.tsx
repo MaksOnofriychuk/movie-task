@@ -1,22 +1,18 @@
 import * as React from "react";
+import { useAppSelector } from "../../hooks/redux";
+import { COLOR } from "../../ColorTheme/Theme";
+import { TTabMediaPanelProps } from "../../ComponentTypes/types";
+import { Container } from "@mui/system";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Container } from "@mui/system";
 import Popular from "./components/Popular/Popular";
 import Videos from "./components/Videos/Videos";
 import Backdrops from "./components/Backdrops/Backdrops";
 import Posters from "./components/Posters/Posters";
-import { useAppSelector } from "../../hooks/redux";
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
-
-function TabPanel(props: TabPanelProps) {
+function TabPanel(props: TTabMediaPanelProps) {
   const { children, value, index, ...other } = props;
 
   return (
@@ -27,7 +23,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box>{children}</Box>}
+      {value === index && <div>{children}</div>}
     </div>
   );
 }
@@ -81,8 +77,8 @@ export default function Media() {
                     aria-label="basic tabs example"
                     sx={{
                       "& .MuiTabs-indicator": {
-                        background: "#000",
-                        color: "#000",
+                        background: COLOR.black,
+                        color: COLOR.black,
                         height: "3px",
                       },
                       pl: 14,
@@ -91,8 +87,8 @@ export default function Media() {
                   >
                     <Tab
                       sx={{
-                        color: "#000",
-                        "&.Mui-selected": { color: "#000" },
+                        color: COLOR.black,
+                        "&.Mui-selected": { color: COLOR.black },
                       }}
                       label="Most Popular"
                       {...a11yProps(0)}
@@ -100,7 +96,7 @@ export default function Media() {
                     <Tab
                       sx={{
                         color: "#000",
-                        "&.Mui-selected": { color: "#000" },
+                        "&.Mui-selected": { color: COLOR.black },
                       }}
                       label="Videos 22"
                       {...a11yProps(1)}
@@ -108,7 +104,7 @@ export default function Media() {
                     <Tab
                       sx={{
                         color: "#000",
-                        "&.Mui-selected": { color: "#000" },
+                        "&.Mui-selected": { color: COLOR.black },
                       }}
                       label="Backdrops 21"
                       {...a11yProps(2)}
@@ -116,7 +112,7 @@ export default function Media() {
                     <Tab
                       sx={{
                         color: "#000",
-                        "&.Mui-selected": { color: "#000" },
+                        "&.Mui-selected": { color: COLOR.black },
                       }}
                       label="Posters 153"
                       {...a11yProps(3)}

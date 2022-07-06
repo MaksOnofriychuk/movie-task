@@ -1,15 +1,11 @@
+import * as React from "react";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import * as React from "react";
+import { TVideosProps } from "../../../../ComponentTypes/types";
 import VideoProvider from "../VideoProvider";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import { TVideos } from "../../../../store/reducers/fIlmSlice/types";
 
-interface IVideosProps {
-  videos: TVideos[];
-}
-
-const Videos: React.FC<IVideosProps> = ({ videos }) => {
+const Videos: React.FC<TVideosProps> = ({ videos }) => {
   const slicedVideos = videos.slice(0, 6);
 
   return (

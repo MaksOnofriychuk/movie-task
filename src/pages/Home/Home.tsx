@@ -1,9 +1,10 @@
 import * as React from "react";
-import { Box } from "@mui/material";
-import HomeCard from "./components/HomeCard/HomeCard";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { Box, Typography } from "@mui/material";
 import { getFilms } from "../../store/actions/Film";
 import { TFilmList } from "../../store/reducers/fIlmSlice/types";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { dataClipping } from "../../utils/helpersMovie";
+import HomeCard from "./components/HomeCard/HomeCard";
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -14,6 +15,8 @@ const Home = () => {
   React.useEffect(() => {
     dispatch(getFilms(page));
   }, [dispatch]);
+
+  const slicedFilms = dataClipping(filmList, 8);
 
   return (
     <>
@@ -30,7 +33,7 @@ const Home = () => {
         }}
       >
         {filmList &&
-          filmList.map((film: TFilmList) => {
+          slicedFilms.map((film: TFilmList) => {
             return (
               <HomeCard
                 key={film.id}

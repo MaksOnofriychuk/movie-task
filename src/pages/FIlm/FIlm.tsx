@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import FirstScreen from "../../components/FirstScreen/FirstScreen";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { useParams } from "react-router-dom";
+import { Container } from "@mui/system";
 import {
   getCasts,
   getFilmById,
@@ -11,13 +12,13 @@ import {
   getRecommendations,
   getReviews,
 } from "../../store/actions/Film";
-import { Container } from "@mui/system";
 import FilmStatistic from "../../components/FilmStatistic/FIlmStatistic";
 import FilmCast from "../../components/FilmCast/filmCast";
 import Social from "../../components/Social/Social";
 import Media from "../../components/Media/Media";
 import Collection from "../../components/Collection/Collection";
 import Recommendations from "../../components/Recommendations/Recommendations";
+import Grade from "../../components/Grade/Grade";
 
 const Film = () => {
   const dispatch = useAppDispatch();
@@ -39,7 +40,7 @@ const Film = () => {
     <>
       {film && (
         <>
-          <Box sx={{ mb: 3 }} className="film__wrapper">
+          <Box sx={{ mb: 3 }}>
             <FirstScreen />
           </Box>
           <Box>
@@ -69,50 +70,7 @@ const Film = () => {
                     <FilmStatistic />
                   </Box>
 
-                  <Box
-                    sx={{
-                      width: "100%",
-                      height: "600px",
-                    }}
-                  >
-                    <Box sx={{ border: 1 }}>
-                      <Box sx={{ mb: 2 }}>
-                        <Typography>Content Score</Typography>
-                        <Box>
-                          <Typography>100</Typography>
-                        </Box>
-                        <Typography>Yes! Looking good!</Typography>
-                      </Box>
-
-                      <Box>
-                        <Typography>Top Contributors</Typography>
-                        <Box>
-                          {[1, 2, 3, 4].map((_) => {
-                            return (
-                              <Box>
-                                <img src="s" alt="dwd" />
-                                <Box>
-                                  <Typography>412</Typography>
-                                  <Typography>raze464</Typography>
-                                </Box>
-                              </Box>
-                            );
-                          })}
-                        </Box>
-                        <Typography>View Edit History</Typography>
-                        <Typography>Popularity Trend</Typography>
-                      </Box>
-                      <Box>
-                        <Button>EDIT PAGE</Button>
-                        <Box>
-                          <Typography>Keyboard Shortcuts</Typography>
-                        </Box>
-                        <Box>
-                          <Typography>Report an Issue</Typography>
-                        </Box>
-                      </Box>
-                    </Box>
-                  </Box>
+                  <Grade />
                 </Box>
               </Box>
             </Container>
@@ -124,3 +82,4 @@ const Film = () => {
 };
 
 export default Film;
+//

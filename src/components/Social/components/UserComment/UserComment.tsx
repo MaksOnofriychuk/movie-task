@@ -1,17 +1,11 @@
 import * as React from "react";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { COLOR } from "../../../../ColorTheme/Theme";
+import { TUserCommentProps } from "../../../../ComponentTypes/types";
 import userCommentPhoto1 from "../../../../assets/img/user-comment-img1.jpeg";
 
-interface TUserComment {
-  text: string;
-  status: string;
-  count: number;
-  date: string;
-  nameBy: string;
-}
-
-const UserComment: React.FC<TUserComment> = ({
+const UserComment: React.FC<TUserCommentProps> = ({
   text,
   status,
   count,
@@ -24,7 +18,7 @@ const UserComment: React.FC<TUserComment> = ({
         width: "100%",
         height: "56px",
         border: 1,
-        boxShadow: "0px 0px 5px #000",
+        boxShadow: `0px 0px 5px ${COLOR.black}`,
         borderRadius: "6px",
         borderColor: "transparent",
       }}
@@ -55,27 +49,27 @@ const UserComment: React.FC<TUserComment> = ({
         >
           {text}
         </Typography>
-        <Typography sx={{ ml: 6, fontSize: "14px", color: "#696969" }}>
+        <Typography sx={{ ml: 6, fontSize: "14px", color: COLOR.grey }}>
           {status}
         </Typography>
         <Typography
           variant="caption"
-          sx={{ ml: 6, fontSize: "14px", color: "#696969" }}
+          sx={{ ml: 6, fontSize: "14px", color: COLOR.grey }}
         >
           {count}
         </Typography>
         <Box sx={{ ml: 12 }}>
-          <Typography variant="caption" sx={{ color: "#696969" }}>
+          <Typography variant="caption" sx={{ color: COLOR.grey }}>
             {date}
           </Typography>
           <Typography
             variant="caption"
-            sx={{ display: "flex", color: "#696969" }}
+            sx={{ display: "flex", color: COLOR.grey }}
           >
             by
             <Typography
               variant="caption"
-              sx={{ fontWeight: "700", ml: "4px", color: "#000" }}
+              sx={{ fontWeight: "700", ml: "4px", color: COLOR.black }}
             >
               {nameBy}
             </Typography>

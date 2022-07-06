@@ -99,12 +99,13 @@ export const filmSlice = createSlice({
       .addCase(
         getImagesAndVideos.fulfilled,
         (state, action: PayloadAction<[TServerVideos[], TServerPhotos]>) => {
+          const [videos, { backdrops, logos, posters, id }] = action.payload;
           const newMedia = {
-            videos: action.payload[0],
-            backdrops: action.payload[1].backdrops,
-            logos: action.payload[1].logos,
-            posters: action.payload[1].posters,
-            id: action.payload[1].id,
+            videos,
+            backdrops,
+            logos,
+            posters,
+            id,
           };
           const transformNewMediaData = transformMediaData(newMedia);
           state.media = transformNewMediaData;

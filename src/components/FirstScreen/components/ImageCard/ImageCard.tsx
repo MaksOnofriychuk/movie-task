@@ -1,19 +1,15 @@
 import * as React from "react";
 import { Card, CardActionArea, CardMedia, Typography } from "@mui/material";
+import { COLOR } from "../../../../ColorTheme/Theme";
+import { TImageCardProps } from "../../../../ComponentTypes/types";
 import { Box } from "@mui/system";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import BasicModal from "../ModalWindow/ModalWindow";
-import { TProductionCompanies } from "../../../../store/reducers/fIlmSlice/types";
 
-interface IImageCardProps {
-  posterPath: string;
-  productionCompanies: TProductionCompanies[];
-}
-
-const ImageCard: React.FC<IImageCardProps> = ({
+const ImageCard: React.FC<TImageCardProps> = ({
   posterPath,
   productionCompanies,
 }) => {
@@ -62,7 +58,7 @@ const ImageCard: React.FC<IImageCardProps> = ({
                 <ArrowDropUpIcon
                   sx={{
                     position: "absolute",
-                    color: "#fff",
+                    color: COLOR.white,
                     top: "-10px",
                     right: "70px",
                   }}
@@ -70,7 +66,7 @@ const ImageCard: React.FC<IImageCardProps> = ({
                 <ArrowRightIcon
                   sx={{
                     position: "absolute",
-                    color: "#fff",
+                    color: COLOR.white,
                     top: "0",
                     right: "60px",
                   }}
@@ -78,7 +74,7 @@ const ImageCard: React.FC<IImageCardProps> = ({
                 <ArrowDropDownIcon
                   sx={{
                     position: "absolute",
-                    color: "#fff",
+                    color: COLOR.white,
                     top: "10px",
                     right: "70px",
                   }}
@@ -86,14 +82,14 @@ const ImageCard: React.FC<IImageCardProps> = ({
                 <ArrowLeftIcon
                   sx={{
                     position: "absolute",
-                    color: "#fff",
+                    color: COLOR.white,
                     top: "0",
                     right: "80px",
                   }}
                 />
               </Box>
 
-              <Typography sx={{ color: "#fff" }}>Expands</Typography>
+              <Typography sx={{ color: COLOR.white }}>Expands</Typography>
             </Box>
           ) : null}
 
@@ -101,7 +97,7 @@ const ImageCard: React.FC<IImageCardProps> = ({
             sx={{
               width: "100%",
               height: "50px",
-              background: "#203445",
+              background: COLOR.main,
             }}
           >
             <Box>
@@ -113,13 +109,13 @@ const ImageCard: React.FC<IImageCardProps> = ({
                 />
                 <Box sx={{ ml: "10px" }}>
                   <Typography
-                    sx={{ lineHeight: "0", color: "#fff" }}
+                    sx={{ lineHeight: "0", color: COLOR.white }}
                     variant="caption"
                     component="span"
                   >
                     Now Streaming
                   </Typography>
-                  <Typography sx={{ color: "#fff" }}>Watch Now</Typography>
+                  <Typography sx={{ color: COLOR.white }}>Watch Now</Typography>
                 </Box>
               </Box>
             </Box>

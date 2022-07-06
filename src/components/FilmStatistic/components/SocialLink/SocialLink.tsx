@@ -1,12 +1,8 @@
 import * as React from "react";
 import { Tooltip } from "@mui/material";
+import { TSocialLinkProps } from "../../../../ComponentTypes/types";
 
-interface ISocialLinkProps {
-  children: React.ReactElement;
-  title: string;
-}
-
-const SocialLink: React.FC<ISocialLinkProps> = ({ children, title }) => {
+const SocialLink: React.FC<TSocialLinkProps> = ({ children, title }) => {
   return (
     <Tooltip sx={{ cursor: "pointer" }} title={title} arrow placement="top">
       {children}

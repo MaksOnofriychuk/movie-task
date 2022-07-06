@@ -1,7 +1,9 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { ButtonDropDown } from "../ButtonDropDown/ButtonDropDown";
+import { DropDown } from "../DropDown/DropDown";
 import { menuItems, typographyText } from "./data";
+import { COLOR } from "../../ColorTheme/Theme";
+import { THeaderHideOnScrollProps } from "./types";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -10,17 +12,12 @@ import Container from "@mui/material/Container";
 import Logo from "../../assets/img/logo.svg";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
-import ButtonPopup from "../ButtonPopup/ButtonPopup";
+import Popup from "../Popup/Popup";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
 import "./header.scss";
 
-interface Props {
-  window?: () => Window;
-  children: React.ReactElement;
-}
-
-function HideOnScroll(props: Props) {
+function HideOnScroll(props: THeaderHideOnScrollProps) {
   const { children, window } = props;
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
@@ -37,7 +34,7 @@ export const Header = () => {
   return (
     <React.Fragment>
       <HideOnScroll>
-        <AppBar sx={{ background: "#203445" }}>
+        <AppBar sx={{ background: COLOR.main }}>
           <Toolbar>
             <Container
               sx={{
@@ -53,20 +50,17 @@ export const Header = () => {
                 {menuItems &&
                   menuItems.map((item) => {
                     return (
-                      <ButtonDropDown
-                        key={item.id}
-                        selectValue={item.selectValue}
-                      >
+                      <DropDown key={item.id} selectValue={item.selectValue}>
                         {item.title}
-                      </ButtonDropDown>
+                      </DropDown>
                     );
                   })}
               </Box>
 
               <Box className="header__right-wrapper">
-                <ButtonPopup>
+                <Popup>
                   <AddIcon fontSize="large" sx={{ fontWeight: "700" }} />
-                </ButtonPopup>
+                </Popup>
                 {typographyText &&
                   typographyText.map((item) => {
                     return (

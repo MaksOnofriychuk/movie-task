@@ -1,10 +1,6 @@
 import * as React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import StarBorderIcon from "@mui/icons-material/StarBorder";
-import UserComment from "../UserComment/UserComment";
+import { COLOR } from "../../../../ColorTheme/Theme";
+import { TTabPanelProps } from "../../../../ComponentTypes/types";
 import { Comments } from "./data";
 import { useAppSelector } from "../../../../hooks/redux";
 import {
@@ -12,14 +8,14 @@ import {
   isPathCheck,
   transformReviewResponseDate,
 } from "../../../../utils/helpersMovie";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import UserComment from "../UserComment/UserComment";
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
-
-function TabPanel(props: TabPanelProps) {
+function TabPanel(props: TTabPanelProps) {
   const { children, value, index, ...other } = props;
 
   return (
@@ -32,7 +28,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 2 }}>
-          <Typography>{children}</Typography>
+          <div>{children}</div>
         </Box>
       )}
     </div>
@@ -64,7 +60,7 @@ export default function SocialTabs() {
   };
 
   const changeReview = () => {
-    if (selectReview === Number(reviews.length) - 1) {
+    if (selectReview === reviews.length - 1) {
       setSelectReview(0);
     } else {
       setSelectReview(selectReview + 1);
@@ -91,24 +87,31 @@ export default function SocialTabs() {
           sx={{
             "& .MuiTabs-indicator": {
               background: "#000",
-              color: "#000",
+              color: COLOR.black,
               height: "5px",
             },
           }}
         >
           <Tab
-            sx={{ color: "#000", "&.Mui-selected": { color: "#000" } }}
+            sx={{
+              color: COLOR.black,
+              "&.Mui-selected": { color: COLOR.black },
+            }}
             onClick={changeReview}
             label={`Reviews ${reviews.length}`}
             {...a11yProps(0)}
           />
           <Tab
-            sx={{ color: "#000", "&.Mui-selected": { color: "#000" } }}
+            sx={{
+              color: COLOR.black,
+              "&.Mui-selected": { color: COLOR.black },
+            }}
             label="Discussions 12"
             {...a11yProps(1)}
           />
         </Tabs>
       </Box>
+
       <TabPanel value={value} index={0}>
         <Box
           sx={{
@@ -156,7 +159,7 @@ export default function SocialTabs() {
                     pr: 2,
                     width: "50px",
                     height: "23px",
-                    background: "#000",
+                    background: COLOR.black,
                     borderRadius: "6px",
                   }}
                 >
@@ -165,8 +168,8 @@ export default function SocialTabs() {
                     inheritViewBox={false}
                     sx={{
                       "&.MuiSvgIcon-root": {
-                        color: "#fff",
-                        borderColor: "#fff",
+                        color: COLOR.white,
+                        borderColor: COLOR.white,
                         fontSize: "20px",
                         mr: "2px",
                       },
@@ -175,7 +178,7 @@ export default function SocialTabs() {
 
                   <Typography
                     sx={{
-                      color: "#fff",
+                      color: COLOR.white,
                       fontSize: "16px",
                       display: "inline-block",
                     }}
@@ -201,9 +204,9 @@ export default function SocialTabs() {
                     textDecoration: "underline",
                     fontWeight: "700",
                     fontSize: "14px",
+                    display: "inline-block",
                   }}
                   variant="caption"
-                  component="span"
                 >
                   read the rest.
                 </Typography>

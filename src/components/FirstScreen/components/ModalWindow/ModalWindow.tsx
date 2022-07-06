@@ -1,4 +1,7 @@
 import * as React from "react";
+import { FormControl, OutlinedInput } from "@mui/material";
+import { COLOR } from "../../../../ColorTheme/Theme";
+import { TModal } from "../../../../ComponentTypes/types";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -8,7 +11,6 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { FormControl, OutlinedInput } from "@mui/material";
 
 const style = {
   position: "absolute" as "absolute",
@@ -23,13 +25,7 @@ const style = {
   display: "flex",
 };
 
-interface IModal {
-  statusModal: boolean;
-  setStatusModal: React.Dispatch<React.SetStateAction<boolean>>;
-  modalImage?: string;
-}
-
-const ModalWindow: React.FC<IModal> = ({
+const ModalWindow: React.FC<TModal> = ({
   statusModal,
   setStatusModal,
   modalImage,
@@ -154,7 +150,9 @@ const ModalWindow: React.FC<IModal> = ({
                     alignItems: "center",
                   }}
                 >
-                  <Typography sx={{ color: "#fff", p: 1 }}>English</Typography>
+                  <Typography sx={{ color: COLOR.white, p: 1 }}>
+                    English
+                  </Typography>
                   <ArrowDropDownIcon sx={{ color: "#fff" }} />
                 </Box>
                 <Box sx={{ mt: 4, borderBottom: "1px solid grey", pb: 1 }}>

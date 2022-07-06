@@ -1,18 +1,13 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
+import { getDateHomeCard } from "../../../../utils/helpersMovie";
+import { THomeCardProps } from "../../../../ComponentTypes/types";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { useNavigate } from "react-router-dom";
 
-interface IHomeCardProps {
-  posterPath: string;
-  originalTitle: string;
-  releaseDate: string;
-  id: number;
-}
-
-export const HomeCard: React.FC<IHomeCardProps> = ({
+export const HomeCard: React.FC<THomeCardProps> = ({
   posterPath,
   originalTitle,
   releaseDate,
@@ -23,6 +18,8 @@ export const HomeCard: React.FC<IHomeCardProps> = ({
   const toFilmPage = () => {
     navigate(`film${id}`);
   };
+
+  const releaseTime = getDateHomeCard(releaseDate);
 
   return (
     <Card
@@ -48,7 +45,7 @@ export const HomeCard: React.FC<IHomeCardProps> = ({
           {originalTitle}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {new Date(releaseDate).toDateString()}
+          {releaseTime}
         </Typography>
       </CardContent>
     </Card>
