@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { instance } from "../../config/axios-config";
+import { collectionInstance, instance } from "../../config/axios-config";
 import {
   TKeywords,
   TServerCasts,
@@ -14,9 +14,7 @@ import {
 
 export const filmsApi = {
   get: async (): Promise<TServerFilmsList[]> => {
-    const response: AxiosResponse = await instance.get(
-      `popular${process.env.React_App_Key_Api_Film}`
-    );
+    const response: AxiosResponse = await instance.get("popular");
 
     return response.data.results;
   },
@@ -24,9 +22,7 @@ export const filmsApi = {
 
 export const filmApi = {
   get: async (id: number): Promise<TServerFilm> => {
-    const response: AxiosResponse = await instance.get(
-      `${id}${process.env.React_App_Key_Api_Film}`
-    );
+    const response: AxiosResponse = await instance.get(`${id}`);
 
     return response.data;
   },
@@ -34,18 +30,14 @@ export const filmApi = {
 
 export const castsApi = {
   get: async (id: number): Promise<TServerCasts[]> => {
-    const response: AxiosResponse = await instance.get(
-      `${id}/credits${process.env.React_App_Key_Api_Film}`
-    );
+    const response: AxiosResponse = await instance.get(`${id}/credits`);
     return response.data.cast;
   },
 };
 
 export const keyWordsApi = {
   get: async (id: number): Promise<TKeywords[]> => {
-    const response: AxiosResponse = await instance.get(
-      `${id}/keywords${process.env.React_App_Key_Api_Film}`
-    );
+    const response: AxiosResponse = await instance.get(`${id}/keywords`);
 
     return response.data.keywords;
   },
@@ -53,9 +45,7 @@ export const keyWordsApi = {
 
 export const reviewsApi = {
   get: async (id: number): Promise<TServerReviews[]> => {
-    const response: AxiosResponse = await instance.get(
-      `${id}/reviews${process.env.React_App_Key_Api_Film}`
-    );
+    const response: AxiosResponse = await instance.get(`${id}/reviews`);
 
     return response.data.results;
   },
@@ -63,9 +53,7 @@ export const reviewsApi = {
 
 export const photosApi = {
   get: async (id: number): Promise<TServerPhotos> => {
-    const response: AxiosResponse = await instance.get(
-      `${id}/images${process.env.React_App_Key_Api_Film}`
-    );
+    const response: AxiosResponse = await instance.get(`${id}/images`);
 
     return response.data;
   },
@@ -73,9 +61,7 @@ export const photosApi = {
 
 export const videosApi = {
   get: async (id: number): Promise<TServerVideos[]> => {
-    const response: AxiosResponse = await instance.get(
-      `${id}/videos${process.env.React_App_Key_Api_Film}`
-    );
+    const response: AxiosResponse = await instance.get(`${id}/videos`);
 
     return response.data.results;
   },
@@ -91,8 +77,8 @@ export const promiseAll = {
 
 export const collectionApi = {
   get: async (id: number): Promise<TServerCollection> => {
-    const response: AxiosResponse = await instance.get(
-      `${process.env.React_App_Collection_Url}collection/${id}${process.env.React_App_Key_Api_Film}&language=en-US`
+    const response: AxiosResponse = await collectionInstance.get(
+      `collection/${id}`
     );
 
     return response.data;
@@ -101,9 +87,7 @@ export const collectionApi = {
 
 export const recommendationsApi = {
   get: async (id: number): Promise<TServerRecommendations[]> => {
-    const response: AxiosResponse = await instance.get(
-      `${id}/recommendations${process.env.React_App_Key_Api_Film}&language=en-US&page=1`
-    );
+    const response: AxiosResponse = await instance.get(`${id}/recommendations`);
 
     return response.data.results;
   },
