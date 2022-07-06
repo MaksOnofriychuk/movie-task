@@ -54,7 +54,7 @@ export const DropDown: React.FC<TPropsDropDown> = ({
       >
         {selectValue.map((value, index) => (
           <Link
-            key={`${value}${index}`}
+            key={`${value}-${index}`}
             to={`/${value.toLowerCase().replaceAll(' ', '-')}`}
             style={{color: 'black', textDecoration: 'none'}}
           >
