@@ -27,9 +27,7 @@ export const HomeCard: React.FC<IHomeCardProps> = ({
   return (
     <Card
       sx={{
-        maxWidth: 200,
-        maxHeight: "600px",
-        marginRight: "50px",
+        width: '180px',
         marginBottom: "40px",
         position: "relative",
         zIndex: "10",
@@ -46,7 +44,7 @@ export const HomeCard: React.FC<IHomeCardProps> = ({
       />
 
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h6" component="div" sx={{fontSize: '15px'}}>
           {originalTitle}
         </Typography>
         <Typography variant="body2" color="text.secondary">

@@ -7,12 +7,12 @@ import { TFilmList } from "../../store/reducers/fIlmSlice/types";
 
 const Home = () => {
   const dispatch = useAppDispatch();
-  const { filmList, loading, error } = useAppSelector(
+  const { filmList, loading, error, page } = useAppSelector(
     (state) => state.filmReducer
   );
 
   React.useEffect(() => {
-    dispatch(getFilms());
+    dispatch(getFilms(page));
   }, [dispatch]);
 
   return (
@@ -22,7 +22,6 @@ const Home = () => {
       <Box
         maxWidth="1000px"
         sx={{
-          height: "100vh",
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "space-between",

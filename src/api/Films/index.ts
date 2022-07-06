@@ -1,5 +1,5 @@
-import { AxiosResponse } from "axios";
-import { instance } from "../../config/axios-config";
+import {AxiosResponse} from "axios";
+import {instance} from "../../config/axios-config";
 import {
   TKeywords,
   TServerCasts,
@@ -13,9 +13,9 @@ import {
 } from "../../store/reducers/fIlmSlice/types";
 
 export const filmsApi = {
-  get: async (): Promise<TServerFilmsList[]> => {
+  get: async (page: number): Promise<TServerFilmsList[]> => {
     const response: AxiosResponse = await instance.get(
-      `popular${process.env.React_App_Key_Api_Film}`
+      `popular${process.env.React_App_Key_Api_Film}&page=${page}`
     );
 
     return response.data.results;

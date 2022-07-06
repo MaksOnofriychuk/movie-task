@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
   transformCastsData,
   transformCollectionData,
@@ -42,12 +42,17 @@ const initialState: TInitialState = {
   collection: null,
   loading: false,
   error: "",
+  page: 1,
 };
 
 export const filmSlice = createSlice({
   name: "film",
   initialState,
-  reducers: {},
+  reducers: {
+    incrementPage(state) {
+      state.page = state.page + 1
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getFilms.pending, (state) => {
@@ -58,8 +63,7 @@ export const filmSlice = createSlice({
         getFilms.fulfilled,
         (state, action: PayloadAction<TServerFilmsList[]>) => {
           const transformFilms = transformFilmsData(action.payload);
-          const homeList = transformFilms.slice(0, 8);
-          state.filmList = homeList;
+          state.filmList.push(...transformFilms);
           state.loading = false;
           state.error = "";
         }
@@ -126,3 +130,4 @@ export const filmSlice = createSlice({
 });
 
 export default filmSlice.reducer;
+export const {incrementPage} = filmSlice.actions
