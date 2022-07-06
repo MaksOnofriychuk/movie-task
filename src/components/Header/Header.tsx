@@ -48,7 +48,7 @@ export const Header = () => {
                   <img className="logo__img" src={Logo} alt="logo" />
                 </Link>
                 {menuItems &&
-                  menuItems.map((item) => {
+                  menuItems.map((item, index: number) => {
                     return (
                       <DropDown key={item.id} selectValue={item.selectValue}>
                         {item.title}

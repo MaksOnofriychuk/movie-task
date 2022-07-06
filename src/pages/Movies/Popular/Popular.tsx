@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, useEffect} from "react";
 import {Box} from "@mui/material";
 import {TFilmList} from "../../../store/reducers/fIlmSlice/types";
 import HomeCard from "../../Home/components/HomeCard/HomeCard";
@@ -10,15 +10,19 @@ import {incrementPage} from "../../../store/reducers/fIlmSlice/filmSlice";
 import ButtonLoadMore from "../../../components/ButtonLoadMore/ButtonLoadMore";
 import {CircularStatic} from "../../../components/FirstScreen/components/CirclePercent/CirclePercent";
 import LinearDeterminate from "../../../components/Loader/Loader";
+import {useObserver} from "../../../hooks/useObserver";
 
 const Popular: FC = () => {
-  const [loadButton, setLoadButton] = React.useState(true)
+  const [loadButton, setLoadButton] = React.useState(true);
+  const lastElement = React.useRef<HTMLDivElement>(null);
 
   const dispatch = useAppDispatch();
 
   const {filmList, loading, error, page} = useAppSelector(
     (state) => state.filmReducer
   );
+
+  useObserver(lastElement, loading, !loadButton, () => {dispatch(incrementPage())})
 
   React.useEffect(() => {
     dispatch(getFilms(page));
@@ -28,20 +32,6 @@ const Popular: FC = () => {
     dispatch(incrementPage())
     setLoadButton(false)
   }
-
-  React.useEffect(() => {
-    document.addEventListener('scroll', scrollHandler)
-
-    return () => {
-      document.removeEventListener('scroll', scrollHandler)
-    }
-  }, [loadButton])
-
-  const scrollHandler = (e: any) => {
-    if ((e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) && !loadButton) {
-      dispatch(incrementPage())
-    }
-  };
 
   return (
     <section className={styles.popularSection}>
@@ -79,6 +69,7 @@ const Popular: FC = () => {
               })}
           </Box>
 
+          <div ref={lastElement} />
           {loadButton && <ButtonLoadMore title="Load More" func={loadMore}/>}
         </div>
       </div>
