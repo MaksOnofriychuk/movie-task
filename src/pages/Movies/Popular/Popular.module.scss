@@ -1,0 +1,45 @@
+.popularSection{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popularTitle{
+  width: 80%;
+  font-size: 30px;
+  font-weight: 600;
+  padding: 20px 0;
+}
+
+.contentWrapper{
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchWrapper{
+  width: 25%;
+  height: 200px;
+  background-color: lightblue;
+}
+
+.filmWrapper{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filmCard{
+  display: flex;
+  align-items: stretch;
+  position: relative;
+
+  &__static{
+    z-index: 999;
+    position: absolute;
+    top: 275px;
+    left: 5%;
+  }
+}

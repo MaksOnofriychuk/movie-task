@@ -9,6 +9,7 @@ export type TInitialState = {
   collection: TCollection | null;
   loading: boolean;
   error: string;
+  page: number;
 };
 
 export type TServerFilmsList = {

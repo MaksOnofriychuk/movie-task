@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import {createAction, createAsyncThunk} from "@reduxjs/toolkit";
 import {
   castsApi,
   collectionApi,
@@ -24,9 +24,9 @@ import {
 
 export const getFilms = createAsyncThunk(
   "film/getFilms",
-  async function (_, { rejectWithValue }) {
+  async function (page: number, {rejectWithValue}) {
     try {
-      const data = await filmsApi.get();
+      const data = await filmsApi.get(page);
       return data;
     } catch (error) {
       return rejectWithValue("error");
@@ -34,11 +34,9 @@ export const getFilms = createAsyncThunk(
   }
 );
 
-export const getFilmById = createAsyncThunk<
-  TServerFilm,
+export const getFilmById = createAsyncThunk<TServerFilm,
   number,
-  { rejectValue: string }
->("film/getFilmById", async function (id: number, { rejectWithValue }) {
+  { rejectValue: string }>("film/getFilmById", async function (id: number, {rejectWithValue}) {
   try {
     const data = await filmApi.get(id);
 
@@ -48,11 +46,9 @@ export const getFilmById = createAsyncThunk<
   }
 });
 
-export const getCasts = createAsyncThunk<
-  TServerCasts[],
+export const getCasts = createAsyncThunk<TServerCasts[],
   number,
-  { rejectValue: string }
->("film/getCasts", async function (id, { rejectWithValue }) {
+  { rejectValue: string }>("film/getCasts", async function (id, {rejectWithValue}) {
   try {
     const data = await castsApi.get(id);
     return data;
@@ -61,11 +57,9 @@ export const getCasts = createAsyncThunk<
   }
 });
 
-export const getKeywords = createAsyncThunk<
-  TKeywords[],
+export const getKeywords = createAsyncThunk<TKeywords[],
   number,
-  { rejectValue: string }
->("film/getKeywords", async function (id, { rejectWithValue }) {
+  { rejectValue: string }>("film/getKeywords", async function (id, {rejectWithValue}) {
   try {
     const data = await keyWordsApi.get(id);
 
@@ -75,11 +69,9 @@ export const getKeywords = createAsyncThunk<
   }
 });
 
-export const getReviews = createAsyncThunk<
-  TServerReviews[],
+export const getReviews = createAsyncThunk<TServerReviews[],
   number,
-  { rejectValue: string }
->("film/getReviews", async function (id, { rejectWithValue }) {
+  { rejectValue: string }>("film/getReviews", async function (id, {rejectWithValue}) {
   try {
     const response = await reviewsApi.get(id);
     return response;
@@ -88,11 +80,9 @@ export const getReviews = createAsyncThunk<
   }
 });
 
-export const getPhotos = createAsyncThunk<
-  TServerPhotos,
+export const getPhotos = createAsyncThunk<TServerPhotos,
   number,
-  { rejectValue: string }
->("film/getPhotos", async function (id: number, { rejectWithValue }) {
+  { rejectValue: string }>("film/getPhotos", async function (id: number, {rejectWithValue}) {
   try {
     const data = await photosApi.get(id);
     return data;
@@ -101,11 +91,9 @@ export const getPhotos = createAsyncThunk<
   }
 });
 
-export const getVideos = createAsyncThunk<
-  TServerVideos[],
+export const getVideos = createAsyncThunk<TServerVideos[],
   number,
-  { rejectValue: string }
->("film/getVideos", async function (id: number, { rejectWithValue }) {
+  { rejectValue: string }>("film/getVideos", async function (id: number, {rejectWithValue}) {
   try {
     const data = await videosApi.get(id);
     return data;
@@ -113,11 +101,10 @@ export const getVideos = createAsyncThunk<
     return rejectWithValue("Error");
   }
 });
-export const getImagesAndVideos = createAsyncThunk<
-  [TServerVideos[], TServerPhotos],
+
+export const getImagesAndVideos = createAsyncThunk<[TServerVideos[], TServerPhotos],
   number,
-  { rejectValue: string }
->("film/getImagesAndVideos", async function (id: number, { rejectWithValue }) {
+  { rejectValue: string }>("film/getImagesAndVideos", async function (id: number, {rejectWithValue}) {
   try {
     const data = await promiseAll.get(id);
 
@@ -127,11 +114,9 @@ export const getImagesAndVideos = createAsyncThunk<
   }
 });
 
-export const getCollection = createAsyncThunk<
-  TServerCollection,
+export const getCollection = createAsyncThunk<TServerCollection,
   number,
-  { rejectValue: string }
->("film/getCollection", async function (id, { rejectWithValue }) {
+  { rejectValue: string }>("film/getCollection", async function (id, {rejectWithValue}) {
   try {
     const data = await collectionApi.get(id);
     return data;
@@ -140,11 +125,9 @@ export const getCollection = createAsyncThunk<
   }
 });
 
-export const getRecommendations = createAsyncThunk<
-  TServerRecommendations[],
+export const getRecommendations = createAsyncThunk<TServerRecommendations[],
   number,
-  { rejectValue: string }
->("film/getRecommendations", async function (id, { rejectWithValue }) {
+  { rejectValue: string }>("film/getRecommendations", async function (id, {rejectWithValue}) {
   try {
     const data = await recommendationsApi.get(id);
     return data;
