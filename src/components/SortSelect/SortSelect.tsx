@@ -1,17 +1,24 @@
 import MenuItem from '@mui/material/MenuItem';
-import { FC, useState } from 'react';
-import { CustomSelect } from './style';
+import React, {FC, useState} from 'react';
+import {CustomSelect} from './style';
+import {useAppDispatch} from "../../hooks/redux";
+import {chooseSortOption, setSortBy} from "../../store/reducers/fIlmSlice/filmSlice";
+import {sortOptions} from "./data";
 
 const SortSelect: FC = () => {
-  const [sortOption, setSortOption] = useState('1');
+  const [itemTitle, setItemTitle] = useState('popularity.desc');
+
+  const dispatch = useAppDispatch();
 
   const handleChange = (event: any) => {
-    setSortOption(event.target.value as string);
+    setItemTitle(event.target.value as string);
+    dispatch(setSortBy(event.target.value as string));
+    dispatch(chooseSortOption(true));
   };
 
   return (
     <CustomSelect
-      value={sortOption}
+      value={itemTitle}
       onChange={handleChange}
       MenuProps={{
         PaperProps: {
@@ -27,14 +34,13 @@ const SortSelect: FC = () => {
         },
       }}
     >
-      <MenuItem value="1">Popularity Descending</MenuItem>
-      <MenuItem value="2">Popularity Ascending</MenuItem>
-      <MenuItem value="3">Rating Descending</MenuItem>
-      <MenuItem value="4">Rating Ascending</MenuItem>
-      <MenuItem value="5">Release Date Descending</MenuItem>
-      <MenuItem value="6">Release Date Ascending</MenuItem>
-      <MenuItem value="7">Title (A-Z)</MenuItem>
-      <MenuItem value="8">Title (Z-A)</MenuItem>
+      {
+        sortOptions.map(item => {
+          return(
+            <MenuItem key={item.id} value={item.sortBy}>{item.title}</MenuItem>
+          )
+        })
+      }
     </CustomSelect>
   );
 };

@@ -16,7 +16,7 @@ import {
   getImagesAndVideos,
   getKeywords,
   getRecommendations,
-  getReviews,
+  getReviews, getSortFilms,
 } from "../../actions/Film";
 import {
   TInitialState,
@@ -43,6 +43,8 @@ const initialState: TInitialState = {
   loading: false,
   error: "",
   page: 1,
+  sortOption: false,
+  sortBy: 'popularity.desc',
 };
 
 export const filmSlice = createSlice({
@@ -55,6 +57,12 @@ export const filmSlice = createSlice({
     clearFilmlist(state) {
       state.filmList = [];
       state.page = 1;
+    },
+    chooseSortOption(state, action: PayloadAction<boolean>) {
+      state.sortOption = action.payload;
+    },
+    setSortBy(state, action: PayloadAction<string>) {
+      state.sortBy = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -65,6 +73,19 @@ export const filmSlice = createSlice({
       })
       .addCase(
         getFilms.fulfilled,
+        (state, action: PayloadAction<TServerFilmsList[]>) => {
+          const transformFilms = transformFilmsData(action.payload);
+          state.filmList.push(...transformFilms);
+          state.loading = false;
+          state.error = "";
+        }
+      )
+      .addCase(getSortFilms.pending, (state) => {
+        state.loading = true;
+        state.error = "";
+      })
+      .addCase(
+        getSortFilms.fulfilled,
         (state, action: PayloadAction<TServerFilmsList[]>) => {
           const transformFilms = transformFilmsData(action.payload);
           state.filmList.push(...transformFilms);
@@ -135,4 +156,4 @@ export const filmSlice = createSlice({
 });
 
 export default filmSlice.reducer;
-export const {incrementPage, clearFilmlist} = filmSlice.actions
+export const {incrementPage, clearFilmlist, chooseSortOption, setSortBy} = filmSlice.actions

@@ -3,7 +3,7 @@ import {Button} from "@mui/material";
 
 interface Props {
   title: string;
-  func?: MouseEventHandler<HTMLButtonElement>;
+  func?: any;
   hoverBgc?: string;
   hoverColor?: string;
   borderRadius?: string;

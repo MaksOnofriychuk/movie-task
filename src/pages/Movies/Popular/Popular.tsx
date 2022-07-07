@@ -4,8 +4,8 @@ import {TFilmList} from "../../../store/reducers/fIlmSlice/types";
 import HomeCard from "../../Home/components/HomeCard/HomeCard";
 import * as React from "react";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import {getFilms} from "../../../store/actions/Film";
-import {incrementPage, clearFilmlist} from "../../../store/reducers/fIlmSlice/filmSlice";
+import {getSortFilms} from "../../../store/actions/Film";
+import {incrementPage, clearFilmlist, chooseSortOption} from "../../../store/reducers/fIlmSlice/filmSlice";
 import ButtonLoadMore from "../../../components/ButtonLoadMore/ButtonLoadMore";
 import {CircularStatic} from "../../../components/FirstScreen/components/CirclePercent/CirclePercent";
 import LinearDeterminate from "../../../components/Loader/Loader";
@@ -18,7 +18,7 @@ const Popular: FC = () => {
 
   const dispatch = useAppDispatch();
 
-  const {filmList, loading, error, page} = useAppSelector(
+  const {filmList, loading, error, page, sortOption, sortBy} = useAppSelector(
     (state) => state.filmReducer
   );
 
@@ -27,8 +27,8 @@ const Popular: FC = () => {
   })
 
   React.useEffect(() => {
-    dispatch(getFilms(page));
-  }, [dispatch, page]);
+    dispatch(getSortFilms({page, sortBy}));
+  }, [dispatch, page, sortOption]);
 
   const loadMore = () => {
     dispatch(incrementPage())
@@ -38,6 +38,12 @@ const Popular: FC = () => {
   React.useEffect(() => {
     dispatch(clearFilmlist())
   }, [])
+
+  const sortFilmList = () => {
+    dispatch(clearFilmlist());
+    dispatch(chooseSortOption(false));
+    setLoadButton(true)
+  }
 
   return (
     <Box sx={{
@@ -65,7 +71,13 @@ const Popular: FC = () => {
       }}>
         <Box sx={{width: '18%'}}>
           <SortBox/>
-          <ButtonLoadMore title={"Search"} hoverBgc={"#032541"} borderRadius={"25px"} disabled={true}/>
+          <ButtonLoadMore
+            title={"Search"}
+            hoverBgc={"#032541"}
+            borderRadius={"25px"}
+            disabled={sortOption === false}
+            func={sortFilmList}
+          />
         </Box>
 
         <Box sx={{
