@@ -1,4 +1,4 @@
-import {FC, useEffect} from "react";
+import {FC} from "react";
 import {Box} from "@mui/material";
 import {TFilmList} from "../../../store/reducers/fIlmSlice/types";
 import HomeCard from "../../Home/components/HomeCard/HomeCard";
@@ -6,7 +6,7 @@ import * as React from "react";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {getFilms} from "../../../store/actions/Film";
 import styles from './Popular.module.scss'
-import {incrementPage} from "../../../store/reducers/fIlmSlice/filmSlice";
+import {incrementPage, clearFilmlist} from "../../../store/reducers/fIlmSlice/filmSlice";
 import ButtonLoadMore from "../../../components/ButtonLoadMore/ButtonLoadMore";
 import {CircularStatic} from "../../../components/FirstScreen/components/CirclePercent/CirclePercent";
 import LinearDeterminate from "../../../components/Loader/Loader";
@@ -22,16 +22,22 @@ const Popular: FC = () => {
     (state) => state.filmReducer
   );
 
-  useObserver(lastElement, loading, !loadButton, () => {dispatch(incrementPage())})
+  useObserver(lastElement, loading, !loadButton, () => {
+    dispatch(incrementPage())
+  })
 
   React.useEffect(() => {
-    dispatch(getFilms(page));
+      dispatch(getFilms(page));
   }, [dispatch, page]);
 
   const loadMore = () => {
     dispatch(incrementPage())
     setLoadButton(false)
   }
+
+  React.useEffect(() => {
+    dispatch(clearFilmlist())
+  },[])
 
   return (
     <section className={styles.popularSection}>
@@ -69,7 +75,7 @@ const Popular: FC = () => {
               })}
           </Box>
 
-          <div ref={lastElement} />
+          <div ref={lastElement}/>
           {loadButton && <ButtonLoadMore title="Load More" func={loadMore}/>}
         </div>
       </div>

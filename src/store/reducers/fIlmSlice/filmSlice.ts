@@ -51,6 +51,10 @@ export const filmSlice = createSlice({
   reducers: {
     incrementPage(state) {
       state.page = state.page + 1
+    },
+    clearFilmlist(state) {
+      state.filmList = [];
+      state.page = 1;
     }
   },
   extraReducers: (builder) => {
@@ -99,7 +103,7 @@ export const filmSlice = createSlice({
       .addCase(
         getImagesAndVideos.fulfilled,
         (state, action: PayloadAction<[TServerVideos[], TServerPhotos]>) => {
-          const [videos, { backdrops, logos, posters, id }] = action.payload;
+          const [videos, {backdrops, logos, posters, id}] = action.payload;
           const newMedia = {
             videos,
             backdrops,
@@ -131,4 +135,4 @@ export const filmSlice = createSlice({
 });
 
 export default filmSlice.reducer;
-export const {incrementPage} = filmSlice.actions
+export const {incrementPage, clearFilmlist} = filmSlice.actions

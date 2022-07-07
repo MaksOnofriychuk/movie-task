@@ -14,7 +14,7 @@ const Home = () => {
 
   React.useEffect(() => {
     dispatch(getFilms(page));
-  }, [dispatch]);
+  }, [dispatch, page]);
 
   const slicedFilms = dataClipping(filmList, 8);
 

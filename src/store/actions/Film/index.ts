@@ -26,7 +26,7 @@ export const getFilms = createAsyncThunk(
   "film/getFilms",
   async function (page: number, {rejectWithValue}) {
     try {
-      const data = await filmsApi.get();
+      const data = await filmsApi.get(page);
       return data;
     } catch (error) {
       return rejectWithValue("error");
