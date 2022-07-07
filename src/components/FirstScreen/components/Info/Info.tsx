@@ -3,6 +3,9 @@ import { Box, Button, Typography } from "@mui/material";
 import { CircularStatic } from "../CirclePercent/CirclePercent";
 import { COLOR } from "../../../../ColorTheme/Theme";
 import { TInfoProps } from "../../../../ComponentTypes/types";
+import { useLocation } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
+import { addLike } from "../../../../store/reducers/fIlmSlice/filmSlice";
 import {
   getFullTime,
   getTimeFromMins,
@@ -14,9 +17,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import GradeIcon from "@mui/icons-material/Grade";
 import Tooltip from "@mui/material/Tooltip";
-import { useLocation } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
-import { addLike } from "../../../../store/reducers/fIlmSlice/filmSlice";
 
 const Info: React.FC<TInfoProps> = ({
   voteAverage,

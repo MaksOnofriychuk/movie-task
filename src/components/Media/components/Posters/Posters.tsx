@@ -12,7 +12,7 @@ const Posters: React.FC<TPostersProps> = ({ posters }) => {
         display: "flex",
         maxWidth: "1100px",
         overflow: "scroll",
-        "&:first-child": {
+        "&:first-of-type": {
           borderTopLeftRadius: "10px",
         },
         "&:last-child": {
@@ -32,7 +32,7 @@ const Posters: React.FC<TPostersProps> = ({ posters }) => {
             >
               <img
                 style={{ width: "100%", height: "100%" }}
-                src={`${process.env.React_App_Image_Base_Path}${poster.filePath}`}
+                src={`${poster.filePath}`}
                 alt="poster"
               />
             </Box>

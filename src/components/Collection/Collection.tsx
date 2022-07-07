@@ -18,7 +18,7 @@ const Collection = () => {
     <Box sx={{ borderBottom: 1, pb: 3, mb: 5 }}>
       <Box
         sx={{
-          background: `url(${process.env.React_App_Image_Base_Path}${film?.belongsToCollection?.backdrop_path})`,
+          background: `url(${film?.belongsToCollection?.backdrop_path})`,
           width: "100%",
           height: "260px",
           borderRadius: "12px",

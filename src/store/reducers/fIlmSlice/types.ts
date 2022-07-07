@@ -110,11 +110,10 @@ export type TFilm = {
 };
 
 export type TBelongsToCollection = {
-  backdrop_path: "string";
+  backdrop_path: string;
   id: number;
   name: string;
   poster_path: string;
-  genres: TGenres[];
 };
 
 export type TGenres = {

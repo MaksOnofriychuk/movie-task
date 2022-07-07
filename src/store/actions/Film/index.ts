@@ -144,7 +144,7 @@ export const getKeywordsMovies = createAsyncThunk<
   { rejectValue: string }
 >("film/getKeywordsMovies", async function (id, { rejectWithValue }) {
   try {
-    const data = await keywordsMoviesApi.get(id);
+    const data = await keywordsMoviesApi.get(id); 
     return data;
   } catch (error) {
     return rejectWithValue("Error");

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { DropDown } from "../DropDown/DropDown";
 import { menuItems, typographyText } from "./data";
 import { COLOR } from "../../ColorTheme/Theme";
@@ -31,6 +31,12 @@ function HideOnScroll(props: THeaderHideOnScrollProps) {
 }
 
 export const Header = () => {
+  const navigate = useNavigate();
+
+  const toFormPage = () => {
+    navigate("/form");
+  };
+
   return (
     <React.Fragment>
       <HideOnScroll>
@@ -74,6 +80,12 @@ export const Header = () => {
                       </Typography>
                     );
                   })}
+                <Typography
+                  onClick={toFormPage}
+                  sx={{ fontSize: 14, mb: "3px", cursor: "pointer" }}
+                >
+                  Form
+                </Typography>
                 <SearchIcon
                   className="header__search-icon"
                   color="info"

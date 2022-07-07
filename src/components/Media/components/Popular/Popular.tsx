@@ -34,7 +34,7 @@ const Popular: React.FC<TPopularProps> = ({ media }) => {
       >
         <img
           style={{ width: "100%", height: "100%" }}
-          src={`${process.env.React_App_Image_Base_Path}${media.backdrops[0].filePath}`}
+          src={`${media.backdrops[0].filePath}`}
           alt="backdrops"
         />
       </Box>
@@ -46,7 +46,7 @@ const Popular: React.FC<TPopularProps> = ({ media }) => {
       >
         <img
           style={{ width: "100%", height: "100%" }}
-          src={`${process.env.React_App_Image_Base_Path}${media.posters[0].filePath}`}
+          src={`${media.posters[0].filePath}`}
           alt="poster"
         />
       </Box>

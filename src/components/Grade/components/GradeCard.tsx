@@ -1,16 +1,13 @@
 import * as React from "react";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
+import logo from "../../../assets/img/logo.svg";
 
 const GradeCard = () => {
   return (
     <Box sx={{ display: "flex", mb: 2 }}>
       <Box width="44px" height="44px" sx={{ mr: 1 }}>
-        <img
-          style={{ width: "100%", height: "100%" }}
-          src="https://www.themoviedb.org/t/p/w90_and_h90_face/yYG7Rhn9HfFpssIMeNiDynvxC14.jpg"
-          alt="logo"
-        />
+        <img style={{ width: "100%", height: "100%" }} src={logo} alt="logo" />
       </Box>
       <Box
         sx={{
