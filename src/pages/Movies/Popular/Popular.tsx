@@ -1,16 +1,16 @@
 import {FC} from "react";
-import {Box} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import {TFilmList} from "../../../store/reducers/fIlmSlice/types";
 import HomeCard from "../../Home/components/HomeCard/HomeCard";
 import * as React from "react";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {getFilms} from "../../../store/actions/Film";
-import styles from './Popular.module.scss'
 import {incrementPage, clearFilmlist} from "../../../store/reducers/fIlmSlice/filmSlice";
 import ButtonLoadMore from "../../../components/ButtonLoadMore/ButtonLoadMore";
 import {CircularStatic} from "../../../components/FirstScreen/components/CirclePercent/CirclePercent";
 import LinearDeterminate from "../../../components/Loader/Loader";
 import {useObserver} from "../../../hooks/useObserver";
+import SortBox from "../../../components/SortBox/SortBox";
 
 const Popular: FC = () => {
   const [loadButton, setLoadButton] = React.useState(true);
@@ -27,7 +27,7 @@ const Popular: FC = () => {
   })
 
   React.useEffect(() => {
-      dispatch(getFilms(page));
+    dispatch(getFilms(page));
   }, [dispatch, page]);
 
   const loadMore = () => {
@@ -37,16 +37,43 @@ const Popular: FC = () => {
 
   React.useEffect(() => {
     dispatch(clearFilmlist())
-  },[])
+  }, [])
 
   return (
-    <section className={styles.popularSection}>
-      <h1 className={styles.popularTitle}>Popular Movies</h1>
+    <Box sx={{
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center'
+    }}>
+      <Typography
+        variant="h1"
+        sx={{
+          width: '76%',
+          fontSize: '30px',
+          fontWeight: '600',
+          padding: '20px 0'
+        }}
+      >
+        Popular Movies
+      </Typography>
 
-      <div className={styles.contentWrapper}>
-        <div className={styles.searchWrapper}/>
+      <Box sx={{
+        width: '80%',
+        display: 'flex',
+        justifyContent: 'space-around'
+      }}>
+        <Box sx={{width: '18%'}}>
+          <SortBox/>
+          <ButtonLoadMore title={"Search"} hoverBgc={"#032541"} borderRadius={"25px"} disabled={true}/>
+        </Box>
 
-        <div className={styles.filmWrapper}>
+        <Box sx={{
+          width: '70%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}>
           {loading && <LinearDeterminate/>}
           {error && "Error"}
           <Box
@@ -60,26 +87,37 @@ const Popular: FC = () => {
             {filmList &&
               filmList.map((film: TFilmList) => {
                 return (
-                  <Box className={styles.filmCard} key={film.id}>
+                  <Box sx={{
+                    display: 'flex',
+                    alignItems: 'stretch',
+                    position: 'relative',
+                  }}
+                       key={film.id}
+                  >
                     <HomeCard
                       posterPath={film.posterPath}
                       originalTitle={film.originalTitle}
                       releaseDate={film.releaseDate}
                       id={film.id}
                     />
-                    <div className={styles.filmCard__static}>
+                    <Box sx={{
+                      zIndex: '999',
+                      position: 'absolute',
+                      top: '275px',
+                      left: '5%'
+                    }}>
                       <CircularStatic valuePercent={Math.round(film.voteAverage * 10)}/>
-                    </div>
+                    </Box>
                   </Box>
                 );
               })}
           </Box>
 
-          <div ref={lastElement}/>
-          {loadButton && <ButtonLoadMore title="Load More" func={loadMore}/>}
-        </div>
-      </div>
-    </section>
+          <Box ref={lastElement}/>
+          {loadButton && <ButtonLoadMore title="Load More" func={loadMore} hoverColor={"#000"}/>}
+        </Box>
+      </Box>
+    </Box>
   )
 }
 

@@ -3,24 +3,31 @@ import {Button} from "@mui/material";
 
 interface Props {
   title: string;
-  func: MouseEventHandler<HTMLButtonElement>;
+  func?: MouseEventHandler<HTMLButtonElement>;
+  hoverBgc?: string;
+  hoverColor?: string;
+  borderRadius?: string;
+  disabled?: boolean;
 }
 
-const ButtonLoadMore: FC<Props> = ({title, func}) => {
+const ButtonLoadMore: FC<Props> = ({title, func, hoverBgc, hoverColor, borderRadius, disabled}) => {
   return (
     <Button
       variant="contained"
+      disabled={disabled}
       onClick={func}
       sx={{
         color: "white",
         backgroundColor: "#01B4E4",
         width: "100%",
         maxWidth: '1150px',
-        fontSize: '25px',
+        fontSize: '20px',
         textTransform: 'none',
+        borderRadius: borderRadius,
+        marginTop: '20px',
         '&:hover': {
-          color: 'black',
-          backgroundColor: "#01B4E4"
+          color: hoverColor,
+          backgroundColor: hoverBgc
         },
       }}
     >
@@ -30,3 +37,8 @@ const ButtonLoadMore: FC<Props> = ({title, func}) => {
 };
 
 export default ButtonLoadMore;
+
+ButtonLoadMore.defaultProps = {
+  hoverBgc: "#01B4E4",
+  hoverColor: "#fff",
+}
