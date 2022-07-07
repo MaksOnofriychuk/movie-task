@@ -5,6 +5,7 @@ import {
   filmApi,
   filmsApi,
   keyWordsApi,
+  keywordsMoviesApi,
   photosApi,
   promiseAll,
   recommendationsApi,
@@ -16,6 +17,7 @@ import {
   TServerCasts,
   TServerCollection,
   TServerFilm,
+  TServerKeywordsMovies,
   TServerPhotos,
   TServerRecommendations,
   TServerReviews,
@@ -130,6 +132,19 @@ export const getRecommendations = createAsyncThunk<TServerRecommendations[],
   { rejectValue: string }>("film/getRecommendations", async function (id, {rejectWithValue}) {
   try {
     const data = await recommendationsApi.get(id);
+    return data;
+  } catch (error) {
+    return rejectWithValue("Error");
+  }
+});
+
+export const getKeywordsMovies = createAsyncThunk<
+  TServerKeywordsMovies[],
+  number,
+  { rejectValue: string }
+>("film/getKeywordsMovies", async function (id, { rejectWithValue }) {
+  try {
+    const data = await keywordsMoviesApi.get(id);
     return data;
   } catch (error) {
     return rejectWithValue("Error");

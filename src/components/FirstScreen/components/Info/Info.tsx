@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { CircularStatic } from "../CirclePercent/CirclePercent";
 import { COLOR } from "../../../../ColorTheme/Theme";
 import { TInfoProps } from "../../../../ComponentTypes/types";
@@ -14,6 +14,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import GradeIcon from "@mui/icons-material/Grade";
 import Tooltip from "@mui/material/Tooltip";
+import { useLocation } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
+import { addLike } from "../../../../store/reducers/fIlmSlice/filmSlice";
 
 const Info: React.FC<TInfoProps> = ({
   voteAverage,
@@ -25,6 +28,12 @@ const Info: React.FC<TInfoProps> = ({
   tagline,
   overview,
 }) => {
+  const location = useLocation();
+  const dispatch = useAppDispatch();
+  const [likes, setLikes] = React.useState<boolean>(false);
+
+  const { likesData } = useAppSelector((state) => state.filmReducer);
+
   const percentageOfPopularity = transformForPercent(voteAverage);
 
   const releaseYear = getYear(releaseDate);
@@ -32,6 +41,21 @@ const Info: React.FC<TInfoProps> = ({
   const releaseFullTime = getFullTime(releaseDate);
 
   const movieDuration = getTimeFromMins(runtime);
+
+  const toggleLike = () => {
+    setLikes(!likes);
+    const URL_BASE_PATH_FILM = "http://localhost:3000";
+    const likeData = {
+      id: String(new Date()),
+      link: `${URL_BASE_PATH_FILM}${location.pathname}`,
+    };
+
+    likesData && dispatch(addLike(likeData));
+  };
+
+  const showLinkFilm = () => {
+    console.log(likesData.map((like) => like.link));
+  };
 
   return (
     <Box sx={{ mt: "100px" }}>
@@ -176,7 +200,7 @@ const Info: React.FC<TInfoProps> = ({
               <ViewListIcon sx={{ fontSize: "16px", color: COLOR.white }} />
             </Typography>
           </Tooltip>
-          <Tooltip title="Mark as favorite" arrow>
+          <Tooltip onClick={toggleLike} title="Mark as favorite" arrow>
             <Typography
               sx={{
                 display: "flex",
@@ -188,7 +212,11 @@ const Info: React.FC<TInfoProps> = ({
                 borderRadius: "50%",
               }}
             >
-              <FavoriteIcon sx={{ fontSize: "16px", color: COLOR.white }} />
+              {!likes ? (
+                <FavoriteIcon sx={{ fontSize: "16px", color: COLOR.white }} />
+              ) : (
+                <FavoriteIcon sx={{ fontSize: "16px", color: COLOR.black }} />
+              )}
             </Typography>
           </Tooltip>
           <Tooltip title="Add to your watchlist" arrow>
@@ -251,6 +279,14 @@ const Info: React.FC<TInfoProps> = ({
           {overview}
         </Typography>
       </Box>
+      {likesData.length > 0 && (
+        <Button
+          sx={{ position: "absolute", bottom: "-52px", right: "0px" }}
+          onClick={showLinkFilm}
+        >
+          Button likes - length:{likesData.length}
+        </Button>
+      )}
     </Box>
   );
 };

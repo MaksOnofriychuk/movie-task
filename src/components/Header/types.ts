@@ -3,7 +3,7 @@ import { TBackdrops } from "../../store/reducers/fIlmSlice/types";
 export type THeaderItem = {
   id: number;
   title: string;
-  selectValue: string[];
+  selectValue?: string[];
 };
 
 export type TTypographyText = {

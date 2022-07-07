@@ -19,6 +19,8 @@ import {
   TCollectionParts,
   TServerRecommendations,
   TRecommendations,
+  TServerKeywordsMovies,
+  TKeywordsMovies,
 } from "../store/reducers/fIlmSlice/types";
 
 export const transformFilmData = (film: TServerFilm): TFilm => {
@@ -212,6 +214,29 @@ export const transformRecommendationsData = (
       video: recommendation.video,
       voteAverage: recommendation.vote_average,
       voteCount: recommendation.vote_count,
+    };
+  });
+};
+
+export const transformKeywordsMoviesData = (
+  keywordsMovies: TServerKeywordsMovies[]
+): TKeywordsMovies[] => {
+  return keywordsMovies.map((movie: TServerKeywordsMovies) => {
+    return {
+      adult: movie.adult,
+      backdropPath: movie.backdrop_path,
+      genreIds: movie.genre_ids,
+      id: movie.id,
+      originalLanguage: movie.original_language,
+      originalTitle: movie.original_title,
+      overview: movie.overview,
+      popularity: movie.popularity,
+      posterPath: `https://www.themoviedb.org/t/p/w188_and_h282_bestv2/${movie.poster_path}`,
+      releaseDate: movie.release_date,
+      title: movie.title,
+      video: movie.video,
+      voteAverage: movie.vote_average,
+      voteCount: movie.vote_count,
     };
   });
 };

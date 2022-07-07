@@ -6,7 +6,7 @@ import { COLOR } from "../../ColorTheme/Theme";
 
 const Collection = () => {
   const { film } = useAppSelector((state) => state.filmReducer);
-  if (!film) {
+  if (!film?.belongsToCollection) {
     return (
       <Box>
         <Typography>...Loading</Typography>
@@ -18,7 +18,7 @@ const Collection = () => {
     <Box sx={{ borderBottom: 1, pb: 3, mb: 5 }}>
       <Box
         sx={{
-          background: `url(${process.env.React_App_Image_Base_Path}${film?.belongsToCollection.backdrop_path})`,
+          background: `url(${process.env.React_App_Image_Base_Path}${film?.belongsToCollection?.backdrop_path})`,
           width: "100%",
           height: "260px",
           borderRadius: "12px",
@@ -52,13 +52,23 @@ const Collection = () => {
         >
           <Typography
             variant="caption"
-            sx={{ color: COLOR.white, fontWeight: "700", fontSize: "1.75rem" }}
+            sx={{
+              color: COLOR.white,
+              fontWeight: "700",
+              fontSize: "1.75rem",
+              display: "block",
+            }}
           >
             Part of the {film.belongsToCollection.name}
           </Typography>
           <Typography
             variant="caption"
-            sx={{ color: COLOR.white, fontSize: "18px", mb: 2 }}
+            sx={{
+              color: COLOR.white,
+              fontSize: "18px",
+              mb: 2,
+              display: "block",
+            }}
           >
             Includes {film.title}
           </Typography>
