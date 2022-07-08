@@ -76,7 +76,7 @@ const Popular: FC = () => {
             hoverBgc={"#032541"}
             borderRadius={"25px"}
             disabled={sortOption === false}
-            func={sortFilmList}
+            onClick={sortFilmList}
           />
         </Box>
 
@@ -126,7 +126,7 @@ const Popular: FC = () => {
           </Box>
 
           <Box ref={lastElement}/>
-          {loadButton && <ButtonLoadMore title="Load More" func={loadMore} hoverColor={"#000"}/>}
+          {loadButton && <ButtonLoadMore title="Load More" onClick={loadMore} hoverColor={"#000"}/>}
         </Box>
       </Box>
     </Box>

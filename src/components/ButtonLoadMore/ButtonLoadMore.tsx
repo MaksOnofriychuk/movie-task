@@ -3,19 +3,19 @@ import {Button} from "@mui/material";
 
 interface Props {
   title: string;
-  func?: any;
+  onClick: MouseEventHandler<HTMLButtonElement>;
   hoverBgc?: string;
   hoverColor?: string;
   borderRadius?: string;
   disabled?: boolean;
 }
 
-const ButtonLoadMore: FC<Props> = ({title, func, hoverBgc, hoverColor, borderRadius, disabled}) => {
+const ButtonLoadMore: FC<Props> = ({title, onClick, hoverBgc, hoverColor, borderRadius, disabled}) => {
   return (
     <Button
       variant="contained"
       disabled={disabled}
-      onClick={func}
+      onClick={onClick}
       sx={{
         color: "white",
         backgroundColor: "#01B4E4",
