@@ -4,7 +4,7 @@ import {TFilmList} from "../../../store/reducers/fIlmSlice/types";
 import HomeCard from "../../Home/components/HomeCard/HomeCard";
 import * as React from "react";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import {getSortFilms} from "../../../store/actions/Film";
+import {getFilms} from "../../../store/actions/Film";
 import {incrementPage, clearFilmlist, chooseSortOption} from "../../../store/reducers/fIlmSlice/filmSlice";
 import ButtonLoadMore from "../../../components/ButtonLoadMore/ButtonLoadMore";
 import {CircularStatic} from "../../../components/FirstScreen/components/CirclePercent/CirclePercent";
@@ -27,7 +27,7 @@ const Popular: FC = () => {
   })
 
   React.useEffect(() => {
-    dispatch(getSortFilms({page, sortBy}));
+    dispatch(getFilms({page, sortBy}));
   }, [dispatch, page, sortOption]);
 
   const loadMore = () => {
@@ -35,15 +35,15 @@ const Popular: FC = () => {
     setLoadButton(false)
   }
 
-  React.useEffect(() => {
-    dispatch(clearFilmlist())
-  }, [])
-
   const sortFilmList = () => {
     dispatch(clearFilmlist());
     dispatch(chooseSortOption(false));
     setLoadButton(true)
   }
+
+  React.useEffect(() => () => {
+    dispatch(clearFilmlist())
+  }, [])
 
   return (
     <Box sx={{

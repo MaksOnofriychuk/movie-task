@@ -16,7 +16,7 @@ import {
   getImagesAndVideos,
   getKeywords,
   getRecommendations,
-  getReviews, getSortFilms,
+  getReviews,
 } from "../../actions/Film";
 import {
   TInitialState,
@@ -73,19 +73,6 @@ export const filmSlice = createSlice({
       })
       .addCase(
         getFilms.fulfilled,
-        (state, action: PayloadAction<TServerFilmsList[]>) => {
-          const transformFilms = transformFilmsData(action.payload);
-          state.filmList.push(...transformFilms);
-          state.loading = false;
-          state.error = "";
-        }
-      )
-      .addCase(getSortFilms.pending, (state) => {
-        state.loading = true;
-        state.error = "";
-      })
-      .addCase(
-        getSortFilms.fulfilled,
         (state, action: PayloadAction<TServerFilmsList[]>) => {
           const transformFilms = transformFilmsData(action.payload);
           state.filmList.push(...transformFilms);

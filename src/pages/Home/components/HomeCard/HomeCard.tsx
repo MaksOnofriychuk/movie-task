@@ -16,7 +16,7 @@ export const HomeCard: React.FC<THomeCardProps> = ({
   const navigate = useNavigate();
 
   const toFilmPage = () => {
-    navigate(`film${id}`);
+    navigate(`../film${id}`, { replace: true });
   };
 
   const releaseTime = getDateHomeCard(releaseDate);

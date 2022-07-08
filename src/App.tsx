@@ -23,7 +23,7 @@ const App: FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="film:id" element={<Film />} />
-          <Route path="popular" element={<Popular/>}/>
+          <Route path="popular" element={<Popular />}/>
         </Routes>
       </Box>
       <Footer />

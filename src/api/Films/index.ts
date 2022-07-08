@@ -13,14 +13,6 @@ import {
 } from "../../store/reducers/fIlmSlice/types";
 
 export const filmsApi = {
-  get: async (page: number): Promise<TServerFilmsList[]> => {
-    const response: AxiosResponse = await instance.get("movie/popular", {params: {page: page}});
-
-    return response.data.results;
-  },
-};
-
-export const discoverApi = {
   get: async (page: number, sortBy: string): Promise<TServerFilmsList[]> => {
     const response: AxiosResponse = await instance.get("discover/movie", {
       params: {

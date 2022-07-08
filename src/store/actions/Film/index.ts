@@ -1,7 +1,7 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {
   castsApi,
-  collectionApi, discoverApi,
+  collectionApi,
   filmApi,
   filmsApi,
   keyWordsApi,
@@ -24,21 +24,9 @@ import {
 
 export const getFilms = createAsyncThunk(
   "film/getFilms",
-  async function (page: number, {rejectWithValue}) {
-    try {
-      const data = await filmsApi.get(page);
-      return data;
-    } catch (error) {
-      return rejectWithValue("error");
-    }
-  }
-);
-
-export const getSortFilms = createAsyncThunk(
-  "film/getSortFilms",
   async function ({page, sortBy}: {page: number, sortBy: string}, {rejectWithValue}) {
     try {
-      const data = await discoverApi.get(page, sortBy);
+      const data = await filmsApi.get(page, sortBy);
       return data;
     } catch (error) {
       return rejectWithValue("error");
