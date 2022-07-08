@@ -6,10 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import {Link} from "react-router-dom";
 
-export const DropDown: React.FC<TPropsDropDown> = ({
-                                                     children,
-                                                     selectValue,
-                                                   }) => {
+export const DropDown: React.FC<TPropsDropDown> = ({children, selectValue,}) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const open = Boolean(anchorEl);
@@ -55,7 +52,7 @@ export const DropDown: React.FC<TPropsDropDown> = ({
         {selectValue.map((value, index) => (
           <Link
             key={`${value}-${index}`}
-            to={`/${value.toLowerCase().replaceAll(' ', '-')}`}
+            to={`/${value.path}`}
             style={{color: 'black', textDecoration: 'none'}}
           >
             <MenuItem
@@ -63,7 +60,7 @@ export const DropDown: React.FC<TPropsDropDown> = ({
               selected={index === selectedIndex}
               onClick={(event) => handleMenuItemClick(event, index)}
             >
-              {value}
+              {value.title}
             </MenuItem>
           </Link>
 

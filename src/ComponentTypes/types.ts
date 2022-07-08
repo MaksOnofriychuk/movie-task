@@ -8,6 +8,7 @@ import {
   TRecommendations,
   TVideos,
 } from "../store/reducers/fIlmSlice/types";
+import {MouseEventHandler} from "react";
 
 export type THomeCardProps = {
   posterPath: string;
@@ -45,7 +46,7 @@ export type THoverBlockProps = {
 
 export type TPropsDropDown = {
   children?: React.ReactNode;
-  selectValue: string[];
+  selectValue: Array<{title: string, path: string}>;
 };
 
 export type TSocialLinkProps = {
@@ -109,4 +110,13 @@ export type TUserCommentProps = {
   count: number;
   date: string;
   nameBy: string;
+};
+
+export type ButtonLoadMoreProps = {
+  title: string;
+  onClick: MouseEventHandler<HTMLButtonElement>;
+  hoverBgc?: string;
+  hoverColor?: string;
+  borderRadius?: string;
+  disabled?: boolean;
 };

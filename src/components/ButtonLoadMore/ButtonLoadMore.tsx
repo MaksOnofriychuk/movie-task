@@ -1,16 +1,8 @@
-import {FC, MouseEventHandler} from 'react';
+import {FC} from 'react';
 import {Button} from "@mui/material";
+import {ButtonLoadMoreProps} from "../../ComponentTypes/types";
 
-interface Props {
-  title: string;
-  onClick: MouseEventHandler<HTMLButtonElement>;
-  hoverBgc?: string;
-  hoverColor?: string;
-  borderRadius?: string;
-  disabled?: boolean;
-}
-
-const ButtonLoadMore: FC<Props> = ({title, onClick, hoverBgc, hoverColor, borderRadius, disabled}) => {
+const ButtonLoadMore: FC<ButtonLoadMoreProps> = ({title, onClick, hoverBgc, hoverColor, borderRadius, disabled}) => {
   return (
     <Button
       variant="contained"
