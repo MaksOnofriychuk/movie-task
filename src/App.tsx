@@ -24,7 +24,7 @@ const App = () => {
       >
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="popular" element={<Popular/>}/>
+          <Route path="popular" element={<Popular />} />
           <Route path="/film:id" element={<Film />} />
           <Route path="/keyword:id" element={<KeywordsMovies />} />
           <Route path="/form" element={<Form />} />
@@ -33,6 +33,6 @@ const App = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default App;

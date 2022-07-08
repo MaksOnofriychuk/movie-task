@@ -80,7 +80,6 @@ export const promiseAll = {
 export const collectionApi = {
   get: async (id: number): Promise<TServerCollection> => {
     const response: AxiosResponse = await instance.get(`collection/${id}`);
-
     return response.data;
   },
 };
@@ -97,7 +96,9 @@ export const recommendationsApi = {
 
 export const keywordsMoviesApi = {
   get: async (id: number): Promise<TServerKeywordsMovies[]> => {
-    const response: AxiosResponse = await instance.get(`keyword/${id}/movies`);
+    const response: AxiosResponse = await instance.get(`keyword/${id}/movies`, {
+      params: { include_adult: "false" },
+    });
     return response.data.results;
   },
 };

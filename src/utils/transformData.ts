@@ -104,6 +104,9 @@ export const transformFilmsData = (films: TServerFilmsList[]): TFilmList[] => {
   }));
 };
 
+//https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg
+//https://www.themoviedb.org/t/p/w440_and_h660_face/61PVJ06oecwvcBisoAQu6SDfdcS.jpg
+
 export const transformReviewsData = (reviews: TServerReviews[]): TReviews[] => {
   return reviews.map((review: TServerReviews) => ({
     author: review.author,
@@ -128,7 +131,7 @@ export const transformMediaData = (mediaData: TServerNewMedia): TNewMedia => {
         aspectRatio: backdrop.aspect_ratio,
         height: backdrop.height,
         iso6391: backdrop.iso_639_1,
-        filePath: `${process.env.React_App_Image_Base_Path}${backdrop.file_path}`,
+        filePath: `https://www.themoviedb.org/t/p/w1066_and_h600_bestv2${backdrop.file_path}`,
         voteAverage: backdrop.vote_average,
         voteCount: backdrop.vote_count,
         width: backdrop.width,
@@ -151,7 +154,7 @@ export const transformMediaData = (mediaData: TServerNewMedia): TNewMedia => {
         aspectRatio: poster.aspect_ratio,
         height: poster.height,
         iso6391: poster.iso_639_1,
-        filePath: `${process.env.React_App_Image_Base_Path}${poster.file_path}`,
+        filePath: `https://www.themoviedb.org/t/p/w440_and_h660_face${poster.file_path}`,
         voteAverage: poster.vote_average,
         voteCount: poster.vote_count,
         width: poster.width,

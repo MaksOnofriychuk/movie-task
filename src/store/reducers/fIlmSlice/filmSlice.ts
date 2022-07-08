@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   transformCastsData,
   transformCollectionData,
@@ -56,7 +56,7 @@ export const filmSlice = createSlice({
   initialState,
   reducers: {
     incrementPage(state) {
-      state.page = state.page + 1
+      state.page = state.page + 1;
     },
     clearFilmlist(state) {
       state.filmList = [];
@@ -118,7 +118,9 @@ export const filmSlice = createSlice({
       .addCase(
         getImagesAndVideos.fulfilled,
         (state, action: PayloadAction<[TServerVideos[], TServerPhotos]>) => {
-          const [videos, {backdrops, logos, posters, id}] = action.payload;
+          console.log(action.payload);
+
+          const [videos, { backdrops, logos, posters, id }] = action.payload;
           const newMedia = {
             videos,
             backdrops,
@@ -160,4 +162,4 @@ export const filmSlice = createSlice({
 
 export const { addLike } = filmSlice.actions;
 export default filmSlice.reducer;
-export const {incrementPage, clearFilmlist} = filmSlice.actions
+export const { incrementPage, clearFilmlist } = filmSlice.actions;
