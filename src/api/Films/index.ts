@@ -1,19 +1,19 @@
-import {AxiosResponse} from "axios";
-import {collectionInstance, instance} from "../../config/axios-config";
+import { AxiosResponse } from "axios";
+import { instance } from "../../config/axios-config";
 import {
   TKeywords,
   TServerCasts,
   TServerCollection,
   TServerFilm,
   TServerFilmsList,
+  TServerKeywordsMovies,
   TServerPhotos,
   TServerRecommendations,
   TServerReviews,
   TServerVideos,
 } from "../../store/reducers/fIlmSlice/types";
 
-export const filmsApi = {
-  get: async (page: number, sortBy: string): Promise<TServerFilmsList[]> => {
+export const filmsApi = {get: async (page: number, sortBy: string): Promise<TServerFilmsList[]> => {
     const response: AxiosResponse = await instance.get("discover/movie", {
       params: {
         page: page,
@@ -82,7 +82,7 @@ export const promiseAll = {
 
 export const collectionApi = {
   get: async (id: number): Promise<TServerCollection> => {
-    const response: AxiosResponse = await collectionInstance.get(`movie/collection/${id}`);
+    const response: AxiosResponse = await instance.get(`movie/collection/${id}`);
 
     return response.data;
   },
@@ -92,6 +92,15 @@ export const recommendationsApi = {
   get: async (id: number): Promise<TServerRecommendations[]> => {
     const response: AxiosResponse = await instance.get(`movie/${id}/recommendations`);
 
+    return response.data.results;
+  },
+};
+
+export const keywordsMoviesApi = {
+  get: async (id: number): Promise<TServerKeywordsMovies[]> => {
+    const response: AxiosResponse = await instance.get(`keyword/${id}/movies`, {
+      params: { include_adult: "false" },
+    });
     return response.data.results;
   },
 };

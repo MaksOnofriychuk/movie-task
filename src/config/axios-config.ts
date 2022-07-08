@@ -5,15 +5,9 @@ export const instance = axios.create({
 });
 
 instance.interceptors.request.use((request) => {
-  request.params = { api_key: "aadbbb4862aff5504413e736202c5599", ...request.params};
-  return request;
-});
-
-export const collectionInstance = axios.create({
-  baseURL: `${process.env.React_App_Collection_Url}`,
-});
-
-collectionInstance.interceptors.request.use((request) => {
-  request.params = { api_key: "aadbbb4862aff5504413e736202c5599"};
+  request.params = {
+    api_key: `${process.env.React_App_Key_Api_Film}`,
+    ...request.params,
+  };
   return request;
 });

@@ -119,4 +119,11 @@ export type ButtonLoadMoreProps = {
   hoverColor?: string;
   borderRadius?: string;
   disabled?: boolean;
+}
+
+export type TCardMovie = {
+  poster: string;
+  title: string;
+  subtitle: string;
+  releaseDate: string;
 };

@@ -15,4 +15,3 @@ export type THeaderHideOnScrollProps = {
   window?: () => Window;
   children: React.ReactElement;
 };
-

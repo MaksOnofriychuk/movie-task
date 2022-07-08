@@ -104,7 +104,7 @@ const ImageCard: React.FC<TImageCardProps> = ({
               <Box sx={{ display: "flex", justifyContent: "center", pt: 1 }}>
                 <img
                   style={{ width: "35px", height: "34px", borderRadius: "4px" }}
-                  src={`${process.env.React_App_Image_Base_Path}${productionCompanies[0].logo_path}`}
+                  src={`${productionCompanies[0].logo_path}`}
                   alt="card-img"
                 />
                 <Box sx={{ ml: "10px" }}>

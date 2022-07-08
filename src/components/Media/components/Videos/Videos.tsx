@@ -7,6 +7,7 @@ import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
 const Videos: React.FC<TVideosProps> = ({ videos }) => {
   const slicedVideos = videos.slice(0, 6);
+  console.log(videos);
 
   return (
     <Box
@@ -14,7 +15,7 @@ const Videos: React.FC<TVideosProps> = ({ videos }) => {
         display: "flex",
         maxWidth: "1100px",
         overflow: "scroll",
-        "&:first-child": {
+        "&:first-of-type": {
           borderTopLeftRadius: "10px",
         },
         "&:last-child": {
@@ -28,8 +29,8 @@ const Videos: React.FC<TVideosProps> = ({ videos }) => {
             <Box
               key={video.id}
               sx={{
-                minWidth: "500px",
-                height: "260px",
+                minWidth: 500,
+                height: 260,
               }}
             >
               <VideoProvider key={video.key} />
