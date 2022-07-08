@@ -53,7 +53,7 @@ const ModalWindow: React.FC<TModal> = ({
             <Box sx={{ width: "100%", height: "100%" }}>
               <img
                 style={{ width: "100%", height: "100%", borderRadius: "6px" }}
-                src={`https://www.themoviedb.org/t/p/w440_and_h660_face${modalImage}`}
+                src={`${modalImage}`}
                 alt="modal-img"
               />
             </Box>
@@ -98,7 +98,7 @@ const ModalWindow: React.FC<TModal> = ({
                   width: "100%",
                   height: 1,
                   border: 0.5,
-                  borderColor: "grey",
+                  borderColor: COLOR.grey,
                   mt: 3,
                   mb: 2,
                 }}

@@ -1,15 +1,15 @@
 import * as React from "react";
-import {Button} from "@mui/material";
-import {COLOR} from "../../ColorTheme/Theme";
-import {TPropsDropDown} from "../../ComponentTypes/types";
+import { Button } from "@mui/material";
+import { COLOR } from "../../ColorTheme/Theme";
+import { TPropsDropDown } from "../../ComponentTypes/types";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const DropDown: React.FC<TPropsDropDown> = ({
-                                                     children,
-                                                     selectValue,
-                                                   }) => {
+  children,
+  selectValue,
+}) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const open = Boolean(anchorEl);
@@ -28,6 +28,7 @@ export const DropDown: React.FC<TPropsDropDown> = ({
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <div>
       <Button
@@ -36,7 +37,7 @@ export const DropDown: React.FC<TPropsDropDown> = ({
         aria-controls="lock-menu"
         aria-label="when device is locked"
         aria-expanded={open ? "true" : undefined}
-        sx={{color: COLOR.white, fontSize: "12px"}}
+        sx={{ color: COLOR.white, fontSize: "12px" }}
         onClick={handleClickListItem}
       >
         {children}
@@ -52,22 +53,22 @@ export const DropDown: React.FC<TPropsDropDown> = ({
           role: "listbox",
         }}
       >
-        {selectValue.map((value, index) => (
-          <Link
-            key={`${value}-${index}`}
-            to={`/${value.toLowerCase().replaceAll(' ', '-')}`}
-            style={{color: 'black', textDecoration: 'none'}}
-          >
-            <MenuItem
-              sx={{fontSize: "14px", minWidth: "200px"}}
-              selected={index === selectedIndex}
-              onClick={(event) => handleMenuItemClick(event, index)}
+        {selectValue &&
+          selectValue.map((value, index) => (
+            <Link
+              key={`${value}-${index}`}
+              to={`/${value.toLowerCase().replaceAll(" ", "-")}`}
+              style={{ color: "black", textDecoration: "none" }}
             >
-              {value}
-            </MenuItem>
-          </Link>
-
-        ))}
+              <MenuItem
+                sx={{ fontSize: "14px", minWidth: "200px" }}
+                selected={index === selectedIndex}
+                onClick={(event) => handleMenuItemClick(event, index)}
+              >
+                {value}
+              </MenuItem>
+            </Link>
+          ))}
       </Menu>
     </div>
   );

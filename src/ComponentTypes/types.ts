@@ -45,7 +45,7 @@ export type THoverBlockProps = {
 
 export type TPropsDropDown = {
   children?: React.ReactNode;
-  selectValue: string[];
+  selectValue?: string[];
 };
 
 export type TSocialLinkProps = {
@@ -109,4 +109,11 @@ export type TUserCommentProps = {
   count: number;
   date: string;
   nameBy: string;
+};
+
+export type TCardMovie = {
+  poster: string;
+  title: string;
+  subtitle: string;
+  releaseDate: string;
 };

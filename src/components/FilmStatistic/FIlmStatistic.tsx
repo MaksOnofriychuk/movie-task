@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Box, Typography } from "@mui/material";
-import { useAppSelector } from "../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { transformNumberFromString } from "../../utils/helpersMovie";
 import { COLOR } from "../../ColorTheme/Theme";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -9,8 +9,14 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import HomeIcon from "@mui/icons-material/Home";
 import SocialLink from "./components/SocialLink/SocialLink";
+import { TKeywords } from "../../store/reducers/fIlmSlice/types";
+import { useNavigate } from "react-router-dom";
+import { getKeywordsMovies } from "../../store/actions/Film";
 
 const FilmStatistic = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const { film, keywords } = useAppSelector((state) => state.filmReducer);
 
   if (!film) {
@@ -28,6 +34,13 @@ const FilmStatistic = () => {
   const budgetFilm = transformNumberFromString(film.budget);
 
   const revenueFilm = transformNumberFromString(film.revenue);
+
+  const toPageKeywordsMovies = (word: TKeywords) => {
+    if (word) {
+      dispatch(getKeywordsMovies(word.id));
+      navigate(`/keyword${word.id}`);
+    }
+  };
 
   return (
     <>
@@ -88,6 +101,7 @@ const FilmStatistic = () => {
           {keywords &&
             keywords.map((word) => (
               <Typography
+                onClick={() => toPageKeywordsMovies(word)}
                 key={word.id}
                 sx={{
                   border: 1,

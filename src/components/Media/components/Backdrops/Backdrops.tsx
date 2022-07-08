@@ -13,7 +13,7 @@ const Backdrops: React.FC<TBackdropsProps> = ({ backdrops }) => {
         display: "flex",
         maxWidth: "1100px",
         overflow: "scroll",
-        "&:first-child": {
+        "&:first-of-type": {
           borderTopLeftRadius: "10px",
         },
         "&:last-child": {
@@ -33,7 +33,7 @@ const Backdrops: React.FC<TBackdropsProps> = ({ backdrops }) => {
             >
               <img
                 style={{ width: "100%", height: "100%" }}
-                src={`${process.env.React_App_Image_Base_Path}${backdrop.filePath}`}
+                src={`${backdrop.filePath}`}
                 alt="sonic"
               />
             </Box>

@@ -1,9 +1,10 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   transformCastsData,
   transformCollectionData,
   transformFilmData,
   transformFilmsData,
+  transformKeywordsMoviesData,
   transformMediaData,
   transformRecommendationsData,
   transformReviewsData,
@@ -15,16 +16,19 @@ import {
   getFilms,
   getImagesAndVideos,
   getKeywords,
+  getKeywordsMovies,
   getRecommendations,
   getReviews,
 } from "../../actions/Film";
 import {
   TInitialState,
   TKeywords,
+  TLikes,
   TServerCasts,
   TServerCollection,
   TServerFilm,
   TServerFilmsList,
+  TServerKeywordsMovies,
   TServerPhotos,
   TServerRecommendations,
   TServerReviews,
@@ -40,9 +44,11 @@ const initialState: TInitialState = {
   recommendations: [],
   media: null,
   collection: null,
+  keywordsMovies: [],
   loading: false,
   error: "",
   page: 1,
+  likesData: [],
 };
 
 export const filmSlice = createSlice({
@@ -50,12 +56,21 @@ export const filmSlice = createSlice({
   initialState,
   reducers: {
     incrementPage(state) {
-      state.page = state.page + 1
+      state.page = state.page + 1;
     },
     clearFilmlist(state) {
       state.filmList = [];
       state.page = 1;
-    }
+    },
+    addLike(state, action: PayloadAction<TLikes>) {
+      if (state.likesData.find((like) => like.link === action.payload.link)) {
+        state.likesData = state.likesData.filter(
+          (like) => like.link !== action.payload.link
+        );
+      } else {
+        state.likesData = [...state.likesData, action.payload];
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -103,7 +118,9 @@ export const filmSlice = createSlice({
       .addCase(
         getImagesAndVideos.fulfilled,
         (state, action: PayloadAction<[TServerVideos[], TServerPhotos]>) => {
-          const [videos, {backdrops, logos, posters, id}] = action.payload;
+          console.log(action.payload);
+
+          const [videos, { backdrops, logos, posters, id }] = action.payload;
           const newMedia = {
             videos,
             backdrops,
@@ -130,9 +147,19 @@ export const filmSlice = createSlice({
           );
           state.recommendations = transformRecommendations;
         }
+      )
+      .addCase(
+        getKeywordsMovies.fulfilled,
+        (state, action: PayloadAction<TServerKeywordsMovies[]>) => {
+          const transformKeywordsMovies = transformKeywordsMoviesData(
+            action.payload
+          );
+          state.keywordsMovies = transformKeywordsMovies;
+        }
       );
   },
 });
 
+export const { addLike } = filmSlice.actions;
 export default filmSlice.reducer;
-export const {incrementPage, clearFilmlist} = filmSlice.actions
+export const { incrementPage, clearFilmlist } = filmSlice.actions;

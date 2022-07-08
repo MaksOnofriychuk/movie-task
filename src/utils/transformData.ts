@@ -19,6 +19,8 @@ import {
   TCollectionParts,
   TServerRecommendations,
   TRecommendations,
+  TServerKeywordsMovies,
+  TKeywordsMovies,
 } from "../store/reducers/fIlmSlice/types";
 
 export const transformFilmData = (film: TServerFilm): TFilm => {
@@ -40,11 +42,23 @@ export const transformFilmData = (film: TServerFilm): TFilm => {
   return {
     ...filmsData,
     backdropPath: `${process.env.React_App_Image_Base_Path}/${backdrop_path}`,
-    belongsToCollection: belongs_to_collection,
+    belongsToCollection: {
+      backdrop_path: `${process.env.React_App_Image_Base_Path}/${belongs_to_collection.backdrop_path}`,
+      id: belongs_to_collection.id,
+      name: belongs_to_collection.name,
+      poster_path: `${process.env.React_App_Image_Base_Path}/${belongs_to_collection.poster_path}`,
+    },
     originalLanguage: original_language,
     originalTitle: original_title,
     posterPath: `${process.env.React_App_Image_Base_Path}/${poster_path}`,
-    productionCompanies: production_companies,
+    productionCompanies: production_companies.map((companies) => {
+      return {
+        id: companies.id,
+        logo_path: `${process.env.React_App_Image_Base_Path}${companies.logo_path}`,
+        name: companies.name,
+        origin_country: companies.origin_country,
+      };
+    }),
     productionCountries: production_countries,
     spokenLanguages: spoken_languages,
     releaseDate: release_date,
@@ -90,6 +104,9 @@ export const transformFilmsData = (films: TServerFilmsList[]): TFilmList[] => {
   }));
 };
 
+//https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg
+//https://www.themoviedb.org/t/p/w440_and_h660_face/61PVJ06oecwvcBisoAQu6SDfdcS.jpg
+
 export const transformReviewsData = (reviews: TServerReviews[]): TReviews[] => {
   return reviews.map((review: TServerReviews) => ({
     author: review.author,
@@ -114,7 +131,7 @@ export const transformMediaData = (mediaData: TServerNewMedia): TNewMedia => {
         aspectRatio: backdrop.aspect_ratio,
         height: backdrop.height,
         iso6391: backdrop.iso_639_1,
-        filePath: backdrop.file_path,
+        filePath: `https://www.themoviedb.org/t/p/w1066_and_h600_bestv2${backdrop.file_path}`,
         voteAverage: backdrop.vote_average,
         voteCount: backdrop.vote_count,
         width: backdrop.width,
@@ -126,7 +143,7 @@ export const transformMediaData = (mediaData: TServerNewMedia): TNewMedia => {
         aspectRatio: logo.aspect_ratio,
         height: logo.height,
         iso6391: logo.iso_639_1,
-        filePath: logo.file_path,
+        filePath: `${process.env.React_App_Image_Base_Path}${logo.file_path}`,
         voteAverage: logo.vote_average,
         voteCount: logo.vote_count,
         width: logo.width,
@@ -137,7 +154,7 @@ export const transformMediaData = (mediaData: TServerNewMedia): TNewMedia => {
         aspectRatio: poster.aspect_ratio,
         height: poster.height,
         iso6391: poster.iso_639_1,
-        filePath: poster.file_path,
+        filePath: `https://www.themoviedb.org/t/p/w440_and_h660_face${poster.file_path}`,
         voteAverage: poster.vote_average,
         voteCount: poster.vote_count,
         width: poster.width,
@@ -212,6 +229,29 @@ export const transformRecommendationsData = (
       video: recommendation.video,
       voteAverage: recommendation.vote_average,
       voteCount: recommendation.vote_count,
+    };
+  });
+};
+
+export const transformKeywordsMoviesData = (
+  keywordsMovies: TServerKeywordsMovies[]
+): TKeywordsMovies[] => {
+  return keywordsMovies.map((movie: TServerKeywordsMovies) => {
+    return {
+      adult: movie.adult,
+      backdropPath: movie.backdrop_path,
+      genreIds: movie.genre_ids,
+      id: movie.id,
+      originalLanguage: movie.original_language,
+      originalTitle: movie.original_title,
+      overview: movie.overview,
+      popularity: movie.popularity,
+      posterPath: `https://www.themoviedb.org/t/p/w188_and_h282_bestv2/${movie.poster_path}`,
+      releaseDate: movie.release_date,
+      title: movie.title,
+      video: movie.video,
+      voteAverage: movie.vote_average,
+      voteCount: movie.vote_count,
     };
   });
 };
