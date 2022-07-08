@@ -6,19 +6,19 @@ import {chooseSortOption, setSortBy} from "../../store/reducers/fIlmSlice/filmSl
 import {sortOptions} from "./data";
 
 const SortSelect: FC = () => {
-  const [itemTitle, setItemTitle] = useState('popularity.desc');
+  const [option, setOption] = useState('popularity.desc');
 
   const dispatch = useAppDispatch();
 
   const handleChange = (event: any) => {
-    setItemTitle(event.target.value as string);
+    setOption(event.target.value as string);
     dispatch(setSortBy(event.target.value as string));
     dispatch(chooseSortOption(true));
   };
 
   return (
     <CustomSelect
-      value={itemTitle}
+      value={option}
       onChange={handleChange}
       MenuProps={{
         PaperProps: {
