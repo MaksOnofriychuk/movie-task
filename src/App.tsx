@@ -7,11 +7,10 @@ import Popular from "./pages/Movies/Popular/Popular";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import KeywordsMovies from "./pages/KeywordsMovies/KeywordsMovies";
-import Form from "./components/Form/Form";
 
 const App = () => {
   return (
-    <div>
+    <Box>
       <Header />
       <Box
         sx={{
@@ -27,11 +26,10 @@ const App = () => {
           <Route path="popular" element={<Popular />} />
           <Route path="/film:id" element={<Film />} />
           <Route path="/keyword:id" element={<KeywordsMovies />} />
-          <Route path="/form" element={<Form />} />
         </Routes>
       </Box>
       <Footer />
-    </div>
+    </Box>
   );
 };
 

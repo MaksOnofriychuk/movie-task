@@ -1,5 +1,6 @@
 import {
   TBackdrops,
+  TFilm,
   TGenres,
   TNewMedia,
   TPosters,
@@ -116,4 +117,12 @@ export type TCardMovie = {
   title: string;
   subtitle: string;
   releaseDate: string;
+};
+
+export type TAddedFilm = Pick<
+  TFilm,
+  "adult" | "id" | "overview" | "runtime" | "title" | "voteCount"
+> & {
+  imgFile?: string | FileList | null;
+  imgUrl?: string | null;
 };

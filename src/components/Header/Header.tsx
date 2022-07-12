@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { DropDown } from "../DropDown/DropDown";
 import { menuItems, typographyText } from "./data";
 import { COLOR } from "../../ColorTheme/Theme";
@@ -15,10 +15,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import Popup from "../Popup/Popup";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
+import Form from "../Form/Form";
 import "./header.scss";
 
 function HideOnScroll(props: THeaderHideOnScrollProps) {
   const { children, window } = props;
+
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
   });
@@ -31,11 +33,9 @@ function HideOnScroll(props: THeaderHideOnScrollProps) {
 }
 
 export const Header = () => {
-  const navigate = useNavigate();
-
-  const toFormPage = () => {
-    navigate("/form");
-  };
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <React.Fragment>
@@ -54,7 +54,7 @@ export const Header = () => {
                   <img className="logo__img" src={Logo} alt="logo" />
                 </Link>
                 {menuItems &&
-                  menuItems.map((item, index: number) => {
+                  menuItems.map((item) => {
                     return (
                       <DropDown key={item.id} selectValue={item.selectValue}>
                         {item.title}
@@ -81,11 +81,13 @@ export const Header = () => {
                     );
                   })}
                 <Typography
-                  onClick={toFormPage}
+                  onClick={handleOpen}
                   sx={{ fontSize: 14, mb: "3px", cursor: "pointer" }}
                 >
                   Form
                 </Typography>
+                <Form handleClose={handleClose} open={open} />
+
                 <SearchIcon
                   className="header__search-icon"
                   color="info"
