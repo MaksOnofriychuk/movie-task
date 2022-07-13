@@ -11,6 +11,8 @@ export type TInitialState = {
   loading: boolean;
   error: string;
   page: number;
+  sortOption: boolean;
+  sortBy: string;
   likesData: TLikes[] | [];
 };
 

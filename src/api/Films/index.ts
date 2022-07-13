@@ -13,11 +13,14 @@ import {
   TServerVideos,
 } from "../../store/reducers/fIlmSlice/types";
 
-export const filmsApi = {
-  get: async (page: number): Promise<TServerFilmsList[]> => {
-    const response: AxiosResponse = await instance.get("movie/popular", {
-      params: { page: page },
+export const filmsApi = {get: async (page: number, sortBy: string): Promise<TServerFilmsList[]> => {
+    const response: AxiosResponse = await instance.get("discover/movie", {
+      params: {
+        page: page,
+        sort_by: sortBy
+      }
     });
+
     return response.data.results;
   },
 };
@@ -79,16 +82,15 @@ export const promiseAll = {
 
 export const collectionApi = {
   get: async (id: number): Promise<TServerCollection> => {
-    const response: AxiosResponse = await instance.get(`collection/${id}`);
+    const response: AxiosResponse = await instance.get(`movie/collection/${id}`);
+
     return response.data;
   },
 };
 
 export const recommendationsApi = {
   get: async (id: number): Promise<TServerRecommendations[]> => {
-    const response: AxiosResponse = await instance.get(
-      `movie/${id}/recommendations`
-    );
+    const response: AxiosResponse = await instance.get(`movie/${id}/recommendations`);
 
     return response.data.results;
   },

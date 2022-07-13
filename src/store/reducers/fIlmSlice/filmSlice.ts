@@ -48,6 +48,8 @@ const initialState: TInitialState = {
   loading: false,
   error: "",
   page: 1,
+  sortOption: false,
+  sortBy: 'popularity.desc',
   likesData: [],
 };
 
@@ -61,6 +63,12 @@ export const filmSlice = createSlice({
     clearFilmlist(state) {
       state.filmList = [];
       state.page = 1;
+    },
+    chooseSortOption(state, action: PayloadAction<boolean>) {
+      state.sortOption = action.payload;
+    },
+    setSortBy(state, action: PayloadAction<string>) {
+      state.sortBy = action.payload;
     },
     addLike(state, action: PayloadAction<TLikes>) {
       if (state.likesData.find((like) => like.link === action.payload.link)) {
@@ -162,4 +170,5 @@ export const filmSlice = createSlice({
 
 export const { addLike } = filmSlice.actions;
 export default filmSlice.reducer;
-export const { incrementPage, clearFilmlist } = filmSlice.actions;
+export const {incrementPage, clearFilmlist, chooseSortOption, setSortBy} = filmSlice.actions
+

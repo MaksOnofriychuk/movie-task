@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import {createAsyncThunk} from "@reduxjs/toolkit";
 import {
   castsApi,
   collectionApi,
@@ -26,9 +26,9 @@ import {
 
 export const getFilms = createAsyncThunk(
   "film/getFilms",
-  async function (page: number, { rejectWithValue }) {
+  async function ({page, sortBy}: {page: number, sortBy: string}, {rejectWithValue}) {
     try {
-      const data = await filmsApi.get(page);
+      const data = await filmsApi.get(page, sortBy);
       return data;
     } catch (error) {
       return rejectWithValue("error");

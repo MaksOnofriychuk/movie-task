@@ -8,6 +8,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import KeywordsMovies from "./pages/KeywordsMovies/KeywordsMovies";
 import Form from "./components/Form/Form";
+import {ROUTES} from "./utils/Routes";
 
 const App = () => {
   return (
@@ -23,11 +24,11 @@ const App = () => {
         }}
       >
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="popular" element={<Popular />} />
-          <Route path="/film:id" element={<Film />} />
-          <Route path="/keyword:id" element={<KeywordsMovies />} />
-          <Route path="/form" element={<Form />} />
+          <Route path={ROUTES.HOME} element={<Home />} />
+          <Route path={ROUTES.FILM} element={<Film />} />
+          <Route path={ROUTES.POPULAR} element={<Popular />}/>
+          <Route path={ROUTES.KEYWORDSMOVIES} element={<KeywordsMovies />} />
+          <Route path={ROUTES.FORM} element={<Form />} />
         </Routes>
       </Box>
       <Footer />
