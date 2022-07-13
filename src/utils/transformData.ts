@@ -104,9 +104,6 @@ export const transformFilmsData = (films: TServerFilmsList[]): TFilmList[] => {
   }));
 };
 
-//https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg
-//https://www.themoviedb.org/t/p/w440_and_h660_face/61PVJ06oecwvcBisoAQu6SDfdcS.jpg
-
 export const transformReviewsData = (reviews: TServerReviews[]): TReviews[] => {
   return reviews.map((review: TServerReviews) => ({
     author: review.author,

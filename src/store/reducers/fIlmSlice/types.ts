@@ -1,3 +1,5 @@
+import { TAddedFilm } from "../../../ComponentTypes/types";
+
 export type TInitialState = {
   filmList: TFilmList[];
   film: TFilm | null;
@@ -12,6 +14,7 @@ export type TInitialState = {
   error: string;
   page: number;
   likesData: TLikes[] | [];
+  addedFilm: TAddedFilm | null;
 };
 
 export type TLikes = {

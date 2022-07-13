@@ -1,16 +1,19 @@
-import {FC} from "react";
-import {Box} from "@mui/material";
-import {TFilmList} from "../../../store/reducers/fIlmSlice/types";
+import { FC } from "react";
+import { Box } from "@mui/material";
+import { TFilmList } from "../../../store/reducers/fIlmSlice/types";
 import HomeCard from "../../Home/components/HomeCard/HomeCard";
 import * as React from "react";
-import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import {getFilms} from "../../../store/actions/Film";
-import styles from './Popular.module.scss'
-import {incrementPage, clearFilmlist} from "../../../store/reducers/fIlmSlice/filmSlice";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { getFilms } from "../../../store/actions/Film";
+import styles from "./Popular.module.scss";
+import {
+  incrementPage,
+  clearFilmlist,
+} from "../../../store/reducers/fIlmSlice/filmSlice";
 import ButtonLoadMore from "../../../components/ButtonLoadMore/ButtonLoadMore";
-import {CircularStatic} from "../../../components/FirstScreen/components/CirclePercent/CirclePercent";
+import { CircularStatic } from "../../../components/FirstScreen/components/CirclePercent/CirclePercent";
 import LinearDeterminate from "../../../components/Loader/Loader";
-import {useObserver} from "../../../hooks/useObserver";
+import { useObserver } from "../../../hooks/useObserver";
 
 const Popular: FC = () => {
   const [loadButton, setLoadButton] = React.useState(true);
@@ -18,36 +21,36 @@ const Popular: FC = () => {
 
   const dispatch = useAppDispatch();
 
-  const {filmList, loading, error, page} = useAppSelector(
+  const { filmList, loading, error, page } = useAppSelector(
     (state) => state.filmReducer
   );
 
   useObserver(lastElement, loading, !loadButton, () => {
-    dispatch(incrementPage())
-  })
+    dispatch(incrementPage());
+  });
 
   React.useEffect(() => {
-      dispatch(getFilms(page));
+    dispatch(getFilms(page));
   }, [dispatch, page]);
 
   const loadMore = () => {
-    dispatch(incrementPage())
-    setLoadButton(false)
-  }
+    dispatch(incrementPage());
+    setLoadButton(false);
+  };
 
   React.useEffect(() => {
-    dispatch(clearFilmlist())
-  },[])
+    dispatch(clearFilmlist());
+  }, []);
 
   return (
     <section className={styles.popularSection}>
       <h1 className={styles.popularTitle}>Popular Movies</h1>
 
       <div className={styles.contentWrapper}>
-        <div className={styles.searchWrapper}/>
+        <div className={styles.searchWrapper} />
 
         <div className={styles.filmWrapper}>
-          {loading && <LinearDeterminate/>}
+          {loading && <LinearDeterminate />}
           {error && "Error"}
           <Box
             maxWidth="1150px"
@@ -68,19 +71,21 @@ const Popular: FC = () => {
                       id={film.id}
                     />
                     <div className={styles.filmCard__static}>
-                      <CircularStatic valuePercent={Math.round(film.voteAverage * 10)}/>
+                      <CircularStatic
+                        valuePercent={Math.round(film.voteAverage * 10)}
+                      />
                     </div>
                   </Box>
                 );
               })}
           </Box>
 
-          <div ref={lastElement}/>
-          {loadButton && <ButtonLoadMore title="Load More" func={loadMore}/>}
+          <div ref={lastElement} />
+          {loadButton && <ButtonLoadMore title="Load More" func={loadMore} />}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default Popular;

@@ -1,11 +1,11 @@
 import * as React from "react";
-import { COLOR } from "../../../../ColorTheme/Theme";
 import { TCircularStatic } from "../../../../ComponentTypes/types";
 import CircularProgress, {
   CircularProgressProps,
 } from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { theme } from "../../../../ColorTheme/Theme";
 
 function CircularProgressWithLabel(
   props: CircularProgressProps & { value: number }
@@ -40,12 +40,12 @@ function CircularProgressWithLabel(
           alignItems: "center",
           justifyContent: "center",
           zIndex: "1",
-          background: COLOR.main,
+          background: theme.palette.primary.main,
           borderRadius: "50%",
         }}
       >
         <Typography
-          sx={{ color: COLOR.white }}
+          sx={{ color: theme.palette.primary.contrastText }}
           variant="caption"
           component="div"
           color="text.secondary"

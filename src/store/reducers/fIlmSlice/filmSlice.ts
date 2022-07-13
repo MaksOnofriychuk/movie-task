@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { TAddedFilm } from "../../../ComponentTypes/types";
 import {
   transformCastsData,
   transformCollectionData,
@@ -49,6 +50,7 @@ const initialState: TInitialState = {
   error: "",
   page: 1,
   likesData: [],
+  addedFilm: null,
 };
 
 export const filmSlice = createSlice({
@@ -70,6 +72,9 @@ export const filmSlice = createSlice({
       } else {
         state.likesData = [...state.likesData, action.payload];
       }
+    },
+    addFilm(state, action: PayloadAction<TAddedFilm>) {
+      state.addedFilm = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -118,8 +123,6 @@ export const filmSlice = createSlice({
       .addCase(
         getImagesAndVideos.fulfilled,
         (state, action: PayloadAction<[TServerVideos[], TServerPhotos]>) => {
-          console.log(action.payload);
-
           const [videos, { backdrops, logos, posters, id }] = action.payload;
           const newMedia = {
             videos,
@@ -160,6 +163,6 @@ export const filmSlice = createSlice({
   },
 });
 
-export const { addLike } = filmSlice.actions;
+export const { addLike, addFilm } = filmSlice.actions;
 export default filmSlice.reducer;
 export const { incrementPage, clearFilmlist } = filmSlice.actions;

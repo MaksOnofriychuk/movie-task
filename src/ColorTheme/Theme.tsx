@@ -1,13 +1,21 @@
-export const COLOR: TCOLOR = {
-  black: "#000",
-  white: "#fff",
-  main: "#203445",
-  grey: "#696969",
+import { createTheme } from "@mui/material/styles";
+
+type TPrimaryColor = {
+  main: string;
+  dark: string;
+  light: string;
+  contrastText: string;
 };
 
-type TCOLOR = {
-  black: string;
-  white: string;
-  main: string;
-  grey: string;
+const PRIMARY: TPrimaryColor = {
+  main: "#203445",
+  dark: "#000",
+  light: "#696969",
+  contrastText: "#fff",
 };
+
+export const theme = createTheme({
+  palette: {
+    primary: PRIMARY,
+  },
+});

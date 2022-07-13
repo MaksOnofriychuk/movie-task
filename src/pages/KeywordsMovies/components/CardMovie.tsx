@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { COLOR } from "../../../ColorTheme/Theme";
 import { getDateMoviesKeywords } from "../../../utils/helpersMovie";
 import { TCardMovie } from "../../../ComponentTypes/types";
+import { theme } from "../../../ColorTheme/Theme";
 
 const CardMovie: React.FC<TCardMovie> = ({
   poster,
@@ -17,7 +17,7 @@ const CardMovie: React.FC<TCardMovie> = ({
         width: "100%",
         height: 160,
         border: 1,
-        borderColor: COLOR.grey,
+        borderColor: theme.palette.primary.light,
         display: "flex",
         borderRadius: "12px",
         mb: 3,
@@ -41,7 +41,10 @@ const CardMovie: React.FC<TCardMovie> = ({
         <Typography sx={{ fontWeight: "700", mt: "12px", fontSize: 14 }}>
           {title}
         </Typography>
-        <Typography variant="caption" sx={{ color: COLOR.grey, fontSize: 14 }}>
+        <Typography
+          variant="caption"
+          sx={{ color: theme.palette.primary.light, fontSize: 14 }}
+        >
           {getDateMoviesKeywords(releaseDate)}
         </Typography>
         <Typography

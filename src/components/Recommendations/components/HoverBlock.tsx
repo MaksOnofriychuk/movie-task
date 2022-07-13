@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Box, Typography } from "@mui/material";
 import { getFullTime } from "../../../utils/helpersMovie";
-import { COLOR } from "../../../ColorTheme/Theme";
 import { THoverBlockProps } from "../../../ComponentTypes/types";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import GradeIcon from "@mui/icons-material/Grade";
+import { theme } from "../../../ColorTheme/Theme";
 
 const HoverBlock: React.FC<THoverBlockProps> = ({ releaseDate }) => {
   return (
@@ -19,7 +19,7 @@ const HoverBlock: React.FC<THoverBlockProps> = ({ releaseDate }) => {
         width: "100%",
         display: "flex",
         height: "20%",
-        background: COLOR.white,
+        background: theme.palette.primary.contrastText,
         borderBottomLeftRadius: "12px",
         borderBottomRightRadius: "12px",
         justifyContent: "space-between",

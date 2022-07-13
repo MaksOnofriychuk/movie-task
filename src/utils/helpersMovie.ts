@@ -41,7 +41,7 @@ export const isPathCheck = (str: string): string => {
   return str !== null
     ? str.includes("/https://www.gravatar.com/avatar")
       ? str.slice(1, str.length)
-      : `https://www.gravatar.com/avatar${str}`
+      : `://www.gravatar.com/avatar${str}`
     : "https://www.gravatar.com/avatar/992eef352126a53d7e141bf9e8707576.jpg";
 };
 

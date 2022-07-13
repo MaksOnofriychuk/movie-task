@@ -2,16 +2,16 @@ import * as React from "react";
 import { Box, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { transformNumberFromString } from "../../utils/helpersMovie";
-import { COLOR } from "../../ColorTheme/Theme";
+import { TKeywords } from "../../store/reducers/fIlmSlice/types";
+import { useNavigate } from "react-router-dom";
+import { getKeywordsMovies } from "../../store/actions/Film";
+import { theme } from "../../ColorTheme/Theme";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import HomeIcon from "@mui/icons-material/Home";
 import SocialLink from "./components/SocialLink/SocialLink";
-import { TKeywords } from "../../store/reducers/fIlmSlice/types";
-import { useNavigate } from "react-router-dom";
-import { getKeywordsMovies } from "../../store/actions/Film";
 
 const FilmStatistic = () => {
   const dispatch = useAppDispatch();
@@ -107,12 +107,12 @@ const FilmStatistic = () => {
                   border: 1,
                   padding: "10px 10px",
                   borderColor: "transparent",
-                  background: COLOR.grey,
+                  background: theme.palette.primary.light,
                   borderRadius: "4px",
                   mr: 1,
                   mb: 1,
                   lineHeight: "0",
-                  color: COLOR.white,
+                  color: theme.palette.primary.contrastText,
                   letterSpacing: "0",
                   cursor: "pointer",
                 }}

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { COLOR } from "../../../../ColorTheme/Theme";
 import { TTabPanelProps } from "../../../../ComponentTypes/types";
 import { Comments } from "./data";
 import { useAppSelector } from "../../../../hooks/redux";
@@ -14,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import UserComment from "../UserComment/UserComment";
+import { theme } from "../../../../ColorTheme/Theme";
 
 function TabPanel(props: TTabPanelProps) {
   const { children, value, index, ...other } = props;
@@ -87,15 +87,15 @@ export default function SocialTabs() {
           sx={{
             "& .MuiTabs-indicator": {
               background: "#000",
-              color: COLOR.black,
+              color: theme.palette.primary.dark,
               height: "5px",
             },
           }}
         >
           <Tab
             sx={{
-              color: COLOR.black,
-              "&.Mui-selected": { color: COLOR.black },
+              color: theme.palette.primary.dark,
+              "&.Mui-selected": { color: theme.palette.primary.dark },
             }}
             onClick={changeReview}
             label={`Reviews ${reviews.length}`}
@@ -103,8 +103,8 @@ export default function SocialTabs() {
           />
           <Tab
             sx={{
-              color: COLOR.black,
-              "&.Mui-selected": { color: COLOR.black },
+              color: theme.palette.primary.dark,
+              "&.Mui-selected": { color: theme.palette.primary.dark },
             }}
             label="Discussions 12"
             {...a11yProps(1)}
@@ -159,7 +159,7 @@ export default function SocialTabs() {
                     pr: 2,
                     width: "50px",
                     height: "23px",
-                    background: COLOR.black,
+                    background: theme.palette.primary.dark,
                     borderRadius: "6px",
                   }}
                 >
@@ -168,8 +168,8 @@ export default function SocialTabs() {
                     inheritViewBox={false}
                     sx={{
                       "&.MuiSvgIcon-root": {
-                        color: COLOR.white,
-                        borderColor: COLOR.white,
+                        color: theme.palette.primary.contrastText,
+                        borderColor: theme.palette.primary.contrastText,
                         fontSize: "20px",
                         mr: "2px",
                       },
@@ -178,7 +178,7 @@ export default function SocialTabs() {
 
                   <Typography
                     sx={{
-                      color: COLOR.white,
+                      color: theme.palette.primary.contrastText,
                       fontSize: "16px",
                       display: "inline-block",
                     }}

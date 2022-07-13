@@ -2,7 +2,7 @@ import * as React from "react";
 import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useAppSelector } from "../../hooks/redux";
-import { COLOR } from "../../ColorTheme/Theme";
+import { theme } from "../../ColorTheme/Theme";
 
 const Collection = () => {
   const { film } = useAppSelector((state) => state.filmReducer);
@@ -53,7 +53,7 @@ const Collection = () => {
           <Typography
             variant="caption"
             sx={{
-              color: COLOR.white,
+              color: theme.palette.primary.contrastText,
               fontWeight: "700",
               fontSize: "1.75rem",
               display: "block",
@@ -64,7 +64,7 @@ const Collection = () => {
           <Typography
             variant="caption"
             sx={{
-              color: COLOR.white,
+              color: theme.palette.primary.contrastText,
               fontSize: "18px",
               mb: 2,
               display: "block",
@@ -76,7 +76,7 @@ const Collection = () => {
             sx={{
               lineHeight: "0px",
               background: "#2E2234",
-              color: COLOR.white,
+              color: theme.palette.primary.contrastText,
               borderRadius: "14px",
               padding: "8px 20px",
             }}

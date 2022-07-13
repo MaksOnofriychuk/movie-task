@@ -1,6 +1,5 @@
 import * as React from "react";
 import { FormControl, OutlinedInput } from "@mui/material";
-import { COLOR } from "../../../../ColorTheme/Theme";
 import { TModal } from "../../../../ComponentTypes/types";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -11,6 +10,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { theme } from "../../../../ColorTheme/Theme";
 
 const style = {
   position: "absolute" as "absolute",
@@ -98,7 +98,7 @@ const ModalWindow: React.FC<TModal> = ({
                   width: "100%",
                   height: 1,
                   border: 0.5,
-                  borderColor: COLOR.grey,
+                  borderColor: theme.palette.primary.light,
                   mt: 3,
                   mb: 2,
                 }}
@@ -150,7 +150,9 @@ const ModalWindow: React.FC<TModal> = ({
                     alignItems: "center",
                   }}
                 >
-                  <Typography sx={{ color: COLOR.white, p: 1 }}>
+                  <Typography
+                    sx={{ color: theme.palette.primary.contrastText, p: 1 }}
+                  >
                     English
                   </Typography>
                   <ArrowDropDownIcon sx={{ color: "#fff" }} />

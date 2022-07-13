@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useAppSelector } from "../../hooks/redux";
-import { COLOR } from "../../ColorTheme/Theme";
 import { TTabMediaPanelProps } from "../../ComponentTypes/types";
 import { Container } from "@mui/system";
 import Tabs from "@mui/material/Tabs";
@@ -11,6 +10,7 @@ import Popular from "./components/Popular/Popular";
 import Videos from "./components/Videos/Videos";
 import Backdrops from "./components/Backdrops/Backdrops";
 import Posters from "./components/Posters/Posters";
+import { theme } from "../../ColorTheme/Theme";
 
 function TabPanel(props: TTabMediaPanelProps) {
   const { children, value, index, ...other } = props;
@@ -77,8 +77,8 @@ export default function Media() {
                     aria-label="basic tabs example"
                     sx={{
                       "& .MuiTabs-indicator": {
-                        background: COLOR.black,
-                        color: COLOR.black,
+                        background: theme.palette.primary.dark,
+                        color: theme.palette.primary.dark,
                         height: "3px",
                       },
                       pl: 14,
@@ -87,8 +87,8 @@ export default function Media() {
                   >
                     <Tab
                       sx={{
-                        color: COLOR.black,
-                        "&.Mui-selected": { color: COLOR.black },
+                        color: theme.palette.primary.dark,
+                        "&.Mui-selected": { color: theme.palette.primary.dark },
                       }}
                       label="Most Popular"
                       {...a11yProps(0)}
@@ -96,7 +96,7 @@ export default function Media() {
                     <Tab
                       sx={{
                         color: "#000",
-                        "&.Mui-selected": { color: COLOR.black },
+                        "&.Mui-selected": { color: theme.palette.primary.dark },
                       }}
                       label="Videos 22"
                       {...a11yProps(1)}
@@ -104,7 +104,7 @@ export default function Media() {
                     <Tab
                       sx={{
                         color: "#000",
-                        "&.Mui-selected": { color: COLOR.black },
+                        "&.Mui-selected": { color: theme.palette.primary.dark },
                       }}
                       label="Backdrops 21"
                       {...a11yProps(2)}
@@ -112,7 +112,7 @@ export default function Media() {
                     <Tab
                       sx={{
                         color: "#000",
-                        "&.Mui-selected": { color: COLOR.black },
+                        "&.Mui-selected": { color: theme.palette.primary.dark },
                       }}
                       label="Posters 153"
                       {...a11yProps(3)}
