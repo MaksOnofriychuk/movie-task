@@ -4,13 +4,14 @@ import {CustomSelect} from './style';
 import {useAppDispatch} from "../../hooks/redux";
 import {chooseSortOption, setSortBy} from "../../store/reducers/fIlmSlice/filmSlice";
 import {sortOptions} from "./data";
+import { SelectChangeEvent } from "@mui/material";
 
 const SortSelect: FC = () => {
   const [option, setOption] = useState('popularity.desc');
 
   const dispatch = useAppDispatch();
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: SelectChangeEvent<unknown>): void => {
     setOption(event.target.value as string);
     dispatch(setSortBy(event.target.value as string));
     dispatch(chooseSortOption(true));

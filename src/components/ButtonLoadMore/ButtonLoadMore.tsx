@@ -2,7 +2,14 @@ import {FC} from 'react';
 import {Button} from "@mui/material";
 import {ButtonLoadMoreProps} from "../../ComponentTypes/types";
 
-const ButtonLoadMore: FC<ButtonLoadMoreProps> = ({title, onClick, hoverBgc, hoverColor, borderRadius, disabled}) => {
+const ButtonLoadMore: FC<ButtonLoadMoreProps> = ({
+                                                   title,
+                                                   onClick,
+                                                   hoverBackgroundColor,
+                                                   hoverColor,
+                                                   borderRadius,
+                                                   disabled
+                                                 }) => {
   return (
     <Button
       variant="contained"
@@ -19,7 +26,7 @@ const ButtonLoadMore: FC<ButtonLoadMoreProps> = ({title, onClick, hoverBgc, hove
         marginTop: '20px',
         '&:hover': {
           color: hoverColor,
-          backgroundColor: hoverBgc
+          backgroundColor: hoverBackgroundColor
         },
       }}
     >
@@ -31,6 +38,6 @@ const ButtonLoadMore: FC<ButtonLoadMoreProps> = ({title, onClick, hoverBgc, hove
 export default ButtonLoadMore;
 
 ButtonLoadMore.defaultProps = {
-  hoverBgc: "#01B4E4",
+  hoverBackgroundColor: "#01B4E4",
   hoverColor: "#fff",
 }

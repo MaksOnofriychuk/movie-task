@@ -73,7 +73,7 @@ const Popular: FC = () => {
           <SortBox/>
           <ButtonLoadMore
             title={"Search"}
-            hoverBgc={"#032541"}
+            hoverBackgroundColor={"#032541"}
             borderRadius={"25px"}
             disabled={sortOption === false}
             onClick={sortFilmList}

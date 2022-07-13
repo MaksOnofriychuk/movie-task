@@ -46,8 +46,13 @@ export type THoverBlockProps = {
 
 export type TPropsDropDown = {
   children?: React.ReactNode;
-  selectValue: Array<{title: string, path: string}>;
+  selectValue: TSelectValue[];
 };
+
+export type TSelectValue = {
+  title: string;
+  path: string
+}
 
 export type TSocialLinkProps = {
   children: React.ReactElement;
@@ -115,7 +120,7 @@ export type TUserCommentProps = {
 export type ButtonLoadMoreProps = {
   title: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
-  hoverBgc?: string;
+  hoverBackgroundColor?: string;
   hoverColor?: string;
   borderRadius?: string;
   disabled?: boolean;
@@ -127,3 +132,9 @@ export type TCardMovie = {
   subtitle: string;
   releaseDate: string;
 };
+
+export type TSortOptions = {
+  id: string;
+  title: string;
+  sortBy: string
+}

@@ -1,41 +1,44 @@
-export const sortOptions: Array<{id: number, title: string, sortBy: string}> = [
+import {nanoid} from "@reduxjs/toolkit";
+import {TSortOptions} from "../../ComponentTypes/types";
+
+export const sortOptions: TSortOptions[] = [
   {
-    id: 1,
+    id: nanoid(),
     title: 'Popularity Descending',
     sortBy: 'popularity.desc'
   },
   {
-    id: 2,
+    id: nanoid(),
     title: 'Popularity Ascending',
     sortBy: 'popularity.asc'
   },
   {
-    id: 3,
+    id: nanoid(),
     title: 'Rating Descending',
     sortBy: 'vote_average.desc'
   },
   {
-    id: 4,
+    id: nanoid(),
     title: 'Rating Ascending',
     sortBy: 'vote_average.asc'
   },
   {
-    id: 5,
+    id: nanoid(),
     title: 'Release Date Descending',
     sortBy: 'release_date.desc'
   },
   {
-    id: 6,
+    id: nanoid(),
     title: 'Release Date Ascending',
     sortBy: 'release_date.asc'
   },
   {
-    id: 7,
+    id: nanoid(),
     title: 'Title (A-Z)',
     sortBy: 'original_title.desc'
   },
   {
-    id: 8,
+    id: nanoid(),
     title: 'Title (Z-A)',
     sortBy: 'original_title.asc'
   }
