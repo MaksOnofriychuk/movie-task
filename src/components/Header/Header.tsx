@@ -2,7 +2,6 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import { DropDown } from "../DropDown/DropDown";
 import { menuItems, typographyText } from "./data";
-import { COLOR } from "../../ColorTheme/Theme";
 import { THeaderHideOnScrollProps } from "./types";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -17,6 +16,7 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
 import Form from "../Form/Form";
 import "./header.scss";
+import { theme } from "../../ColorTheme/Theme";
 
 function HideOnScroll(props: THeaderHideOnScrollProps) {
   const { children, window } = props;
@@ -40,7 +40,7 @@ export const Header = () => {
   return (
     <React.Fragment>
       <HideOnScroll>
-        <AppBar sx={{ background: COLOR.main }}>
+        <AppBar sx={{ background: theme.palette.primary.main }}>
           <Toolbar>
             <Container
               sx={{

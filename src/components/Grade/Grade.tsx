@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { COLOR } from "../../ColorTheme/Theme";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
 import ReportGmailerrorredIcon from "@mui/icons-material/ReportGmailerrorred";
 import GradeCard from "./components/GradeCard";
+import { theme } from "../../ColorTheme/Theme";
 
 const Grade = () => {
   return (
@@ -29,12 +29,18 @@ const Grade = () => {
               border: 1,
               width: "100%",
               borderRadius: "8px",
-              background: COLOR.black,
+              background: theme.palette.primary.dark,
               mb: "4px",
               pt: "2px",
             }}
           >
-            <Typography sx={{ m: 1, color: COLOR.white, fontWeight: "600" }}>
+            <Typography
+              sx={{
+                m: 1,
+                color: theme.palette.primary.contrastText,
+                fontWeight: "600",
+              }}
+            >
               100
             </Typography>
           </Box>
@@ -64,8 +70,8 @@ const Grade = () => {
           <Button
             sx={{
               border: 1,
-              background: COLOR.black,
-              color: COLOR.white,
+              background: theme.palette.primary.dark,
+              color: theme.palette.primary.contrastText,
               width: "130px",
               borderRadius: "14px",
             }}

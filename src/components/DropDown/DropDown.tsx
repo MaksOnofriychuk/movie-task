@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Button } from "@mui/material";
-import { COLOR } from "../../ColorTheme/Theme";
 import { TPropsDropDown } from "../../ComponentTypes/types";
+import { Link } from "react-router-dom";
+import { theme } from "../../ColorTheme/Theme";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import { Link } from "react-router-dom";
 
 export const DropDown: React.FC<TPropsDropDown> = ({
   children,
@@ -37,7 +37,7 @@ export const DropDown: React.FC<TPropsDropDown> = ({
         aria-controls="lock-menu"
         aria-label="when device is locked"
         aria-expanded={open ? "true" : undefined}
-        sx={{ color: COLOR.white, fontSize: "12px" }}
+        sx={{ color: theme.palette.primary.contrastText, fontSize: "12px" }}
         onClick={handleClickListItem}
       >
         {children}

@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Card, CardActionArea, CardMedia, Typography } from "@mui/material";
-import { COLOR } from "../../../../ColorTheme/Theme";
 import { TImageCardProps } from "../../../../ComponentTypes/types";
 import { Box } from "@mui/system";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
@@ -8,6 +7,7 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import BasicModal from "../ModalWindow/ModalWindow";
+import { theme } from "../../../../ColorTheme/Theme";
 
 const ImageCard: React.FC<TImageCardProps> = ({
   posterPath,
@@ -58,7 +58,7 @@ const ImageCard: React.FC<TImageCardProps> = ({
                 <ArrowDropUpIcon
                   sx={{
                     position: "absolute",
-                    color: COLOR.white,
+                    color: theme.palette.primary.contrastText,
                     top: "-10px",
                     right: "70px",
                   }}
@@ -66,7 +66,7 @@ const ImageCard: React.FC<TImageCardProps> = ({
                 <ArrowRightIcon
                   sx={{
                     position: "absolute",
-                    color: COLOR.white,
+                    color: theme.palette.primary.contrastText,
                     top: "0",
                     right: "60px",
                   }}
@@ -74,7 +74,7 @@ const ImageCard: React.FC<TImageCardProps> = ({
                 <ArrowDropDownIcon
                   sx={{
                     position: "absolute",
-                    color: COLOR.white,
+                    color: theme.palette.primary.contrastText,
                     top: "10px",
                     right: "70px",
                   }}
@@ -82,14 +82,16 @@ const ImageCard: React.FC<TImageCardProps> = ({
                 <ArrowLeftIcon
                   sx={{
                     position: "absolute",
-                    color: COLOR.white,
+                    color: theme.palette.primary.contrastText,
                     top: "0",
                     right: "80px",
                   }}
                 />
               </Box>
 
-              <Typography sx={{ color: COLOR.white }}>Expands</Typography>
+              <Typography sx={{ color: theme.palette.primary.contrastText }}>
+                Expands
+              </Typography>
             </Box>
           ) : null}
 
@@ -97,7 +99,7 @@ const ImageCard: React.FC<TImageCardProps> = ({
             sx={{
               width: "100%",
               height: "50px",
-              background: COLOR.main,
+              background: theme.palette.primary.main,
             }}
           >
             <Box>
@@ -109,13 +111,20 @@ const ImageCard: React.FC<TImageCardProps> = ({
                 />
                 <Box sx={{ ml: "10px" }}>
                   <Typography
-                    sx={{ lineHeight: "0", color: COLOR.white }}
+                    sx={{
+                      lineHeight: "0",
+                      color: theme.palette.primary.contrastText,
+                    }}
                     variant="caption"
                     component="span"
                   >
                     Now Streaming
                   </Typography>
-                  <Typography sx={{ color: COLOR.white }}>Watch Now</Typography>
+                  <Typography
+                    sx={{ color: theme.palette.primary.contrastText }}
+                  >
+                    Watch Now
+                  </Typography>
                 </Box>
               </Box>
             </Box>

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { TForm } from "./types";
-import { COLOR } from "../../ColorTheme/Theme";
+import { theme } from "../../ColorTheme/Theme";
 import { style, stylesForm, stylesImg } from "./styles";
 import { TAddedFilm } from "../../ComponentTypes/types";
 import { Button, Stack, Typography } from "@mui/material";
@@ -141,8 +141,8 @@ const Form: React.FC<TForm> = ({ open, handleClose }) => {
                     width: "100%",
                     position: "relative",
                     "&.MuiButton-root": {
-                      color: COLOR.black,
-                      borderColor: COLOR.black,
+                      color: theme.palette.primary.dark,
+                      borderColor: theme.palette.primary.dark,
                       fontSize: 14,
                       cursor: "pointer",
                     },

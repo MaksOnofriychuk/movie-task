@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { Button, Container, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { getKeywordsMovies } from "../../store/actions/Film";
-import { COLOR } from "../../ColorTheme/Theme";
+import { theme } from "../../ColorTheme/Theme";
 import CardMovie from "./components/CardMovie";
 
 const KeywordsMovies = () => {
@@ -41,7 +41,7 @@ const KeywordsMovies = () => {
         sx={{
           width: "100%",
           height: 120,
-          background: COLOR.main,
+          background: theme.palette.primary.main,
         }}
       >
         <Box
@@ -56,11 +56,18 @@ const KeywordsMovies = () => {
         >
           <Typography
             variant="h3"
-            sx={{ pl: 4, fontWeight: "500", color: COLOR.white }}
+            sx={{
+              pl: 4,
+              fontWeight: "500",
+              color: theme.palette.primary.contrastText,
+            }}
           >
             magic
           </Typography>
-          <Typography variant="h4" sx={{ pr: 4, color: COLOR.grey }}>
+          <Typography
+            variant="h4"
+            sx={{ pr: 4, color: theme.palette.primary.light }}
+          >
             {keywordsMovies.length} movies
           </Typography>
         </Box>

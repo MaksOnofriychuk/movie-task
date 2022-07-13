@@ -1,9 +1,9 @@
 import * as React from "react";
-import { COLOR } from "../../ColorTheme/Theme";
 import { TPopupProps } from "../../ComponentTypes/types";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { theme } from "../../ColorTheme/Theme";
 
 export const Popup: React.FC<TPopupProps> = ({ children }) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
@@ -25,7 +25,10 @@ export const Popup: React.FC<TPopupProps> = ({ children }) => {
     <div>
       <Button
         size="small"
-        sx={{ color: COLOR.white, borderColor: COLOR.white }}
+        sx={{
+          color: theme.palette.primary.contrastText,
+          borderColor: theme.palette.primary.contrastText,
+        }}
         aria-describedby={id}
         variant="text"
         onClick={handleClick}

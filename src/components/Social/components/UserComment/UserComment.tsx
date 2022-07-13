@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { COLOR } from "../../../../ColorTheme/Theme";
 import { TUserCommentProps } from "../../../../ComponentTypes/types";
 import userCommentPhoto1 from "../../../../assets/img/user-comment-img1.jpeg";
+import { theme } from "../../../../ColorTheme/Theme";
 
 const UserComment: React.FC<TUserCommentProps> = ({
   text,
@@ -18,7 +18,7 @@ const UserComment: React.FC<TUserCommentProps> = ({
         width: "100%",
         height: "56px",
         border: 1,
-        boxShadow: `0px 0px 5px ${COLOR.black}`,
+        boxShadow: `0px 0px 5px ${theme.palette.primary.dark}`,
         borderRadius: "6px",
         borderColor: "transparent",
       }}
@@ -49,27 +49,36 @@ const UserComment: React.FC<TUserCommentProps> = ({
         >
           {text}
         </Typography>
-        <Typography sx={{ ml: 6, fontSize: "14px", color: COLOR.grey }}>
+        <Typography
+          sx={{ ml: 6, fontSize: "14px", color: theme.palette.primary.light }}
+        >
           {status}
         </Typography>
         <Typography
           variant="caption"
-          sx={{ ml: 6, fontSize: "14px", color: COLOR.grey }}
+          sx={{ ml: 6, fontSize: "14px", color: theme.palette.primary.light }}
         >
           {count}
         </Typography>
         <Box sx={{ ml: 12 }}>
-          <Typography variant="caption" sx={{ color: COLOR.grey }}>
+          <Typography
+            variant="caption"
+            sx={{ color: theme.palette.primary.light }}
+          >
             {date}
           </Typography>
           <Typography
             variant="caption"
-            sx={{ display: "flex", color: COLOR.grey }}
+            sx={{ display: "flex", color: theme.palette.primary.light }}
           >
             by
             <Typography
               variant="caption"
-              sx={{ fontWeight: "700", ml: "4px", color: COLOR.black }}
+              sx={{
+                fontWeight: "700",
+                ml: "4px",
+                color: theme.palette.primary.dark,
+              }}
             >
               {nameBy}
             </Typography>

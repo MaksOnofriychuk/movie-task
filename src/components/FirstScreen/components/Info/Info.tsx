@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { CircularStatic } from "../CirclePercent/CirclePercent";
-import { COLOR } from "../../../../ColorTheme/Theme";
 import { TInfoProps } from "../../../../ComponentTypes/types";
 import { useLocation } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/redux";
@@ -17,6 +16,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import GradeIcon from "@mui/icons-material/Grade";
 import Tooltip from "@mui/material/Tooltip";
+import { theme } from "../../../../ColorTheme/Theme";
 
 const Info: React.FC<TInfoProps> = ({
   voteAverage,
@@ -61,7 +61,7 @@ const Info: React.FC<TInfoProps> = ({
     <Box sx={{ mt: "100px" }}>
       <Typography
         sx={{
-          color: COLOR.white,
+          color: theme.palette.primary.contrastText,
           cursor: "pointer",
           transition: "all 0.3s ease-in-out",
           "&:hover": { color: "rgb(187, 177, 177)" },
@@ -88,7 +88,7 @@ const Info: React.FC<TInfoProps> = ({
         <Typography
           sx={{
             position: "relative",
-            color: COLOR.white,
+            color: theme.palette.primary.contrastText,
             fontFamily: "14px",
           }}
           variant="overline"
@@ -106,7 +106,7 @@ const Info: React.FC<TInfoProps> = ({
               right: "-10px",
               width: "4px",
               height: "4px",
-              backgroundColor: COLOR.white,
+              backgroundColor: theme.palette.primary.contrastText,
               borderRadius: "50%",
             }}
           ></Box>
@@ -116,7 +116,7 @@ const Info: React.FC<TInfoProps> = ({
           return (
             <Typography
               sx={{
-                color: COLOR.white,
+                color: theme.palette.primary.contrastText,
                 pl: "15px",
                 position: "relative",
                 cursor: "pointer",
@@ -134,7 +134,7 @@ const Info: React.FC<TInfoProps> = ({
 
         <Typography
           sx={{
-            color: COLOR.white,
+            color: theme.palette.primary.contrastText,
             pl: "15px",
             fontSize: "14px",
             position: "relative",
@@ -150,7 +150,7 @@ const Info: React.FC<TInfoProps> = ({
               left: "5px",
               width: "4px",
               height: "4px",
-              backgroundColor: COLOR.white,
+              backgroundColor: theme.palette.primary.contrastText,
               borderRadius: "50%",
             }}
           ></Box>
@@ -167,12 +167,20 @@ const Info: React.FC<TInfoProps> = ({
         <CircularStatic valuePercent={percentageOfPopularity} />
         <Box sx={{ display: "inline-block", ml: "20px", mr: "20px" }}>
           <Typography
-            sx={{ color: COLOR.white, fontWeight: "bold", mb: "10px" }}
+            sx={{
+              color: theme.palette.primary.contrastText,
+              fontWeight: "bold",
+              mb: "10px",
+            }}
           >
             User
           </Typography>
           <Typography
-            sx={{ color: COLOR.white, fontWeight: "bold", lineHeight: "0" }}
+            sx={{
+              color: theme.palette.primary.contrastText,
+              fontWeight: "bold",
+              lineHeight: "0",
+            }}
           >
             Score
           </Typography>
@@ -197,7 +205,12 @@ const Info: React.FC<TInfoProps> = ({
                 borderRadius: "50%",
               }}
             >
-              <ViewListIcon sx={{ fontSize: "16px", color: COLOR.white }} />
+              <ViewListIcon
+                sx={{
+                  fontSize: "16px",
+                  color: theme.palette.primary.contrastText,
+                }}
+              />
             </Typography>
           </Tooltip>
           <Tooltip onClick={toggleLike} title="Mark as favorite" arrow>
@@ -206,16 +219,23 @@ const Info: React.FC<TInfoProps> = ({
                 display: "flex",
                 width: "40px",
                 justifyContent: "center",
-                backgroundColor: COLOR.main,
+                backgroundColor: theme.palette.primary.main,
                 alignItems: "center",
                 height: "40px",
                 borderRadius: "50%",
               }}
             >
               {!likes ? (
-                <FavoriteIcon sx={{ fontSize: "16px", color: COLOR.white }} />
+                <FavoriteIcon
+                  sx={{
+                    fontSize: "16px",
+                    color: theme.palette.primary.contrastText,
+                  }}
+                />
               ) : (
-                <FavoriteIcon sx={{ fontSize: "16px", color: COLOR.black }} />
+                <FavoriteIcon
+                  sx={{ fontSize: "16px", color: theme.palette.primary.dark }}
+                />
               )}
             </Typography>
           </Tooltip>
@@ -225,13 +245,18 @@ const Info: React.FC<TInfoProps> = ({
                 display: "flex",
                 width: "40px",
                 justifyContent: "center",
-                backgroundColor: COLOR.main,
+                backgroundColor: theme.palette.primary.main,
                 alignItems: "center",
                 height: "40px",
                 borderRadius: "50%",
               }}
             >
-              <BookmarkIcon sx={{ fontSize: "16px", color: COLOR.white }} />
+              <BookmarkIcon
+                sx={{
+                  fontSize: "16px",
+                  color: theme.palette.primary.contrastText,
+                }}
+              />
             </Typography>
           </Tooltip>
           <Tooltip title="Rate it!" arrow>
@@ -240,13 +265,18 @@ const Info: React.FC<TInfoProps> = ({
                 display: "flex",
                 width: "40px",
                 justifyContent: "center",
-                backgroundColor: COLOR.main,
+                backgroundColor: theme.palette.primary.main,
                 alignItems: "center",
                 height: "40px",
                 borderRadius: "50%",
               }}
             >
-              <GradeIcon sx={{ fontSize: "16px", color: COLOR.white }} />
+              <GradeIcon
+                sx={{
+                  fontSize: "16px",
+                  color: theme.palette.primary.contrastText,
+                }}
+              />
             </Typography>
           </Tooltip>
         </Box>
@@ -274,7 +304,7 @@ const Info: React.FC<TInfoProps> = ({
           className="backstory-text"
           variant="body2"
           component="div"
-          sx={{ maxWidth: "80%", color: COLOR.white }}
+          sx={{ maxWidth: "80%", color: theme.palette.primary.contrastText }}
         >
           {overview}
         </Typography>
