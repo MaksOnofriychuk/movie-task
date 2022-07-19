@@ -4,7 +4,7 @@ import {CustomSelect} from './style';
 import {useAppDispatch} from "../../hooks/redux";
 import {chooseSortOption, setSortBy} from "../../store/reducers/fIlmSlice/filmSlice";
 import {sortOptions} from "./data";
-import { SelectChangeEvent } from "@mui/material";
+import {SelectChangeEvent} from "@mui/material";
 
 const SortSelect: FC = () => {
   const [option, setOption] = useState('popularity.desc');

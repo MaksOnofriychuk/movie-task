@@ -138,3 +138,10 @@ export type TSortOptions = {
   title: string;
   sortBy: string
 }
+
+export type TCheckBoxOptions = {
+  id: string;
+  title: string;
+  withWatchFilter: string;
+  checked: boolean,
+}

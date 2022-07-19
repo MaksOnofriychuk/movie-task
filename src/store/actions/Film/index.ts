@@ -13,7 +13,7 @@ import {
   videosApi,
 } from "../../../api/Films";
 import {
-  TKeywords,
+  TKeywords, TParamsType,
   TServerCasts,
   TServerCollection,
   TServerFilm,
@@ -26,9 +26,9 @@ import {
 
 export const getFilms = createAsyncThunk(
   "film/getFilms",
-  async function ({page, sortBy}: {page: number, sortBy: string}, {rejectWithValue}) {
+  async function (params: TParamsType, {rejectWithValue}) {
     try {
-      const data = await filmsApi.get(page, sortBy);
+      const data = await filmsApi.get(params);
       return data;
     } catch (error) {
       return rejectWithValue("error");

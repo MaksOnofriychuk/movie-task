@@ -10,10 +10,9 @@ export type TInitialState = {
   keywordsMovies: [] | TKeywordsMovies[];
   loading: boolean;
   error: string;
-  page: number;
   sortOption: boolean;
-  sortBy: string;
   likesData: TLikes[] | [];
+  params: TParamsType
 };
 
 export type TLikes = {
@@ -449,3 +448,10 @@ export type TKeywordsMovies = {
   voteAverage: number;
   voteCount: number;
 };
+
+export type TParamsType = {
+  page: number;
+  sortBy: string;
+  watchRegion: string;
+  withWatchFilter: string[];
+}

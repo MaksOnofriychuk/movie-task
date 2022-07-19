@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
   transformCastsData,
   transformCollectionData,
@@ -34,6 +34,7 @@ import {
   TServerReviews,
   TServerVideos,
 } from "./types";
+import {TCheckBoxOptions} from "../../../ComponentTypes/types";
 
 const initialState: TInitialState = {
   filmList: [],
@@ -47,10 +48,14 @@ const initialState: TInitialState = {
   keywordsMovies: [],
   loading: false,
   error: "",
-  page: 1,
   sortOption: false,
-  sortBy: 'popularity.desc',
   likesData: [],
+  params: {
+    page: 1,
+    sortBy: 'popularity.desc',
+    watchRegion: 'US',
+    withWatchFilter: []
+  }
 };
 
 export const filmSlice = createSlice({
@@ -58,17 +63,21 @@ export const filmSlice = createSlice({
   initialState,
   reducers: {
     incrementPage(state) {
-      state.page = state.page + 1;
+      state.params.page = state.params.page + 1;
     },
     clearFilmlist(state) {
       state.filmList = [];
-      state.page = 1;
+      state.params.page = 1;
     },
     chooseSortOption(state, action: PayloadAction<boolean>) {
       state.sortOption = action.payload;
     },
     setSortBy(state, action: PayloadAction<string>) {
-      state.sortBy = action.payload;
+      state.params.sortBy = action.payload;
+    },
+    setWithWatchFilter(state, action: PayloadAction<TCheckBoxOptions[]>) {
+      const arr = action.payload;
+      state.params.withWatchFilter = arr.filter(item => item.checked).map(item => item.withWatchFilter);
     },
     addLike(state, action: PayloadAction<TLikes>) {
       if (state.likesData.find((like) => like.link === action.payload.link)) {
@@ -170,5 +179,5 @@ export const filmSlice = createSlice({
 
 export const { addLike } = filmSlice.actions;
 export default filmSlice.reducer;
-export const {incrementPage, clearFilmlist, chooseSortOption, setSortBy} = filmSlice.actions
+export const {incrementPage, clearFilmlist, chooseSortOption, setSortBy, setWithWatchFilter} = filmSlice.actions
 
