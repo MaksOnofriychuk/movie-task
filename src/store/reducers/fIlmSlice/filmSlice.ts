@@ -34,7 +34,7 @@ import {
   TServerReviews,
   TServerVideos,
 } from "./types";
-import {TCheckBoxOptions} from "../../../ComponentTypes/types";
+import {TCheckBoxOptions, TGenreList} from "../../../ComponentTypes/types";
 
 const initialState: TInitialState = {
   filmList: [],
@@ -56,7 +56,8 @@ const initialState: TInitialState = {
     watchRegion: 'US',
     withWatchFilter: [],
     dateFrom: '',
-    dateTo: ''
+    dateTo: '',
+    genres: []
   }
 };
 
@@ -90,11 +91,15 @@ export const filmSlice = createSlice({
         state.likesData = [...state.likesData, action.payload];
       }
     },
-    addDateFrom(state, action: PayloadAction<string>){
+    addDateFrom(state, action: PayloadAction<string>) {
       state.params.dateFrom = action.payload;
     },
-    addDateTo(state, action: PayloadAction<string>){
+    addDateTo(state, action: PayloadAction<string>) {
       state.params.dateTo = action.payload;
+    },
+    addGenres(state, action: PayloadAction<TGenreList[]>) {
+      const arr = action.payload;
+      state.params.genres = arr.filter(item => item.picked).map(item => item.id.toString());
     }
   },
   extraReducers: (builder) => {
@@ -145,7 +150,7 @@ export const filmSlice = createSlice({
         (state, action: PayloadAction<[TServerVideos[], TServerPhotos]>) => {
           console.log(action.payload);
 
-          const [videos, { backdrops, logos, posters, id }] = action.payload;
+          const [videos, {backdrops, logos, posters, id}] = action.payload;
           const newMedia = {
             videos,
             backdrops,
@@ -185,7 +190,16 @@ export const filmSlice = createSlice({
   },
 });
 
-export const { addLike } = filmSlice.actions;
+export const {addLike} = filmSlice.actions;
 export default filmSlice.reducer;
-export const {incrementPage, clearFilmlist, chooseSortOption, setSortBy, setWithWatchFilter, addDateFrom, addDateTo} = filmSlice.actions
+export const {
+  incrementPage,
+  clearFilmlist,
+  chooseSortOption,
+  setSortBy,
+  setWithWatchFilter,
+  addDateFrom,
+  addDateTo,
+  addGenres
+} = filmSlice.actions
 

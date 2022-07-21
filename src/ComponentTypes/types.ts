@@ -153,3 +153,9 @@ export type MaterialUIPickerProps = {
   maxData: Date | undefined;
 }
 
+export type TGenreList = {
+  id: number;
+  name: string;
+  picked: boolean;
+}
+

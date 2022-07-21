@@ -456,4 +456,5 @@ export type TParamsType = {
   withWatchFilter: string[];
   dateFrom: string;
   dateTo: string;
+  genres: string[];
 }

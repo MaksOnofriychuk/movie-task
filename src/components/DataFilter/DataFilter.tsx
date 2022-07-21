@@ -1,6 +1,8 @@
 import {Box} from "@mui/material";
 import MaterialUIPicker from "../DataPicker/DataPicker";
 import {useAppSelector} from "../../hooks/redux";
+import Typography from "@mui/material/Typography";
+import * as React from "react";
 
 const DataFilter = () => {
   const {params} = useAppSelector(
@@ -19,7 +21,7 @@ const DataFilter = () => {
         justifyContent: 'space-between'
       }}
       >
-        from
+        <Typography>from</Typography>
         <MaterialUIPicker dataType='from' minData={minFilmDate} maxData={new Date(params.dateTo)}/>
       </Box>
       <Box sx={{
@@ -28,7 +30,7 @@ const DataFilter = () => {
         marginTop: '15px',
         justifyContent: 'space-between'
       }}>
-        to
+        <Typography>to</Typography>
         <MaterialUIPicker defaultValue='2023-01-19T21:00:00' dataType='to' minData={new Date(params.dateFrom)} maxData={maxFilmDate}/>
       </Box>
     </Box>

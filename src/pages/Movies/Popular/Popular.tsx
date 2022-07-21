@@ -71,7 +71,7 @@ const Popular: FC = () => {
         display: 'flex',
         justifyContent: 'space-around'
       }}>
-        <Box sx={{width: '18%'}}>
+        <Box sx={{width: '20%'}}>
           <SortBox/>
           <FilterBox/>
           <ButtonLoadMore

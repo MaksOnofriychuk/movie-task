@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CheckBoxFilter from "../CheckBoxFilter/CheckBoxFilter";
 import DataFilter from "../DataFilter/DataFilter";
+import GenreFilter from "../GenreFilter/GenreFilter";
 
 const FilterBox = () => {
   return (
@@ -27,30 +28,30 @@ const FilterBox = () => {
         display: 'flex',
         flexDirection: 'column',
       }}>
-        Availabilities
-        <CheckBoxFilter />
+        <Typography>Availabilities</Typography>
+        <CheckBoxFilter/>
       </AccordionDetails>
       <AccordionDetails sx={{
         borderTop: '1px solid #e3e3e3',
         display: 'flex',
         flexDirection: 'column',
       }}>
-        Release Dates
-        <DataFilter />
+        <DataFilter/>
       </AccordionDetails>
       <AccordionDetails sx={{
         borderTop: '1px solid #e3e3e3',
         display: 'flex',
         flexDirection: 'column',
       }}>
-        Genres
+        <Typography sx={{marginBottom: '10px'}}>Genres</Typography>
+        <GenreFilter/>
       </AccordionDetails>
       <AccordionDetails sx={{
         borderTop: '1px solid #e3e3e3',
         display: 'flex',
         flexDirection: 'column',
       }}>
-        Language
+        <Typography>Language</Typography>
       </AccordionDetails>
     </Accordion>
   );
