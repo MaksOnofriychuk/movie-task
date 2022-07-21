@@ -457,4 +457,5 @@ export type TParamsType = {
   dateFrom: string;
   dateTo: string;
   genres: string[];
+  minVotes: number;
 }

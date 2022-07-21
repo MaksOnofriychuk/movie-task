@@ -57,7 +57,8 @@ const initialState: TInitialState = {
     withWatchFilter: [],
     dateFrom: '',
     dateTo: '',
-    genres: []
+    genres: [],
+    minVotes: 0
   }
 };
 
@@ -100,7 +101,10 @@ export const filmSlice = createSlice({
     addGenres(state, action: PayloadAction<TGenreList[]>) {
       const arr = action.payload;
       state.params.genres = arr.filter(item => item.picked).map(item => item.id.toString());
-    }
+    },
+    addMinVotes(state, action: PayloadAction<number>) {
+      state.params.minVotes = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -200,6 +204,7 @@ export const {
   setWithWatchFilter,
   addDateFrom,
   addDateTo,
-  addGenres
+  addGenres,
+  addMinVotes
 } = filmSlice.actions
 

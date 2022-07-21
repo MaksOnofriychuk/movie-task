@@ -23,7 +23,8 @@ export const filmsApi = {get: async (params: TParamsType): Promise<TServerFilmsL
         with_watch_monetization_types: params.withWatchFilter.join(),
         'release_date.gte': params.dateFrom,
         'release_date.lte': params.dateTo,
-        with_genres: params.genres.join()
+        with_genres: params.genres.join(),
+        'vote_count.gte': params.minVotes
       }
     });
 

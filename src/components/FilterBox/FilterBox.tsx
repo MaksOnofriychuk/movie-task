@@ -7,6 +7,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CheckBoxFilter from "../CheckBoxFilter/CheckBoxFilter";
 import DataFilter from "../DataFilter/DataFilter";
 import GenreFilter from "../GenreFilter/GenreFilter";
+import SliderFilter from "../SliderFilter/SliderFilter";
 
 const FilterBox = () => {
   return (
@@ -51,7 +52,8 @@ const FilterBox = () => {
         display: 'flex',
         flexDirection: 'column',
       }}>
-        <Typography>Language</Typography>
+        <Typography sx={{marginBottom: '15px'}}>Minimum User Votes</Typography>
+        <SliderFilter />
       </AccordionDetails>
     </Accordion>
   );

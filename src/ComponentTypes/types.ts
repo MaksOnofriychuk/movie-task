@@ -159,3 +159,9 @@ export type TGenreList = {
   picked: boolean;
 }
 
+export type TMarks = {
+  value: number;
+  label?: string;
+  large?: boolean
+}
+
