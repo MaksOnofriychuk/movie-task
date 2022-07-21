@@ -21,6 +21,8 @@ export const filmsApi = {get: async (params: TParamsType): Promise<TServerFilmsL
         sort_by: params.sortBy,
         watch_region: params.watchRegion,
         with_watch_monetization_types: params.withWatchFilter.join(),
+        'release_date.gte': params.dateFrom,
+        'release_date.lte': params.dateTo
       }
     });
 

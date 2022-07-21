@@ -54,7 +54,9 @@ const initialState: TInitialState = {
     page: 1,
     sortBy: 'popularity.desc',
     watchRegion: 'US',
-    withWatchFilter: []
+    withWatchFilter: [],
+    dateFrom: '',
+    dateTo: ''
   }
 };
 
@@ -88,6 +90,12 @@ export const filmSlice = createSlice({
         state.likesData = [...state.likesData, action.payload];
       }
     },
+    addDateFrom(state, action: PayloadAction<string>){
+      state.params.dateFrom = action.payload;
+    },
+    addDateTo(state, action: PayloadAction<string>){
+      state.params.dateTo = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -179,5 +187,5 @@ export const filmSlice = createSlice({
 
 export const { addLike } = filmSlice.actions;
 export default filmSlice.reducer;
-export const {incrementPage, clearFilmlist, chooseSortOption, setSortBy, setWithWatchFilter} = filmSlice.actions
+export const {incrementPage, clearFilmlist, chooseSortOption, setSortBy, setWithWatchFilter, addDateFrom, addDateTo} = filmSlice.actions
 

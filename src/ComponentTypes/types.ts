@@ -145,3 +145,11 @@ export type TCheckBoxOptions = {
   withWatchFilter: string;
   checked: boolean,
 }
+
+export type MaterialUIPickerProps = {
+  defaultValue?: string,
+  dataType: string;
+  minData: Date | undefined;
+  maxData: Date | undefined;
+}
+

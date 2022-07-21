@@ -1,24 +1,23 @@
 import MenuItem from '@mui/material/MenuItem';
 import React, {FC, useState} from 'react';
-import {CustomSelect} from './style';
 import {useAppDispatch} from "../../hooks/redux";
 import {chooseSortOption, setSortBy} from "../../store/reducers/fIlmSlice/filmSlice";
 import {sortOptions} from "./data";
-import {SelectChangeEvent} from "@mui/material";
+import {Select, SelectChangeEvent} from "@mui/material";
 
 const SortSelect: FC = () => {
-  const [option, setOption] = useState('popularity.desc');
+  const [option, setOption] = useState<string>('popularity.desc');
 
   const dispatch = useAppDispatch();
 
-  const handleChange = (event: SelectChangeEvent<unknown>): void => {
-    setOption(event.target.value as string);
-    dispatch(setSortBy(event.target.value as string));
+  const handleChange = (event: SelectChangeEvent<string>) => {
+    setOption(event.target.value);
+    dispatch(setSortBy(event.target.value));
     dispatch(chooseSortOption(true));
   };
 
   return (
-    <CustomSelect
+    <Select
       value={option}
       onChange={handleChange}
       MenuProps={{
@@ -34,6 +33,17 @@ const SortSelect: FC = () => {
           },
         },
       }}
+      sx={{
+        marginTop: '10px',
+        width: '100%',
+        height: '35px',
+        backgroundColor: '#CED3DB',
+        borderRadius: '4px',
+        fontSize: '15px',
+        '& .MuiOutlinedInput-notchedOutline': {
+          border: 'none',
+        },
+      }}
     >
       {
         sortOptions.map(item => {
@@ -42,7 +52,7 @@ const SortSelect: FC = () => {
           )
         })
       }
-    </CustomSelect>
+    </Select>
   );
 };
 

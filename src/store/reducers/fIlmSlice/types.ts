@@ -454,4 +454,6 @@ export type TParamsType = {
   sortBy: string;
   watchRegion: string;
   withWatchFilter: string[];
+  dateFrom: string;
+  dateTo: string;
 }

@@ -5,6 +5,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CheckBoxFilter from "../CheckBoxFilter/CheckBoxFilter";
+import DataFilter from "../DataFilter/DataFilter";
 
 const FilterBox = () => {
   return (
@@ -35,6 +36,7 @@ const FilterBox = () => {
         flexDirection: 'column',
       }}>
         Release Dates
+        <DataFilter />
       </AccordionDetails>
       <AccordionDetails sx={{
         borderTop: '1px solid #e3e3e3',
