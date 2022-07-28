@@ -8,7 +8,7 @@ import SortSelect from "../SortSelect/SortSelect";
 
 const SortBox = () => {
   return (
-    <Accordion disableGutters sx={{
+    <Accordion disableGutters defaultExpanded sx={{
       border: '1px solid #e3e3e3',
       boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
     }}>

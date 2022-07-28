@@ -50,9 +50,11 @@ const initialState: TInitialState = {
   error: "",
   sortOption: false,
   likesData: [],
+  moviesType: '',
+  paramsLoaded: false,
   params: {
     page: 1,
-    sortBy: 'popularity.desc',
+    sortBy: '',
     watchRegion: 'US',
     withWatchFilter: [],
     dateFrom: '',
@@ -105,6 +107,12 @@ export const filmSlice = createSlice({
     addMinVotes(state, action: PayloadAction<number>) {
       state.params.minVotes = action.payload;
     },
+    chooseMoviesType(state, action: PayloadAction<string>){
+      state.moviesType = action.payload;
+    },
+    paramsIsLoad(state, action: PayloadAction<boolean>){
+      state.paramsLoaded = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -205,6 +213,8 @@ export const {
   addDateFrom,
   addDateTo,
   addGenres,
-  addMinVotes
+  addMinVotes,
+  chooseMoviesType,
+  paramsIsLoad
 } = filmSlice.actions
 

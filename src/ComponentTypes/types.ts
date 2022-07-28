@@ -147,7 +147,7 @@ export type TCheckBoxOptions = {
 }
 
 export type MaterialUIPickerProps = {
-  defaultValue?: string,
+  defaultValue: Date | string,
   dataType: string;
   minData: Date | undefined;
   maxData: Date | undefined;

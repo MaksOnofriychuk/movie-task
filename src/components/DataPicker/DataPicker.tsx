@@ -7,7 +7,7 @@ import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {DesktopDatePicker} from '@mui/x-date-pickers/DesktopDatePicker';
 import {MaterialUIPickerProps} from "../../ComponentTypes/types";
 import {useAppDispatch} from "../../hooks/redux";
-import {addDateFrom, addDateTo, chooseSortOption} from "../../store/reducers/fIlmSlice/filmSlice";
+import {addDateFrom, addDateTo, chooseSortOption, paramsIsLoad,} from "../../store/reducers/fIlmSlice/filmSlice";
 
 const MaterialUIPicker: FC<MaterialUIPickerProps> = ({defaultValue, dataType, minData, maxData}) => {
   const [value, setValue] = React.useState<Date | null>(null);
@@ -15,16 +15,24 @@ const MaterialUIPicker: FC<MaterialUIPickerProps> = ({defaultValue, dataType, mi
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    defaultValue && setValue(new Date(defaultValue));
-  }, []);
+    if(defaultValue instanceof Date){
+      setValue(defaultValue);
+      dispatch(paramsIsLoad(false));
+    }
+    else{
+      setValue(null)
+    }
+  }, [defaultValue]);
 
   useEffect(() => {
     if (value !== null) {
       if(dataType === 'from'){
         dispatch(addDateFrom(value.toISOString().slice(0, 10)))
+        dispatch(paramsIsLoad(true));
       }
       if(dataType === 'to'){
         dispatch(addDateTo(value.toISOString().slice(0, 10)))
+        dispatch(paramsIsLoad(true));
       }
     }
   }, [value]);

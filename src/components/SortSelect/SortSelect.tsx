@@ -1,14 +1,28 @@
 import MenuItem from '@mui/material/MenuItem';
-import React, {FC, useState} from 'react';
-import {useAppDispatch} from "../../hooks/redux";
+import React, {FC, useEffect, useState} from 'react';
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {chooseSortOption, setSortBy} from "../../store/reducers/fIlmSlice/filmSlice";
 import {sortOptions} from "./data";
 import {Select, SelectChangeEvent} from "@mui/material";
 
 const SortSelect: FC = () => {
-  const [option, setOption] = useState<string>('popularity.desc');
-
   const dispatch = useAppDispatch();
+
+  const {moviesType, params} = useAppSelector(
+    (state) => state.filmReducer
+  );
+
+  const [option, setOption] = useState<string>(params.sortBy);
+
+  useEffect(() => {
+    if (moviesType === 'Top Rated') {
+      setOption('vote_average.desc');
+      dispatch(setSortBy('vote_average.desc'));
+    } else {
+      setOption('popularity.desc');
+      dispatch(setSortBy('popularity.desc'));
+    }
+  }, [dispatch, moviesType])
 
   const handleChange = (event: SelectChangeEvent<string>) => {
     setOption(event.target.value);
@@ -47,7 +61,7 @@ const SortSelect: FC = () => {
     >
       {
         sortOptions.map(item => {
-          return(
+          return (
             <MenuItem key={item.id} value={item.sortBy}>{item.title}</MenuItem>
           )
         })

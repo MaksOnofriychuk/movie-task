@@ -1,25 +1,25 @@
 import * as React from "react";
 import {FC} from "react";
 import {Box, Typography} from "@mui/material";
-import {TFilmList} from "../../../store/reducers/fIlmSlice/types";
-import HomeCard from "../../Home/components/HomeCard/HomeCard";
-import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
-import {getFilms} from "../../../store/actions/Film";
-import {chooseSortOption, clearFilmlist, incrementPage} from "../../../store/reducers/fIlmSlice/filmSlice";
-import ButtonLoadMore from "../../../components/ButtonLoadMore/ButtonLoadMore";
-import {CircularStatic} from "../../../components/FirstScreen/components/CirclePercent/CirclePercent";
-import LinearDeterminate from "../../../components/Loader/Loader";
-import {useObserver} from "../../../hooks/useObserver";
-import SortBox from "../../../components/SortBox/SortBox";
-import FilterBox from "../../../components/FilterBox/FilterBox";
+import {TFilmList} from "../../store/reducers/fIlmSlice/types";
+import HomeCard from "../Home/components/HomeCard/HomeCard";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {getFilms} from "../../store/actions/Film";
+import {chooseSortOption, clearFilmlist, incrementPage, paramsIsLoad} from "../../store/reducers/fIlmSlice/filmSlice";
+import ButtonLoadMore from "../../components/ButtonLoadMore/ButtonLoadMore";
+import {CircularStatic} from "../../components/FirstScreen/components/CirclePercent/CirclePercent";
+import LinearDeterminate from "../../components/Loader/Loader";
+import {useObserver} from "../../hooks/useObserver";
+import SortBox from "../../components/SortBox/SortBox";
+import FilterBox from "../../components/FilterBox/FilterBox";
 
-const Popular: FC = () => {
+const Movies: FC = () => {
   const [loadButton, setLoadButton] = React.useState(true);
   const lastElement = React.useRef<HTMLDivElement>(null);
 
   const dispatch = useAppDispatch();
 
-  const {filmList, loading, error, sortOption, params} = useAppSelector(
+  const {filmList, loading, error, sortOption, params, paramsLoaded} = useAppSelector(
     (state) => state.filmReducer
   );
 
@@ -28,8 +28,16 @@ const Popular: FC = () => {
   })
 
   React.useEffect(() => {
-    dispatch(getFilms(params));
-  }, [dispatch, params.page]);
+    if(params.dateTo !== '' && params.sortBy !== '' && paramsLoaded){
+      dispatch(clearFilmlist());
+      dispatch(getFilms(params));
+      dispatch(chooseSortOption(false));
+      dispatch(paramsIsLoad(false));
+    }
+    return () => {
+      dispatch(clearFilmlist())
+    }
+  }, [params.page, paramsLoaded]);
 
   const loadMore = () => {
     dispatch(incrementPage())
@@ -42,10 +50,6 @@ const Popular: FC = () => {
     dispatch(chooseSortOption(false));
     setLoadButton(true)
   }
-
-  React.useEffect(() => () => {
-    dispatch(clearFilmlist())
-  }, [])
 
   return (
     <Box sx={{
@@ -136,4 +140,4 @@ const Popular: FC = () => {
   )
 }
 
-export default Popular;
+export default Movies;

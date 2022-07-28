@@ -12,6 +12,8 @@ export type TInitialState = {
   error: string;
   sortOption: boolean;
   likesData: TLikes[] | [];
+  moviesType: string;
+  paramsLoaded: boolean;
   params: TParamsType
 };
 
