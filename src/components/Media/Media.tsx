@@ -1,18 +1,19 @@
 import * as React from "react";
-import { useAppSelector } from "../../hooks/redux";
-import { COLOR } from "../../ColorTheme/Theme";
-import { TTabMediaPanelProps } from "../../ComponentTypes/types";
-import { Container } from "@mui/system";
+import {FC} from "react";
+import {useAppSelector} from "../../hooks/redux";
+import {COLOR} from "../../ColorTheme/Theme";
+import {TTabMediaPanelProps} from "../../ComponentTypes/types";
+import {Container} from "@mui/system";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Popular from "./components/Popular/Popular";
 import Videos from "./components/Videos/Videos";
 import Backdrops from "./components/Backdrops/Backdrops";
 import Posters from "./components/Posters/Posters";
+import Popular from "./components/Popular/Popular";
 
-function TabPanel(props: TTabMediaPanelProps) {
+const TabPanel:FC<TTabMediaPanelProps> = (props) => {
   const { children, value, index, ...other } = props;
 
   return (
@@ -90,7 +91,7 @@ export default function Media() {
                         color: COLOR.black,
                         "&.Mui-selected": { color: COLOR.black },
                       }}
-                      label="Most Popular"
+                      label="Most Movies"
                       {...a11yProps(0)}
                     />
                     <Tab

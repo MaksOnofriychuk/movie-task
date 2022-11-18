@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
   transformCastsData,
   transformCollectionData,
@@ -34,6 +34,7 @@ import {
   TServerReviews,
   TServerVideos,
 } from "./types";
+import {TCheckBoxOptions, TGenreList} from "../../../ComponentTypes/types";
 
 const initialState: TInitialState = {
   filmList: [],
@@ -47,10 +48,20 @@ const initialState: TInitialState = {
   keywordsMovies: [],
   loading: false,
   error: "",
-  page: 1,
   sortOption: false,
-  sortBy: 'popularity.desc',
   likesData: [],
+  moviesType: '',
+  paramsLoaded: false,
+  params: {
+    page: 1,
+    sortBy: '',
+    watchRegion: 'US',
+    withWatchFilter: [],
+    dateFrom: '',
+    dateTo: '',
+    genres: [],
+    minVotes: 0
+  }
 };
 
 export const filmSlice = createSlice({
@@ -58,17 +69,21 @@ export const filmSlice = createSlice({
   initialState,
   reducers: {
     incrementPage(state) {
-      state.page = state.page + 1;
+      state.params.page = state.params.page + 1;
     },
     clearFilmlist(state) {
       state.filmList = [];
-      state.page = 1;
+      state.params.page = 1;
     },
     chooseSortOption(state, action: PayloadAction<boolean>) {
       state.sortOption = action.payload;
     },
     setSortBy(state, action: PayloadAction<string>) {
-      state.sortBy = action.payload;
+      state.params.sortBy = action.payload;
+    },
+    setWithWatchFilter(state, action: PayloadAction<TCheckBoxOptions[]>) {
+      const arr = action.payload;
+      state.params.withWatchFilter = arr.filter(item => item.checked).map(item => item.withWatchFilter);
     },
     addLike(state, action: PayloadAction<TLikes>) {
       if (state.likesData.find((like) => like.link === action.payload.link)) {
@@ -79,6 +94,25 @@ export const filmSlice = createSlice({
         state.likesData = [...state.likesData, action.payload];
       }
     },
+    addDateFrom(state, action: PayloadAction<string>) {
+      state.params.dateFrom = action.payload;
+    },
+    addDateTo(state, action: PayloadAction<string>) {
+      state.params.dateTo = action.payload;
+    },
+    addGenres(state, action: PayloadAction<TGenreList[]>) {
+      const arr = action.payload;
+      state.params.genres = arr.filter(item => item.picked).map(item => item.id.toString());
+    },
+    addMinVotes(state, action: PayloadAction<number>) {
+      state.params.minVotes = action.payload;
+    },
+    chooseMoviesType(state, action: PayloadAction<string>){
+      state.moviesType = action.payload;
+    },
+    paramsIsLoad(state, action: PayloadAction<boolean>){
+      state.paramsLoaded = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -128,7 +162,7 @@ export const filmSlice = createSlice({
         (state, action: PayloadAction<[TServerVideos[], TServerPhotos]>) => {
           console.log(action.payload);
 
-          const [videos, { backdrops, logos, posters, id }] = action.payload;
+          const [videos, {backdrops, logos, posters, id}] = action.payload;
           const newMedia = {
             videos,
             backdrops,
@@ -168,7 +202,19 @@ export const filmSlice = createSlice({
   },
 });
 
-export const { addLike } = filmSlice.actions;
+export const {addLike} = filmSlice.actions;
 export default filmSlice.reducer;
-export const {incrementPage, clearFilmlist, chooseSortOption, setSortBy} = filmSlice.actions
+export const {
+  incrementPage,
+  clearFilmlist,
+  chooseSortOption,
+  setSortBy,
+  setWithWatchFilter,
+  addDateFrom,
+  addDateTo,
+  addGenres,
+  addMinVotes,
+  chooseMoviesType,
+  paramsIsLoad
+} = filmSlice.actions
 

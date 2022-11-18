@@ -138,3 +138,30 @@ export type TSortOptions = {
   title: string;
   sortBy: string
 }
+
+export type TCheckBoxOptions = {
+  id: string;
+  title: string;
+  withWatchFilter: string;
+  checked: boolean,
+}
+
+export type MaterialUIPickerProps = {
+  defaultValue: Date | string,
+  dataType: string;
+  minData: Date | undefined;
+  maxData: Date | undefined;
+}
+
+export type TGenreList = {
+  id: number;
+  name: string;
+  picked: boolean;
+}
+
+export type TMarks = {
+  value: number;
+  label?: string;
+  large?: boolean
+}
+

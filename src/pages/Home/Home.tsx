@@ -9,12 +9,12 @@ import {clearFilmlist} from "../../store/reducers/fIlmSlice/filmSlice";
 
 const Home = () => {
   const dispatch = useAppDispatch();
-  const {filmList, loading, error, page, sortBy} = useAppSelector(
+  const {filmList, loading, error, params} = useAppSelector(
     (state) => state.filmReducer
   );
 
   React.useEffect(() => {
-    dispatch(getFilms({page, sortBy}));
+    dispatch(getFilms(params));
   }, [dispatch]);
 
   React.useEffect(() => () => {

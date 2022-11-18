@@ -1,7 +1,8 @@
-import { AxiosResponse } from "axios";
-import { instance } from "../../config/axios-config";
+import {AxiosResponse} from "axios";
+import {instance} from "../../config/axios-config";
 import {
   TKeywords,
+  TParamsType,
   TServerCasts,
   TServerCollection,
   TServerFilm,
@@ -13,11 +14,17 @@ import {
   TServerVideos,
 } from "../../store/reducers/fIlmSlice/types";
 
-export const filmsApi = {get: async (page: number, sortBy: string): Promise<TServerFilmsList[]> => {
+export const filmsApi = {get: async (params: TParamsType): Promise<TServerFilmsList[]> => {
     const response: AxiosResponse = await instance.get("discover/movie", {
       params: {
-        page: page,
-        sort_by: sortBy
+        page: params.page,
+        watch_region: params.watchRegion,
+        with_watch_monetization_types: params.withWatchFilter.join(),
+        'release_date.gte': params.dateFrom,
+        'release_date.lte': params.dateTo,
+        with_genres: params.genres.join(),
+        'vote_count.gte': params.minVotes,
+        sort_by: params.sortBy
       }
     });
 
